@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保活マップ</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; background: #0f1117; color: #e0e0e0; }
+
+/* ===== HEADER ===== */
+.header {
+  background: #161822;
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid #252836;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.header h1 .icon { font-size: 20px; }
+.countdown {
+  font-size: 12px;
+  color: #fbbf24;
+  background: rgba(251,191,36,0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(251,191,36,0.2);
+}
+
+/* パーソナルサマリ */
+.summary {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #ccc;
+  line-height: 1.6;
+}
+.summary strong { color: #fff; }
+.summary .highlight-green { color: #4ade80; font-weight: 700; }
+.summary .highlight-blue { color: #60a5fa; font-weight: 700; }
+
+/* stat pills */
+.stat-pills {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid #252836;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #888;
+}
+.pill .pill-val {
+  font-size: 18px;
+  font-weight: 700;
+}
+.pill .pill-val.green { color: #4ade80; }
+.pill .pill-val.yellow { color: #fbbf24; }
+.pill .pill-val.blue { color: #60a5fa; }
+.pill .pill-val.red { color: #f87171; }
+
+/* ===== MAIN LAYOUT ===== */
+.main { display: flex; height: calc(100vh - 150px); }
+
+#map { flex: 1; min-width: 55%; }
+
+.sidebar {
+  width: 440px;
+  overflow-y: auto;
+  border-left: 1px solid #252836;
+  background: #12141e;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+  padding: 10px 14px;
+  border-bottom: 1px solid #252836;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #161822;
+}
+.ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #888;
+}
+.ctrl-group select, .ctrl-group input[type="number"] {
+  background: #1e2030;
+  border: 1px solid #333652;
+  color: #e0e0e0;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.ctrl-group input[type="number"] { width: 52px; }
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid #333652;
+  color: #888;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.toggle-btn.active {
+  background: rgba(74,222,128,0.1);
+  border-color: rgba(74,222,128,0.3);
+  color: #4ade80;
+}
+
+/* ===== FACILITY CARDS ===== */
+.facility-list { padding: 6px; }
+
+.facility-card {
+  background: #1a1d2e;
+  border: 1px solid #252836;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.facility-card:hover {
+  border-color: #3a3d5a;
+  transform: translateY(-1px);
+}
+
+/* 左ボーダーで確率を示す */
+.facility-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+}
+.facility-card.prob-high::before { background: #4ade80; }
+.facility-card.prob-medium::before { background: #fbbf24; }
+.facility-card.prob-low::before { background: #f87171; }
+
+.fc-row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.fc-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.fc-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.fc-distance {
+  font-size: 11px;
+  color: #888;
+  background: rgba(255,255,255,0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.fc-walk {
+  font-size: 11px;
+  color: #60a5fa;
+}
+
+.fc-row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* 空き数を大きく表示 */
+.fc-vacancy-block {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.fc-vacancy-num {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+}
+.fc-vacancy-num.green { color: #4ade80; }
+.fc-vacancy-num.zero { color: #444; }
+.fc-vacancy-unit {
+  font-size: 12px;
+  color: #888;
+}
+.fc-vacancy-label {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* 確率 */
+.fc-prob-block {
+  text-align: right;
+}
+.fc-prob-badge {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.fc-prob-badge.high { background: rgba(74,222,128,0.15); color: #4ade80; }
+.fc-prob-badge.medium { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.fc-prob-badge.low { background: rgba(248,113,113,0.15); color: #f87171; }
+.fc-prob-reason {
+  font-size: 10px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* 確率バー */
+.prob-bar {
+  height: 6px;
+  background: #1e2030;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.prob-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ===== FOOTER ===== */
+.sidebar-footer {
+  padding: 10px 14px;
+  border-top: 1px solid #252836;
+  font-size: 11px;
+  color: #444;
+  text-align: center;
+  background: #161822;
+}
+
+/* ===== MAP STYLES ===== */
+.marker-label {
+  background: rgba(22,24,34,0.92);
+  border: 1px solid #3a3d5a;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.marker-dot {
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: #000;
+}
+
+.gct-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.gct-dot {
+  width: 18px; height: 18px;
+  background: #60a5fa;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 12px rgba(96,165,250,0.6);
+}
+.home-label {
+  background: rgba(96,165,250,0.9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Leaflet popup */
+.leaflet-popup-content-wrapper {
+  background: #1a1d2e !important;
+  color: #e0e0e0 !important;
+  border-radius: 10px !important;
+  border: 1px solid #333652 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+.leaflet-popup-tip { background: #1a1d2e !important; }
+.popup-name { font-weight: 700; font-size: 14px; color: #fff; }
+.popup-detail { font-size: 12px; color: #888; margin-top: 4px; }
+.popup-vacancy { font-size: 15px; margin-top: 8px; font-weight: 700; }
+.popup-prob { font-size: 13px; margin-top: 4px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1><span class="icon">🗺</span> 保活マップ</h1>
+    <div class="countdown" id="countdown"></div>
+  </div>
+  <div class="summary" id="summary"></div>
+  <div class="stat-pills" id="stat-pills"></div>
+</div>
+
+<div class="main">
+  <div id="map"></div>
+  <div class="sidebar">
+    <div class="controls">
+      <div class="ctrl-group">
+        <select id="target-age">
+          <option value="0歳">0歳</option>
+          <option value="1歳">1歳</option>
+          <option value="2歳" selected>2歳</option>
+          <option value="3歳">3歳</option>
+          <option value="4歳">4歳</option>
+          <option value="5歳">5歳</option>
+        </select>
+      </div>
+      <div class="ctrl-group">
+        <select id="max-distance">
+          <option value="500">500m</option>
+          <option value="1000">1km</option>
+          <option value="1500" selected>1.5km</option>
+          <option value="2000">2km</option>
+          <option value="99999">全て</option>
+        </select>
+      </div>
+      <button class="toggle-btn active" id="only-vacancy-btn" onclick="toggleVacancy()">空きあり</button>
+      <button class="toggle-btn" id="show-all-btn" onclick="toggleShowAll()">全て表示</button>
+      <div class="ctrl-group">
+        点数
+        <input type="number" id="my-score" value="20" min="0" max="50">
+      </div>
+    </div>
+    <div class="facility-list" id="facility-list"></div>
+    <div class="sidebar-footer" id="sidebar-footer"></div>
+  </div>
+</div>
+
+<script>
+let DATA = null;
+let map, markers = [], circleLayer = null;
+let onlyVacancy = true;
+
+const HOME = { lat: 35.7283, lng: 139.7193 };
+const TARGET_DATE = new Date('2028-01-01');
+
+function toggleVacancy() {
+  onlyVacancy = !onlyVacancy;
+  document.getElementById('only-vacancy-btn').classList.toggle('active', onlyVacancy);
+  document.getElementById('show-all-btn').classList.toggle('active', !onlyVacancy);
+  render();
+}
+function toggleShowAll() {
+  onlyVacancy = false;
+  document.getElementById('only-vacancy-btn').classList.toggle('active', false);
+  document.getElementById('show-all-btn').classList.toggle('active', true);
+  render();
+}
+
+async function loadData() {
+  try {
+    const resp = await fetch('data/hokatsu_data.json');
+    DATA = await resp.json();
+    initMap();
+    render();
+  } catch (e) {
+    document.getElementById('facility-list').innerHTML =
+      '<p style="padding:20px;color:#f87171;">python3 fetch_data.py を先に実行してください</p>';
+  }
+}
+
+function initMap() {
+  map = L.map('map', { zoomControl: true }).setView([HOME.lat, HOME.lng], 15);
+
+  // 道路・建物が見えるスタイル
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OSM &copy; CARTO',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
+  // ラベルレイヤー
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
+    subdomains: 'abcd', maxZoom: 19, pane: 'overlayPane'
+  }).addTo(map);
+
+  // 自宅マーカー
+  const homeIcon = L.divIcon({
+    className: '',
+    html: `<div class="gct-marker">
+      <div class="gct-dot"></div>
+      <div class="home-label">自宅</div>
+    </div>`,
+    iconSize: [80, 36],
+    iconAnchor: [40, 12]
+  });
+  L.marker([HOME.lat, HOME.lng], { icon: homeIcon, zIndexOffset: 1000 })
+    .addTo(map)
+    .bindPopup('<div class="popup-name">自宅</div><div class="popup-detail">東池袋エリア</div>');
+}
+
+function getColor(prob) {
+  if (prob >= 0.7) return '#4ade80';
+  if (prob >= 0.2) return '#fbbf24';
+  return '#f87171';
+}
+function getBadgeClass(prob) {
+  if (prob >= 0.7) return 'high';
+  if (prob >= 0.2) return 'medium';
+  return 'low';
+}
+function getProbClass(prob) {
+  if (prob >= 0.7) return 'prob-high';
+  if (prob >= 0.2) return 'prob-medium';
+  return 'prob-low';
+}
+
+function recalcProbability(vacancy, minScore, myScore) {
+  if (vacancy > 0 && minScore === null)
+    return { probability: 0.90, label: '◎ 高い', reason: '空きあり・前年全員内定' };
+  if (vacancy > 0 && minScore !== null) {
+    if (myScore >= minScore)
+      return { probability: 0.75, label: '○ やや高い', reason: `スコア${myScore} ≥ ボーダー${minScore}` };
+    const diff = minScore - myScore;
+    return { probability: Math.max(0.05, 0.5 - diff * 0.05), label: '△ 厳しい', reason: `スコア${myScore} < ボーダー${minScore}` };
+  }
+  if (vacancy === 0 && minScore === null)
+    return { probability: 0.30, label: '△ 途中空き待ち', reason: '満席・前年は全員内定' };
+  if (vacancy === 0 && minScore !== null) {
+    if (myScore >= minScore)
+      return { probability: 0.20, label: '▲ 空き待ち', reason: '満席・スコアはクリア' };
+    return { probability: 0.05, label: '× 厳しい', reason: '満席・スコア不足' };
+  }
+  return { probability: 0.10, label: '? 不明', reason: 'データ不足' };
+}
+
+function distToWalk(meters) {
+  const mins = Math.round(meters / 80); // 徒歩80m/分
+  return `徒歩${mins}分`;
+}
+
+function render() {
+  const targetAge = document.getElementById('target-age').value;
+  const maxDist = parseInt(document.getElementById('max-distance').value);
+  const myScore = parseInt(document.getElementById('my-score').value) || 20;
+
+  // マーカー・サークルクリア
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+  if (circleLayer) map.removeLayer(circleLayer);
+
+  // 全施設（距離内・座標あり）
+  const allInRange = DATA.facilities.filter(f =>
+    f.distance_m && f.distance_m <= maxDist && f.lat && f.lng
+  );
+
+  // 確率計算
+  const allWithProb = allInRange.map(f => {
+    const vacancy = (f.vacancy?.[targetAge]) || 0;
+    const minScore = f.min_scores?.[targetAge] ?? null;
+    return { ...f, currentProb: recalcProbability(vacancy, minScore, myScore), currentVacancy: vacancy };
+  });
+
+  // フィルタ
+  let facilities = onlyVacancy
+    ? allWithProb.filter(f => f.currentVacancy > 0)
+    : allWithProb;
+
+  // ソート: 確率 → 距離
+  facilities.sort((a, b) => {
+    const dp = b.currentProb.probability - a.currentProb.probability;
+    return dp !== 0 ? dp : (a.distance_m || 99999) - (b.distance_m || 99999);
+  });
+
+  // 統計
+  const totalInRange = allInRange.length;
+  const withVacancy = allWithProb.filter(f => f.currentVacancy > 0).length;
+  const highProb = allWithProb.filter(f => f.currentProb.probability >= 0.7).length;
+  const noVacancy = totalInRange - withVacancy;
+
+  // カウントダウン
+  const now = new Date();
+  const monthsLeft = (TARGET_DATE.getFullYear() - now.getFullYear()) * 12 + TARGET_DATE.getMonth() - now.getMonth();
+  document.getElementById('countdown').textContent = `2028年1月入園まで あと${monthsLeft}ヶ月`;
+
+  // サマリ
+  const distLabel = maxDist >= 99999 ? '豊島区内' : `${maxDist >= 1000 ? (maxDist/1000)+'km' : maxDist+'m'}圏内`;
+  document.getElementById('summary').innerHTML =
+    `自宅から<strong>${distLabel}</strong>に保育園が<span class="highlight-blue">${totalInRange}園</span>。` +
+    `うち<span class="highlight-green">${withVacancy}園</span>に${targetAge}クラスの空きがあります。`;
+
+  // stat pills
+  document.getElementById('stat-pills').innerHTML = `
+    <div class="pill"><span class="pill-val blue">${totalInRange}</span>園</div>
+    <div class="pill"><span class="pill-val green">${withVacancy}</span>空きあり</div>
+    <div class="pill"><span class="pill-val green">${highProb}</span>確率◎</div>
+    <div class="pill"><span class="pill-val red">${noVacancy}</span>満席</div>
+    <div class="pill"><span class="pill-val yellow" style="font-size:13px;">${DATA.generated_at ? new Date(DATA.generated_at).toLocaleDateString('ja-JP') : '-'}</span>更新</div>
+  `;
+
+  // 距離圏
+  circleLayer = L.circle([HOME.lat, HOME.lng], {
+    radius: maxDist < 99999 ? maxDist : 0,
+    color: '#60a5fa', fillColor: '#60a5fa',
+    fillOpacity: 0.04, weight: 1, dashArray: '6,4'
+  }).addTo(map);
+
+  // カード & マーカー
+  const listEl = document.getElementById('facility-list');
+  listEl.innerHTML = '';
+
+  facilities.forEach(f => {
+    const prob = f.currentProb;
+    const color = getColor(prob.probability);
+    const badgeClass = getBadgeClass(prob.probability);
+    const probClass = getProbClass(prob.probability);
+
+    // マーカー（大きめ + 園名ラベル）
+    const markerSize = f.currentVacancy > 0 ? 24 : 18;
+    const icon = L.divIcon({
+      className: '',
+      html: `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <div class="marker-dot" style="width:${markerSize}px;height:${markerSize}px;background:${color};
+          box-shadow:0 0 8px ${color}60;font-size:${f.currentVacancy > 0 ? 13 : 10}px;">
+          ${f.currentVacancy}
+        </div>
+        <div class="marker-label">${f.name.replace(/保育園|保育所/g, '').substring(0, 8)}</div>
+      </div>`,
+      iconSize: [100, 50],
+      iconAnchor: [50, 14]
+    });
+
+    const marker = L.marker([f.lat, f.lng], { icon })
+      .addTo(map)
+      .bindPopup(`
+        <div class="popup-name">${f.name}</div>
+        <div class="popup-detail">${f.address || ''} | ${f.distance_m}m（${distToWalk(f.distance_m)}）</div>
+        <div class="popup-vacancy" style="color:${color}">${targetAge}クラス: ${f.currentVacancy}名の空き</div>
+        <div class="popup-prob" style="color:${color}">${prob.label} — ${prob.reason}</div>
+      `);
+    markers.push(marker);
+
+    // カード
+    const card = document.createElement('div');
+    card.className = `facility-card ${probClass}`;
+    card.onclick = () => { map.setView([f.lat, f.lng], 17); marker.openPopup(); };
+
+    card.innerHTML = `
+      <div class="fc-row1">
+        <div class="fc-name">${f.name}</div>
+        <div class="fc-meta">
+          <span class="fc-walk">${distToWalk(f.distance_m)}</span>
+          <span class="fc-distance">${f.distance_m}m</span>
+        </div>
+      </div>
+      <div class="fc-row2">
+        <div>
+          <div class="fc-vacancy-block">
+            <span class="fc-vacancy-num ${f.currentVacancy > 0 ? 'green' : 'zero'}">${f.currentVacancy}</span>
+            <span class="fc-vacancy-unit">名</span>
+          </div>
+          <div class="fc-vacancy-label">${targetAge}クラスの空き</div>
+        </div>
+        <div class="fc-prob-block">
+          <span class="fc-prob-badge ${badgeClass}">${prob.label}</span>
+          <div class="fc-prob-reason">${prob.reason}</div>
+        </div>
+      </div>
+      <div class="prob-bar">
+        <div class="prob-bar-fill" style="width:${prob.probability * 100}%;background:${color};"></div>
+      </div>
+    `;
+    listEl.appendChild(card);
+  });
+
+  // フッター
+  document.getElementById('sidebar-footer').textContent =
+    `${facilities.length}件表示 / 全${totalInRange}園 | データ: ${DATA.generated_at || '-'}`;
+}
+
+// イベント
+document.getElementById('target-age').addEventListener('change', render);
+document.getElementById('max-distance').addEventListener('change', render);
+document.getElementById('my-score').addEventListener('change', render);
+
+loadData();
+</script>
+</body>
+</html>

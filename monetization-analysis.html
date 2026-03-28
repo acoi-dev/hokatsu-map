@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保活マップ マネタイズモデル徹底研究 2026年3月版</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Hiragino Sans', sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.7; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+  h1 { text-align: center; font-size: 2em; margin: 30px 0 10px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 40px; font-size: 0.95em; }
+
+  h2 { color: #60a5fa; margin-bottom: 15px; font-size: 1.3em; }
+  h3 { color: #a78bfa; margin-bottom: 10px; font-size: 1.1em; }
+  h4 { color: #34d399; margin-bottom: 8px; font-size: 0.95em; }
+
+  /* Executive Summary */
+  .exec-summary {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+  .exec-summary p { color: #ccc; margin-bottom: 10px; }
+  .highlight { color: #f59e0b; font-weight: bold; }
+  .highlight-green { color: #34d399; font-weight: bold; }
+  .highlight-red { color: #ef4444; font-weight: bold; }
+  .highlight-blue { color: #60a5fa; font-weight: bold; }
+
+  /* Model Cards */
+  .model-card {
+    background: #111118;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: border-color 0.3s;
+  }
+  .model-card:hover { border-color: #60a5fa; }
+
+  .model-card.rank-s { border-left: 4px solid #fbbf24; }
+  .model-card.rank-a { border-left: 4px solid #60a5fa; }
+  .model-card.rank-b { border-left: 4px solid #34d399; }
+  .model-card.rank-c { border-left: 4px solid #888; }
+
+  .model-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .model-number {
+    font-size: 0.8em;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #1e1e2e;
+    color: #a78bfa;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .model-title { font-size: 1.4em; font-weight: bold; color: #fff; }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .badge-recommend { background: #fbbf2433; color: #fbbf24; border: 1px solid #fbbf24; }
+  .badge-good { background: #34d39933; color: #34d399; border: 1px solid #34d399; }
+  .badge-risky { background: #ef444433; color: #ef4444; border: 1px solid #ef4444; }
+  .badge-hard { background: #a78bfa33; color: #a78bfa; border: 1px solid #a78bfa; }
+
+  /* Score Grid */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+  }
+  @media (max-width: 768px) {
+    .score-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .score-item {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+  }
+  .score-label { font-size: 0.75em; color: #888; margin-bottom: 5px; }
+  .score-value { font-size: 1.5em; font-weight: bold; }
+  .score-note { font-size: 0.7em; color: #666; margin-top: 3px; }
+
+  /* Detail Sections */
+  .detail-section {
+    background: #0d0d15;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+  }
+
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    margin: 15px 0;
+  }
+  .data-table th {
+    background: #1e1e2e;
+    color: #a78bfa;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #333;
+  }
+  .data-table td {
+    padding: 10px;
+    border-bottom: 1px solid #1a1a2a;
+  }
+  .data-table tr:hover { background: #1a1a2a; }
+
+  /* Comparison Matrix */
+  .matrix-section {
+    background: #111118;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+  }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    margin: 2px;
+  }
+  .tag-case { background: #1e3a5f; color: #60a5fa; }
+  .tag-risk { background: #5f1e1e; color: #ef4444; }
+  .tag-point { background: #1e5f3a; color: #34d399; }
+
+  /* Key Insight */
+  .insight-box {
+    background: linear-gradient(135deg, #1a2e1a 0%, #162e16 100%);
+    border: 1px solid #2a5a2a;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+  }
+  .insight-box.warning {
+    background: linear-gradient(135deg, #2e1a1a 0%, #2e1616 100%);
+    border-color: #5a2a2a;
+  }
+
+  /* Verdict */
+  .verdict {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f2027 50%, #203a43 100%);
+    border: 2px solid #fbbf24;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+  }
+  .verdict h2 { color: #fbbf24; }
+
+  .priority-list {
+    list-style: none;
+    padding: 0;
+  }
+  .priority-list li {
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .priority-list .rank {
+    font-size: 1.3em;
+    font-weight: bold;
+    min-width: 30px;
+  }
+  .priority-1 { background: #fbbf2415; border-left: 3px solid #fbbf24; }
+  .priority-1 .rank { color: #fbbf24; }
+  .priority-2 { background: #60a5fa15; border-left: 3px solid #60a5fa; }
+  .priority-2 .rank { color: #60a5fa; }
+  .priority-3 { background: #34d39915; border-left: 3px solid #34d399; }
+  .priority-3 .rank { color: #34d399; }
+  .priority-4 { background: #a78bfa15; border-left: 3px solid #a78bfa; }
+  .priority-4 .rank { color: #a78bfa; }
+
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+
+  /* Progress bars */
+  .progress-bar {
+    height: 8px;
+    background: #1a1a2a;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 5px;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s;
+  }
+  .fill-gold { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .fill-blue { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
+  .fill-green { background: linear-gradient(90deg, #34d399, #10b981); }
+  .fill-red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+  .fill-purple { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
+
+  .sources { background: #0d0d15; border: 1px solid #222; border-radius: 8px; padding: 20px; margin-top: 40px; font-size: 0.8em; }
+  .sources a { color: #60a5fa; text-decoration: none; }
+  .sources a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>保活マップ マネタイズモデル徹底研究</h1>
+<p class="subtitle">2026年3月20日版 / 7モデル比較 / 実例・相場・数字ベース</p>
+
+<!-- Executive Summary -->
+<div class="exec-summary">
+  <h2>Executive Summary</h2>
+  <p>保活・保育園探し市場は<span class="highlight">年間約80万人</span>の出生数に対し、保活対象は推定<span class="highlight">50-60万世帯/年</span>。保活期間は平均<span class="highlight">3-6ヶ月</span>と短く、ユーザーの回転が速い。市場を支配するのはコドモン（ホイシル / 68,163施設）とBABY JOB（えんさがそっ♪ / 40万MAU）の2強で、いずれも<span class="highlight-red">保護者からの直接課金には成功していない</span>。</p>
+  <p>最も現実的な収益源は、<span class="highlight-green">(1) 保活コンサル（即金性高い）</span>、<span class="highlight-green">(2) 広告モデル（PV依存）</span>、<span class="highlight-green">(3) データAPI（不動産テック向け）</span>の組み合わせ。こども家庭庁の保育DX予算（補正予算で保活情報連携基盤に<span class="highlight">約12億円</span>）は巨大だが、個人開発者の参入余地は極めて限定的。</p>
+  <p>ママスタ保活（インタースペース/東証プライム）が2025年3月にサービス終了した事実は、<span class="highlight-red">保育園検索単体ではマネタイズが困難</span>であることを示す最重要シグナル。</p>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 1: フリーミアム -->
+<!-- =============================== -->
+<div class="model-card rank-c">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 1</span>
+      <div class="model-title">フリーミアム（保護者課金）</div>
+    </div>
+    <span class="badge badge-risky">非推奨</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #ef4444;">0-5万</div>
+      <div class="score-note">CVR 1%以下想定</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #ef4444;">極高</div>
+      <div class="score-note">課金文化がない</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #34d399;">1-2ヶ月</div>
+      <div class="score-note">決済実装のみ</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #ef4444;">低</div>
+      <div class="score-note">利用期間3-6ヶ月</div>
+    </div>
+  </div>
+
+  <h3>保活ユーザーは課金するか？</h3>
+  <div class="detail-section">
+    <p><span class="highlight-red">結論: ほぼ払わない。</span></p>
+    <ul>
+      <li>保活関連で有料課金に成功しているサービスは<strong>事実上ゼロ</strong></li>
+      <li>ホイシル（68,163施設）、えんさがそっ♪（40万MAU）、きっと、Picon、保活なび -- <strong>すべて無料</strong></li>
+      <li>コネヒト（ママリ）はKDDI買収後に「ママリプレミアム」を開始したが、<strong>保活特化ではなく育児全般</strong>のサブスク</li>
+      <li>保活アプリ「きっと」のレビューに「有料でも欲しい」という声はあるが、実際に課金モデルは未実装</li>
+      <li>自治体が保育コンシェルジュを<strong>無料</strong>で提供 → 有料サービスとの競合</li>
+    </ul>
+  </div>
+
+  <h3>類似サービスの価格帯</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>サービス</th><th>料金</th><th>内容</th><th>課金成否</th></tr>
+      <tr><td>ホイシル</td><td>無料</td><td>園検索・見学予約・口コミ</td><td>保護者無料 / 園側もコドモン経由で無料</td></tr>
+      <tr><td>えんさがそっ♪</td><td>無料</td><td>園検索・見学予約・口コミ</td><td>保護者無料 / おむつサブスクが本業</td></tr>
+      <tr><td>保活アプリ きっと</td><td>無料</td><td>保育園マップ・メモ</td><td>課金モデルなし</td></tr>
+      <tr><td>Picon</td><td>無料</td><td>保育園検索・メッセンジャー</td><td>課金モデルなし</td></tr>
+      <tr><td>ママリプレミアム</td><td>月額400円</td><td>育児全般Q&A（保活特化ではない）</td><td>保活単独では成立せず</td></tr>
+    </table>
+  </div>
+
+  <div class="insight-box warning">
+    <h4>致命的問題</h4>
+    <p>保活ユーザーの利用期間は<strong>3-6ヶ月</strong>と短い。仮に月額500円で課金率2%を達成しても、MAU 1万で月収1万円。<strong>LTVが低すぎてフリーミアムは成立しない</strong>。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 2: 園側課金 B2B -->
+<!-- =============================== -->
+<div class="model-card rank-b">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 2</span>
+      <div class="model-title">園側課金（B2B SaaS）</div>
+    </div>
+    <span class="badge badge-hard">高難易度</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #f59e0b;">10-100万</div>
+      <div class="score-note">100園 x 月1,000-10,000円</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #ef4444;">極高</div>
+      <div class="score-note">コドモン/BABY JOBが支配</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #ef4444;">6-12ヶ月</div>
+      <div class="score-note">営業+開発コスト大</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #60a5fa;">中</div>
+      <div class="score-note">全国3.7万園が対象</div>
+    </div>
+  </div>
+
+  <h3>競合の料金体系</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>サービス</th><th>園向け料金</th><th>概要</th></tr>
+      <tr>
+        <td><strong>コドモン（CoDMON）</strong></td>
+        <td><span class="highlight">初期0円 / 月額5,500円〜</span></td>
+        <td>保育ICTの包括SaaS。24,000施設+406万保護者。ARR推定15億円超（2022年時点）。ホイシルの園掲載は<strong>無料</strong>（コドモン利用者向け付加価値）</td>
+      </tr>
+      <tr>
+        <td><strong>BABY JOB（えんさがそっ♪）</strong></td>
+        <td><span class="highlight">園向け掲載は基本無料</span></td>
+        <td>本業は「手ぶら登園」おむつサブスク（5,100施設導入）。2025年2月期 売上28.3億円（前期比+71.5%）。えんさがそっ♪は集客チャネル。園側課金で稼いでいるのではなく<strong>おむつ定額が本体</strong></td>
+      </tr>
+      <tr>
+        <td><strong>ルクミー</strong></td>
+        <td>月額数千円〜</td>
+        <td>写真販売+ICT。保育園向けSaaS</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>保育園のIT予算</h3>
+  <div class="detail-section">
+    <ul>
+      <li><strong>ICT導入補助金:</strong> 1機能20万円〜4機能80万円（端末含め最大130万円）</li>
+      <li><strong>自治体補助:</strong> 東京都は「保育所等におけるデジタル化推進事業」で追加補助あり</li>
+      <li><strong>園の月額予算感:</strong> 小規模園で月5,000-10,000円、大規模園で月10,000-30,000円が限界ライン</li>
+      <li><strong>こども誰でも通園制度:</strong> R7年度から1施設あたり20万円のICT導入補助新設</li>
+    </ul>
+  </div>
+
+  <h3>成功/失敗パターン</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>パターン</th><th>事例</th><th>分析</th></tr>
+      <tr>
+        <td><span class="tag tag-point">成功</span></td>
+        <td>コドモン</td>
+        <td>ICT全部入りで月額5,500円〜。園の業務効率化が直接価値。ホイシルは<strong>おまけ</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-point">成功</span></td>
+        <td>BABY JOB</td>
+        <td>おむつサブスクという<strong>物理商品</strong>で課金。えんさがそっ♪は集客ツール。園検索単体では課金していない</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-risk">失敗</span></td>
+        <td>ママスタ保活</td>
+        <td>インタースペース（東証プライム）が6年運営も<strong>2025年3月サービス終了</strong>。園側課金・保護者課金いずれも成立せず</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-risk">困難</span></td>
+        <td>園検索ポータル単体</td>
+        <td>園にとって「掲載する理由」がない（認可園は入園希望が集まる）。園児募集に困っているのは<strong>認可外・企業主導型のみ</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="insight-box warning">
+    <h4>構造的問題</h4>
+    <p>認可保育園は自治体経由で入園が決まるため、<strong>園自体が集客する必要がない</strong>。園側課金が成立するのは認可外・企業主導型・幼稚園など「自前で園児を集める必要がある」施設のみ。コドモンが成功したのは「保育ICT」という<strong>業務効率化</strong>で課金しているからであり、「検索掲載」で課金しているわけではない。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 3: 自治体向けSaaS -->
+<!-- =============================== -->
+<div class="model-card rank-c">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 3</span>
+      <div class="model-title">自治体向けSaaS</div>
+    </div>
+    <span class="badge badge-risky">個人には非現実的</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #34d399;">100万+</div>
+      <div class="score-note">受注できれば大きい</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #ef4444;">最高</div>
+      <div class="score-note">入札・実績必須</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #ef4444;">12ヶ月+</div>
+      <div class="score-note">調達プロセスが長い</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #34d399;">高</div>
+      <div class="score-note">1,741自治体が対象</div>
+    </div>
+  </div>
+
+  <h3>こども家庭庁の保活DX予算</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>事業名</th><th>予算規模</th><th>時期</th><th>内容</th></tr>
+      <tr>
+        <td><strong>保育業務施設管理PF</strong></td>
+        <td><span class="highlight">約34億円</span></td>
+        <td>R6補正予算</td>
+        <td>園と自治体間のオンライン手続基盤。ガバメントクラウド上で国が整備</td>
+      </tr>
+      <tr>
+        <td><strong>保活情報連携基盤</strong></td>
+        <td><span class="highlight">約12億円</span></td>
+        <td>R6補正予算</td>
+        <td>保護者向けワンストップ保活。R8年4月全国リリース予定</td>
+      </tr>
+      <tr>
+        <td><strong>保活情報連携基盤 設計・開発</strong></td>
+        <td>入札公告済（金額非公開）</td>
+        <td>R7年度</td>
+        <td>R7年6月16日公告。一般競争入札</td>
+      </tr>
+      <tr>
+        <td><strong>デジタル田園都市国家構想交付金</strong></td>
+        <td>自治体ごと</td>
+        <td>通年</td>
+        <td>保活DXに活用する自治体あり（板橋区・足立区・調布市が先行）</td>
+      </tr>
+      <tr>
+        <td><strong>東京都 保活ワンストップ</strong></td>
+        <td>都独自予算</td>
+        <td>進行中</td>
+        <td>19自治体1,276園で展開。GovTech東京が推進。ホイシル+えんさがそっ♪が公式パートナー</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>自治体営業のハードル</h3>
+  <div class="detail-section">
+    <ul>
+      <li><span class="highlight-red">入札参加資格:</span> 一般競争入札が基本。過去の官公庁実績がほぼ必須</li>
+      <li><span class="highlight-red">営業サイクル:</span> 予算要求（8月）→ 予算確定（3月）→ 調達公告 → 契約。<strong>最短でも1年</strong></li>
+      <li><span class="highlight-red">国が基盤を整備中:</span> 保活情報連携基盤は国が直接構築。自治体は「使う側」になる。<strong>民間サービスが入り込む余地が狭まっている</strong></li>
+      <li><span class="highlight-red">大手ロックイン:</span> 東京都はホイシル+えんさがそっ♪を公式採用済。新規参入は極めて困難</li>
+    </ul>
+  </div>
+
+  <div class="insight-box warning">
+    <h4>個人開発者にとっての現実</h4>
+    <p>保活DXは<strong>合計46億円超</strong>の国家プロジェクト。プレイヤーはNTTデータ・富士通級の大手SIer、またはコドモン・BABY JOBのような業界支配企業。個人開発者がこの領域に正面から入ることは<strong>事実上不可能</strong>。ただし、自治体の小規模DX案件（LINE Bot構築など）に入り込む余地はゼロではない。練馬区はLINE保活支援サービスを採用しており、小さな自治体向けの低コストソリューションは隙間がある。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 4: M&A/バイアウト -->
+<!-- =============================== -->
+<div class="model-card rank-b">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 4</span>
+      <div class="model-title">M&A / バイアウト</div>
+    </div>
+    <span class="badge badge-good">出口戦略として有効</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">売却ポテンシャル</div>
+      <div class="score-value" style="color: #f59e0b;">50-500万</div>
+      <div class="score-note">データ量とMAU次第</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #f59e0b;">中</div>
+      <div class="score-note">買い手がいれば</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #f59e0b;">6-12ヶ月</div>
+      <div class="score-note">MAU/データ蓄積後</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #888;">一回限り</div>
+      <div class="score-note">Exit戦略</div>
+    </div>
+  </div>
+
+  <h3>子育て・保活サービスのM&A事例</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>年</th><th>対象</th><th>買い手</th><th>推定金額</th><th>備考</th></tr>
+      <tr>
+        <td>2016</td>
+        <td><strong>コネヒト（ママリ）</strong></td>
+        <td>Syn.HD（KDDI傘下）</td>
+        <td><span class="highlight">推定18億円</span></td>
+        <td>出産女性の10人に1人が利用。MAU 500万人時点。非公開だが関係者情報</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>合同会社TAISETSU</td>
+        <td>ITグループ（SDエンタメ孫会社）</td>
+        <td>非公開</td>
+        <td>認可保育所運営の事業譲受</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>デジタルディフェンス</td>
+        <td>ライク</td>
+        <td>非公開</td>
+        <td>認可保育園3園の運営取得</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>ラッコM&A / サイト売買の相場</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>指標</th><th>相場</th></tr>
+      <tr><td>一般的なサイト売却額</td><td><span class="highlight">月間営業利益 x 12-24ヶ月</span></td></tr>
+      <tr><td>月間営業利益1万円未満のサイト</td><td>平均約18.3万円</td></tr>
+      <tr><td>利益ゼロ/マイナスのサイト</td><td>平均約11.2万円</td></tr>
+      <tr><td>育児・子育て系ブログ</td><td>数万円〜数十万円</td></tr>
+      <tr><td>ラッコM&A手数料</td><td>売主無料 / 買主: 成約金額の5%（最低5.5万円）</td></tr>
+    </table>
+    <p style="margin-top: 15px; color: #888;">育児・保活特化のWebサービス売却案件はラッコM&Aでは<strong>ほぼ見当たらない</strong>。保育園の「施設」M&Aは別市場（平均2,500万円、500万〜6,000万円）。</p>
+  </div>
+
+  <h3>買い手がつくための条件</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>条件</th><th>最低ライン</th><th>理想</th></tr>
+      <tr><td>MAU（月間アクティブユーザー）</td><td>1万+</td><td>10万+</td></tr>
+      <tr><td>データ量（園情報）</td><td>1,000園+</td><td>全国3.7万園</td></tr>
+      <tr><td>月間売上</td><td>数万円（広告でも可）</td><td>10万円+</td></tr>
+      <tr><td>独自データ</td><td>口コミ or 空き状況</td><td>入園実績・ボーダーライン</td></tr>
+      <tr><td>想定買い手</td><td colspan="2">不動産テック / 子育てメディア / 保育ICT企業 / 人材紹介会社</td></tr>
+    </table>
+  </div>
+
+  <div class="insight-box">
+    <h4>現実的なExit戦略</h4>
+    <p>全国規模のデータ+一定のMAUを構築した段階で、不動産テック企業（LIFULL、リクルートなど）や保育ICT企業（コドモン等）への売却を狙う。売却額は<strong>50-500万円</strong>がレンジ。ママリ級（MAU 500万）になれば10億円超だが、保活単体では困難。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 5: 保活コンサル -->
+<!-- =============================== -->
+<div class="model-card rank-s">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 5</span>
+      <div class="model-title">保活コンサル（個人向け）</div>
+    </div>
+    <span class="badge badge-recommend">最推奨 / 即金性最高</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #34d399;">5-30万</div>
+      <div class="score-note">月10-30件 x 3,000-10,000円</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #34d399;">低</div>
+      <div class="score-note">既存データ活用</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #34d399;">即日-2週間</div>
+      <div class="score-note">ココナラ出品のみ</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #f59e0b;">中</div>
+      <div class="score-note">時間で上限あり</div>
+    </div>
+  </div>
+
+  <h3>保活コンサルの相場</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>プラットフォーム/サービス</th><th>料金</th><th>内容</th></tr>
+      <tr>
+        <td><strong>ココナラ（テキスト相談）</strong></td>
+        <td>3,000-10,000円/件</td>
+        <td>区ごとの保活戦略アドバイス、保育園リスト作成、指数計算代行</td>
+      </tr>
+      <tr>
+        <td><strong>ココナラ（電話相談）</strong></td>
+        <td>100-200円/分</td>
+        <td>30分相談で3,000-6,000円。ただし手数料約40%</td>
+      </tr>
+      <tr>
+        <td><strong>保活アドバイザリー（法人向け）</strong></td>
+        <td>従業員1人あたり5,000-20,000円</td>
+        <td>ソーシャル・エンパワメント社が提供。企業の福利厚生として導入</td>
+      </tr>
+      <tr>
+        <td><strong>個人起業（長岡美穂氏事例）</strong></td>
+        <td>10,000-30,000円/件</td>
+        <td>自治体別の保育事情解説、園リスト・マップ提供、見学代行、書類作成支援</td>
+      </tr>
+      <tr>
+        <td><strong>リクルート「保活のミカタ」</strong></td>
+        <td>社内福利厚生（無料）</td>
+        <td>リクルート社員向け。自治体別の入園ルール整理</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>保活マップとの親和性</h3>
+  <div class="detail-section">
+    <p>保活マップが持つ<strong>独自データ</strong>（最低指数、年齢別空き状況、距離計算）は、そのまま有料コンサルの素材になる。</p>
+    <ul>
+      <li><strong>ベーシック（3,000円）:</strong> 区内全園のランク付きリスト+指数シミュレーション結果PDF</li>
+      <li><strong>スタンダード（5,000円）:</strong> ベーシック + 個別の通える園リスト（住所起点）+ 戦略アドバイス</li>
+      <li><strong>プレミアム（10,000円）:</strong> スタンダード + 1時間オンライン相談 + 申請書類レビュー</li>
+    </ul>
+  </div>
+
+  <div class="insight-box">
+    <h4>なぜ最推奨か</h4>
+    <p><strong>(1)</strong> 保活マップの既存データを即座にマネタイズできる。<strong>(2)</strong> ココナラ出品は今日からでも可能。<strong>(3)</strong> 自治体の無料コンシェルジュは「一般論」しか話せないが、個人コンサルは「あなたの住所・指数・希望条件」に特化した具体的アドバイスが可能。<strong>(4)</strong> 保活シーズン（8-12月）にピークがあり、効率的に稼げる。<strong>(5)</strong> コンサル実績がそのまま保活マップのブランディングになる。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 6: データAPI販売 -->
+<!-- =============================== -->
+<div class="model-card rank-a">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 6</span>
+      <div class="model-title">データAPI販売</div>
+    </div>
+    <span class="badge badge-good">中期的に有望</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #60a5fa;">10-50万</div>
+      <div class="score-note">2-5社 x 月5-10万円</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #f59e0b;">中</div>
+      <div class="score-note">データ蓄積が必要</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #f59e0b;">3-6ヶ月</div>
+      <div class="score-note">API開発+営業</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #34d399;">高</div>
+      <div class="score-note">横展開しやすい</div>
+    </div>
+  </div>
+
+  <h3>不動産テック企業の子育てデータ需要</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>企業/サービス</th><th>データの使い方</th><th>データ調達方法</th></tr>
+      <tr>
+        <td><strong>LIFULL HOME'S</strong></td>
+        <td>物件検索に「子育て環境」スコア表示。「まちむすび」で街の評判データ提供</td>
+        <td>自前収集+「まちむすび生成AI API」を他社にも提供開始</td>
+      </tr>
+      <tr>
+        <td><strong>SUUMO（リクルート）</strong></td>
+        <td>物件詳細に周辺施設（保育園含む）を表示</td>
+        <td>国土交通省 不動産情報ライブラリAPI + 自前データ</td>
+      </tr>
+      <tr>
+        <td><strong>マップマーケティング（TerraMap）</strong></td>
+        <td>商圏分析ツールに保育園ポイントデータを搭載</td>
+        <td>累計2,500社に商圏分析SaaS提供。保育園データは既に商品化済</td>
+      </tr>
+      <tr>
+        <td><strong>エステートテクノロジーズ</strong></td>
+        <td>不動産価格ヒートマップに生活環境データ連携</td>
+        <td>APIデータ連携ソリューション</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3>APIの相場感</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>データタイプ</th><th>月額相場</th><th>従量課金</th></tr>
+      <tr><td>保育園位置情報（基本）</td><td>3-5万円/月</td><td>API 1,000コール: 1,000-3,000円</td></tr>
+      <tr><td>保育園+空き状況+ボーダーライン</td><td>5-15万円/月</td><td>API 1,000コール: 3,000-10,000円</td></tr>
+      <tr><td>入園可能性スコアリング</td><td>10-30万円/月</td><td>1スコアリング: 50-200円</td></tr>
+    </table>
+    <p style="margin-top: 10px; color: #888;">国交省 不動産情報ライブラリAPIは<strong>無料</strong>で公開されている。差別化には「空き状況」「ボーダーライン」「入園可能性」など<strong>独自データ</strong>が必須。</p>
+  </div>
+
+  <h3>保活マップの独自データ優位性</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>データ</th><th>公開API存在</th><th>保活マップの保有</th><th>価値</th></tr>
+      <tr><td>保育園の位置情報</td><td>あり（国交省）</td><td>あり</td><td style="color:#888;">低（コモディティ）</td></tr>
+      <tr><td>定員情報</td><td>一部あり</td><td>あり</td><td style="color:#f59e0b;">中</td></tr>
+      <tr><td>年齢別空き状況</td><td><strong>なし</strong></td><td><strong>あり</strong></td><td style="color:#34d399;">高</td></tr>
+      <tr><td>入園最低指数/ボーダー</td><td><strong>なし</strong></td><td><strong>あり</strong></td><td style="color:#34d399;">高</td></tr>
+      <tr><td>距離・徒歩時間計算済</td><td>なし</td><td>あり</td><td style="color:#f59e0b;">中</td></tr>
+      <tr><td>入園可能性AI判定</td><td><strong>なし</strong></td><td>開発可能</td><td style="color:#fbbf24;">最高</td></tr>
+    </table>
+  </div>
+
+  <div class="insight-box">
+    <h4>攻め筋</h4>
+    <p>「空き状況」「入園ボーダーライン」は全競合が未実装のブルーオーシャン。これを構造化APIとして不動産テック企業に提供する。想定顧客: <strong>LIFULL、不動産仲介、引越しサービス、保険会社</strong>。まずは全国主要10区のデータを揃え、PoC（概念実証）として1社に無料提供 → 有料契約に転換するルートが現実的。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- MODEL 7: 広告モデル -->
+<!-- =============================== -->
+<div class="model-card rank-a">
+  <div class="model-header">
+    <div>
+      <span class="model-number">MODEL 7</span>
+      <div class="model-title">広告モデル</div>
+    </div>
+    <span class="badge badge-good">PV次第で安定収入</span>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">月収ポテンシャル</div>
+      <div class="score-value" style="color: #60a5fa;">1-20万</div>
+      <div class="score-note">月間10万PVで3-5万円</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">実現難易度</div>
+      <div class="score-value" style="color: #34d399;">低</div>
+      <div class="score-note">AdSense設置のみ</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">開始までの期間</div>
+      <div class="score-value" style="color: #34d399;">1-4週間</div>
+      <div class="score-note">AdSense審査期間</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">スケーラビリティ</div>
+      <div class="score-value" style="color: #60a5fa;">中</div>
+      <div class="score-note">PVに比例</div>
+    </div>
+  </div>
+
+  <h3>保活ユーザー向け広告の相場</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>指標</th><th>一般相場</th><th>子育て・ママ向け推定</th></tr>
+      <tr><td>AdSense RPM（1000PVあたり収益）</td><td>200-500円</td><td><span class="highlight">300-600円</span>（育児はYMYL隣接で少し高め）</td></tr>
+      <tr><td>ディスプレイ広告 CPM</td><td>300-600円</td><td>400-800円</td></tr>
+      <tr><td>ネイティブ広告（記事広告）</td><td>--</td><td>1記事5-30万円（MAU 10万+で受注可能）</td></tr>
+      <tr><td>アフィリエイト（保険・教育系）</td><td>成約1,000-10,000円</td><td>保活ユーザーと親和性あり</td></tr>
+    </table>
+  </div>
+
+  <h3>PVと広告収入のシミュレーション</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>月間PV</th><th>AdSense収入</th><th>アフィリエイト加算</th><th>合計</th></tr>
+      <tr><td>1万PV</td><td>3,000-5,000円</td><td>1,000-3,000円</td><td style="color:#888;">4,000-8,000円</td></tr>
+      <tr><td>5万PV</td><td>15,000-25,000円</td><td>5,000-15,000円</td><td style="color:#f59e0b;">2-4万円</td></tr>
+      <tr><td>10万PV</td><td>30,000-60,000円</td><td>10,000-30,000円</td><td style="color:#34d399;">4-9万円</td></tr>
+      <tr><td>30万PV</td><td>90,000-180,000円</td><td>30,000-100,000円</td><td style="color:#34d399;">12-28万円</td></tr>
+    </table>
+  </div>
+
+  <h3>保活期間のLTVで広告はペイするか</h3>
+  <div class="detail-section">
+    <ul>
+      <li><strong>保活ユーザーの平均利用期間:</strong> 3-6ヶ月（8月開始→1月申請→4月入園）</li>
+      <li><strong>訪問頻度:</strong> 月2-5回（集中期は週1-2回）</li>
+      <li><strong>1ユーザーLTV:</strong> 6-30PV x RPM 300-600円 = <span class="highlight">2-18円/ユーザー</span></li>
+      <li><strong>1ユーザー獲得コスト（SEO）:</strong> 実質0円（SEO流入の場合）</li>
+      <li><strong>結論:</strong> SEO流入のみなら<span class="highlight-green">広告単体でもペイする</span>が、有料広告でユーザーを獲得すると赤字。</li>
+    </ul>
+  </div>
+
+  <h3>保活ユーザーと相性の良いアフィリエイト</h3>
+  <div class="detail-section">
+    <table class="data-table">
+      <tr><th>ジャンル</th><th>成約単価</th><th>親和性</th></tr>
+      <tr><td>学資保険・生命保険</td><td>5,000-15,000円</td><td>高（子供が生まれる=保険見直し）</td></tr>
+      <tr><td>引越し見積もり</td><td>1,000-3,000円</td><td>高（保育園に入れるために引越し検討）</td></tr>
+      <tr><td>家事代行・ベビーシッター</td><td>3,000-8,000円</td><td>高（保育園に入れなかった場合の代替）</td></tr>
+      <tr><td>マネー相談（FP）</td><td>5,000-10,000円</td><td>中高（育休→復帰で家計見直し）</td></tr>
+      <tr><td>知育・幼児教育</td><td>1,000-5,000円</td><td>中（子育て関心高い層）</td></tr>
+    </table>
+  </div>
+
+  <div class="insight-box">
+    <h4>SEOが生命線</h4>
+    <p>広告モデルは<strong>SEO集客がすべて</strong>。「渋谷区 保育園 空き状況」「豊島区 保活 ボーダー」などのロングテールKWで上位を取れれば安定収入。保活シーズン（8-12月）にPVが3-5倍になる季節変動あり。アフィリエイト（保険・引越し）との組み合わせで月5-10万円は現実的な射程。</p>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- Comparison Matrix -->
+<!-- =============================== -->
+<div class="matrix-section">
+  <h2>7モデル総合比較マトリクス</h2>
+  <table class="data-table">
+    <tr>
+      <th>モデル</th>
+      <th>月収ポテンシャル</th>
+      <th>難易度</th>
+      <th>開始期間</th>
+      <th>スケーラビリティ</th>
+      <th>総合評価</th>
+    </tr>
+    <tr>
+      <td><strong>1. フリーミアム</strong></td>
+      <td>0-5万円</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-red" style="width: 90%"></div></div>
+        極高
+      </td>
+      <td>1-2ヶ月</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-red" style="width: 15%"></div></div>
+        低
+      </td>
+      <td><span class="highlight-red">D / 非推奨</span></td>
+    </tr>
+    <tr>
+      <td><strong>2. 園側課金 B2B</strong></td>
+      <td>10-100万円</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-red" style="width: 85%"></div></div>
+        極高
+      </td>
+      <td>6-12ヶ月</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-blue" style="width: 50%"></div></div>
+        中
+      </td>
+      <td><span style="color: #f59e0b;">C / 構造的に困難</span></td>
+    </tr>
+    <tr>
+      <td><strong>3. 自治体SaaS</strong></td>
+      <td>100万円+</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-red" style="width: 95%"></div></div>
+        最高
+      </td>
+      <td>12ヶ月+</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-green" style="width: 70%"></div></div>
+        高
+      </td>
+      <td><span class="highlight-red">D / 個人には非現実的</span></td>
+    </tr>
+    <tr style="background: #1a2e1a;">
+      <td><strong>4. M&A</strong></td>
+      <td>50-500万円（一括）</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-gold" style="width: 50%"></div></div>
+        中
+      </td>
+      <td>6-12ヶ月</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-purple" style="width: 10%"></div></div>
+        一回限り
+      </td>
+      <td><span class="highlight-green">B / Exit戦略として有効</span></td>
+    </tr>
+    <tr style="background: #2e2e1a;">
+      <td><strong>5. 保活コンサル</strong></td>
+      <td>5-30万円</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-green" style="width: 20%"></div></div>
+        低
+      </td>
+      <td>即日-2週間</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-gold" style="width: 45%"></div></div>
+        中
+      </td>
+      <td><span style="color: #fbbf24; font-weight: bold; font-size: 1.1em;">S / 最推奨</span></td>
+    </tr>
+    <tr style="background: #1a2e1a;">
+      <td><strong>6. データAPI</strong></td>
+      <td>10-50万円</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-gold" style="width: 50%"></div></div>
+        中
+      </td>
+      <td>3-6ヶ月</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-green" style="width: 75%"></div></div>
+        高
+      </td>
+      <td><span class="highlight-green">A / 中期的に有望</span></td>
+    </tr>
+    <tr style="background: #1a2e1a;">
+      <td><strong>7. 広告モデル</strong></td>
+      <td>1-20万円</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-green" style="width: 25%"></div></div>
+        低
+      </td>
+      <td>1-4週間</td>
+      <td>
+        <div class="progress-bar"><div class="progress-fill fill-blue" style="width: 55%"></div></div>
+        中
+      </td>
+      <td><span class="highlight-green">A / 基盤収入として必須</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- =============================== -->
+<!-- Verdict -->
+<!-- =============================== -->
+<div class="verdict">
+  <h2>最終結論: 推奨マネタイズ戦略</h2>
+  <p style="color: #ccc; margin: 15px 0;">「保育園検索サービス単体では稼げない」が業界の真実。成功企業は全て別の課金軸を持つ（コドモン=ICT SaaS、BABY JOB=おむつサブスク、ママリ=育児コミュニティ）。保活マップのマネタイズは<strong>「検索を入口に、別の場所で課金する」</strong>設計が必須。</p>
+
+  <h3 style="color: #fbbf24; margin-top: 25px;">フェーズ別ロードマップ</h3>
+
+  <ol class="priority-list">
+    <li class="priority-1">
+      <span class="rank">P1</span>
+      <div>
+        <strong>Phase 1（今すぐ / 0-1ヶ月）: 保活コンサル + 広告</strong><br>
+        <span style="color: #ccc;">ココナラに「渋谷区・豊島区の保活コンサル」を出品（3,000-10,000円）。保活マップにAdSense + アフィリエイト（保険・引越し）を設置。保活シーズン（8-12月）に向けてコンテンツを増やす。<strong>目標: 月5-10万円</strong></span>
+      </div>
+    </li>
+    <li class="priority-2">
+      <span class="rank">P2</span>
+      <div>
+        <strong>Phase 2（1-3ヶ月）: エリア拡大 + SEO</strong><br>
+        <span style="color: #ccc;">渋谷区・豊島区 → 東京23区全域へデータ拡大。「XX区 保育園 空き状況」「XX区 保活 ボーダー」のロングテールKWで上位獲得。<strong>目標: 月間5-10万PV + 月10-15万円</strong></span>
+      </div>
+    </li>
+    <li class="priority-3">
+      <span class="rank">P3</span>
+      <div>
+        <strong>Phase 3（3-6ヶ月）: データAPI PoC</strong><br>
+        <span style="color: #ccc;">「年齢別空き状況」「入園ボーダーライン」のAPI化。不動産テック企業1-2社にPoC無料提供 → 有料契約交渉。マップマーケティング社のTerraMapのように保育園データを商品化。<strong>目標: 月5-10万円追加</strong></span>
+      </div>
+    </li>
+    <li class="priority-4">
+      <span class="rank">P4</span>
+      <div>
+        <strong>Phase 4（6-12ヶ月+）: Exit or スケール</strong><br>
+        <span style="color: #ccc;">全国展開 + MAU 10万+ 達成後に選択肢が開く。(A) データAPIで安定収入 (B) 不動産テック企業 or 保育ICT企業への売却（50-500万円） (C) 法人向け保活コンサル（企業の福利厚生として導入）。<strong>目標: 月30万円+ or 一括売却</strong></span>
+      </div>
+    </li>
+  </ol>
+
+  <div style="background: #0d0d15; border-radius: 8px; padding: 20px; margin-top: 25px;">
+    <h3 style="color: #fbbf24;">最大の教訓: ママスタ保活の失敗から学ぶ</h3>
+    <p style="color: #ccc; margin-top: 10px;">東証プライム上場のインタースペースが6年間運営しても収益化できずに撤退した。これは「保育園検索ポータルだけでは食えない」という強烈なシグナル。逆に成功しているコドモンとBABY JOBは、保育園検索を<strong>集客チャネル</strong>として使い、別の高粗利サービス（ICT SaaS / おむつサブスク）で稼いでいる。保活マップも同じ構造を目指す: <strong>検索で集客 → コンサル+API+広告で課金</strong>。</p>
+  </div>
+</div>
+
+<!-- Sources -->
+<div class="sources">
+  <h3 style="color: #888; margin-bottom: 15px;">Sources</h3>
+  <ul style="list-style: none; padding: 0;">
+    <li style="margin-bottom: 8px;"><a href="https://www.codmon.com/pricing/">CoDMON（コドモン）料金</a> - 園向け月額5,500円〜</li>
+    <li style="margin-bottom: 8px;"><a href="https://www.codmon.com/service/hoicil/">コドモン ホイシル（ホームページ作成サービス）</a> - 園向け無料</li>
+    <li style="margin-bottom: 8px;"><a href="https://baby-job.co.jp/">BABY JOB株式会社</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://tebura-touen.com/">手ぶら登園</a> - 5,100施設+18万保護者</li>
+    <li style="margin-bottom: 8px;"><a href="https://netkeizai.com/articles/detail/13230">BABY JOB 売上16.5億円（2024年2月期）→28.3億円（2025年2月期）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://baby-job.co.jp/2024/10/31/news-20241031/">えんさがそっ♪ 東京都保活ワンストップ参画</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.digitalservice.metro.tokyo.lg.jp/business/2030vision/kodomodx/hokatsu">東京都 保活ワンストッププロジェクト</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.cfa.go.jp/policies/hoiku/hokatsujoho-jichitaimuke">こども家庭庁 保活情報連携基盤</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.cfa.go.jp/assets/contents/node/basic_page/field_ref_resources/214cacce-0305-4ce9-a120-355df90cf035/e2cb3de4/20241227_policies_hoiku_yosan_19.pdf">保育関係予算 R6補正（施設管理PF 34億円、保活情報連携基盤 12億円）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.jetro.go.jp/gov_procurement/national/articles/359126/2025061600020000.html">保活情報連携基盤 R7設計開発業務 入札公告</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://thebridge.jp/2016/06/mamari-is-acquired-by-kddi-group-syn-dot">コネヒト（ママリ）KDDI傘下Syn.による買収（推定18億円）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://mastory.jp/%E4%BF%9D%E8%82%B2%E5%9C%92%E3%81%AE%E5%A3%B2%E5%8D%B4%E9%A1%8D">保育園M&A 売却相場（平均2,500万円）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://rakkoma.com/knowledge/3362/">ラッコM&A サイト売却相場（月間利益 x 12-24ヶ月）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://coconala.com/services/1930605">ココナラ 保活コンサル出品例</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.nikkei.com/article/DGXMZO06965410X00C16A9000000/">保活アドバイス起業事例（日経）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://s-empowerment.org/service/social/">ソーシャル・エンパワメント 保活アドバイザリーサービス</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://recruit-holdings.com/ja/blog/post_85/">リクルート「保活のミカタ」</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://lifull.com/news/34546/">LIFULL まちむすび 生成AI API提供開始</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.mapmarketing.co.jp/data/point/hoikuen.html">マップマーケティング 保育園ポイントデータ</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.city.nerima.tokyo.jp/kosodatekyoiku/kodomo/hoiku/line_hoiku.html">練馬区 LINE保活支援サービス</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://www.codmon.com/column/subsidy_3/">保育ICT導入補助金（1機能20万〜4機能130万円）</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://mamastar.jp/info/detail/4p7t_kkc8">ママスタ保活 2025年3月終了</a></li>
+    <li style="margin-bottom: 8px;"><a href="https://apps.apple.com/jp/app/%E4%BF%9D%E6%B4%BB%E3%82%A2%E3%83%97%E3%83%AA-%E3%81%8D%E3%81%A3%E3%81%A8-%E4%BF%9D%E8%82%B2%E5%9C%92%E6%8E%A2%E3%81%97%E3%82%92%E3%83%A9%E3%82%AF%E3%81%AB/id1188511968">保活アプリ「きっと」</a></li>
+  </ul>
+</div>
+
+<p style="text-align: center; color: #444; margin: 40px 0 20px; font-size: 0.8em;">Generated by Claude Code / 2026-03-20</p>
+
+</div>
+</body>
+</html>

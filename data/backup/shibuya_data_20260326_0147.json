@@ -1,0 +1,2860 @@
+{
+  "generated_at": "2026-03-19T23:18:34.971504",
+  "home_location": {
+    "lat": 35.6748,
+    "lng": 139.6867,
+    "address": "渋谷区"
+  },
+  "ward": "渋谷区",
+  "scoring_system": {
+    "method": "父母合算（父の基本指数＋母の基本指数＋調整指数）",
+    "fulltime_dual_income": "基本指数20pt×2＝40pt",
+    "practical_border": "44pt（フルタイム40pt＋育休復帰・6ヶ月以上就労加点で+2×2）",
+    "adjustment_items": 22,
+    "adjustment_max_plus": 6,
+    "adjustment_max_minus": -40,
+    "notes": [
+      "週5日以上・1日8時間以上就労＝基本指数20pt",
+      "週3日以上・1日8時間以上就労＝基本指数12pt",
+      "月48時間以上就労＝基本指数6pt",
+      "同一指数の場合11段階の優先順位で判定",
+      "優先順位: 渋谷区民新規 > 渋谷区民転園 > 転入予定",
+      "兄弟同園希望で優先順位UP",
+      "受託加算（復職済で有償預け実績あり）で優先順位UP",
+      "育休延長可能で-40pt（大幅減点注意）"
+    ]
+  },
+  "vacancy_date": "令和8年5月1日入園分",
+  "admission_data_date": "令和8年4月1日一次選考（2026年2月2日公表）",
+  "total_facilities": 28,
+  "facilities": [
+    {
+      "name": "元代々木保育園",
+      "address": "渋谷区元代々木町51-19",
+      "lat": 35.6726,
+      "lng": 139.687,
+      "phone": "03-3465-8663",
+      "capacity": 87,
+      "category": "認可区立保育所",
+      "vacancy": {
+        "0歳": 7,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 1,
+        "4歳": 4,
+        "5歳": 7
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 44,
+        "2歳": 42,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "44pt",
+        "2歳": "42pt"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（460.50㎡、屋上含む）",
+      "cap_by_age": {
+        "0歳": "11",
+        "1歳": "16",
+        "2歳": "16",
+        "3歳": "16",
+        "4歳": "14",
+        "5歳": "14"
+      },
+      "website": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/19motoyoyogi.html",
+      "distance_m": 246,
+      "walk_min": 3,
+      "total_vacancy": 19,
+      "google_maps_url": "https://www.google.com/maps/search/元代々木保育園+渋谷区",
+      "distance_home": 246,
+      "walk_home": 3,
+      "photos": [
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/f92b1fadd9c14523a1746c9417c29cb3/19motoyoyogi01.jpg",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/842b744920024847b42661e4332de509/19motoyoyogi002.jpg",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/7ef2565ff526422c94eecd56fe163c0d/19motoyoyogi03.jpg"
+      ],
+      "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/19motoyoyogi.html",
+      "rating": 4.8,
+      "review_count": 4,
+      "sentiment": "良い",
+      "review_summary": "のびのび保育で親の負担少",
+      "description": "園庭・屋上での自由遊びと自然体験を重視する区立園。食育イベントや異年齢児交流が充実し、のびのびと過ごせる家庭的な雰囲気が特徴。",
+      "review_url": "https://www.google.com/maps/search/元代々木保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 8,
+          "applicants": 8,
+          "ratio": 1.0,
+          "min_score_text": "内定者なし"
+        },
+        "1歳": {
+          "recruit": 8,
+          "applicants": 7,
+          "ratio": 0.88,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 6,
+          "applicants": 2,
+          "ratio": 0.33,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 6,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 6,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 14,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 8,
+        "1歳": 8,
+        "2歳": 6
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63869/"
+    },
+    {
+      "name": "みんなのみらいをつくる保育園初台",
+      "address": "渋谷区代々木4-37-15",
+      "lat": 35.6758,
+      "lng": 139.6895,
+      "phone": "03-6304-2088",
+      "capacity": 30,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 2,
+        "2歳": 0,
+        "3歳": 5,
+        "4歳": 0,
+        "5歳": 1
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "20:15",
+      "has_garden": false,
+      "garden_note": "園庭なし（参宮橋公園利用）",
+      "cap_by_age": {
+        "1歳": "6",
+        "2歳": "6",
+        "3歳": "6",
+        "4歳": "6",
+        "5歳": "6"
+      },
+      "website": "https://mirai.florence.or.jp/minnanomirai/hatsudai/",
+      "distance_m": 276,
+      "walk_min": 3,
+      "total_vacancy": 8,
+      "google_maps_url": "https://www.google.com/maps/search/みんなのみらいをつくる保育園初台+渋谷区",
+      "distance_home": 276,
+      "walk_home": 3,
+      "photos": [
+        "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_1.jpg",
+        "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_2-1.jpg",
+        "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_3.jpg"
+      ],
+      "photo_url": "https://mirai.florence.or.jp/minnanomirai/hatsudai/",
+      "rating": 3.3,
+      "review_count": 14,
+      "sentiment": "普通",
+      "review_summary": "おしゃれ施設で先進的保育",
+      "description": "NPO法人フローレンス運営。「シチズンシップ保育」で自ら考え行動する力を育成。サークルタイムや感情カード等の独自プログラムを導入し、おしゃれで清潔な施設が好評。",
+      "review_url": "https://www.google.com/maps/search/みんなのみらいをつくる保育園初台+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 6,
+          "applicants": 12,
+          "ratio": 2.0,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 3,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 1,
+          "applicants": 1,
+          "ratio": 1.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 6,
+        "2歳": 0
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "代々木至誠こども園",
+      "address": "渋谷区代々木5-14-16",
+      "lat": 35.672,
+      "lng": 139.6888,
+      "phone": "03-3485-2466",
+      "capacity": 119,
+      "category": "認定こども園",
+      "vacancy": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 46,
+        "2歳": 44,
+        "3歳": 42,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "46pt兄弟同園",
+        "2歳": "44pt受託",
+        "3歳": "42pt"
+      },
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "園庭あり",
+      "cap_by_age": {
+        "0歳": "15",
+        "1歳": "20",
+        "2歳": "20",
+        "3歳": "21",
+        "4歳": "21",
+        "5歳": "22"
+      },
+      "website": "https://yoyogi.shisei-hoiku.jp/",
+      "distance_m": 364,
+      "walk_min": 5,
+      "total_vacancy": 0,
+      "google_maps_url": "https://www.google.com/maps/search/代々木至誠こども園+渋谷区",
+      "distance_home": 364,
+      "walk_home": 5,
+      "photos": [
+        "https://yoyogi.shisei-hoiku.jp/wp-content/gallery/main_banner/main04.jpg",
+        "https://yoyogi.shisei-hoiku.jp/wp-content/gallery/fixed/kodomoen_image.jpg"
+      ],
+      "photo_url": "https://yoyogi.shisei-hoiku.jp/",
+      "rating": 5.0,
+      "review_count": 2,
+      "sentiment": "良い",
+      "review_summary": "モンテッソーリで高評価",
+      "description": "100年以上の歴史を持つ社会福祉法人至誠学舎立川運営の認定こども園。モンテッソーリ教育を取り入れ、家庭的な雰囲気の中で子どもの主体性を尊重する保育を実践。",
+      "review_url": "https://www.google.com/maps/search/代々木至誠こども園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 15,
+          "applicants": 73,
+          "ratio": 4.87,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 4,
+          "applicants": 82,
+          "ratio": 20.5,
+          "min_score_text": "46pt兄弟同園"
+        },
+        "2歳": {
+          "recruit": 2,
+          "applicants": 19,
+          "ratio": 9.5,
+          "min_score_text": "44pt受託"
+        },
+        "3歳": {
+          "recruit": 3,
+          "applicants": 7,
+          "ratio": 2.33,
+          "min_score_text": "42pt"
+        },
+        "4歳": {
+          "recruit": 0,
+          "applicants": 4,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 15,
+        "1歳": 4,
+        "2歳": 2
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/92824/"
+    },
+    {
+      "name": "グローバルキッズ代々木八幡園",
+      "address": "渋谷区代々木5-7-2",
+      "lat": 35.6712,
+      "lng": 139.6862,
+      "phone": "03-6407-1217",
+      "capacity": 70,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 5,
+        "2歳": 7,
+        "3歳": 9,
+        "4歳": 8,
+        "5歳": 7
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "20:30",
+      "has_garden": false,
+      "garden_note": "園庭不明（代々木八幡駅徒歩1分）",
+      "cap_by_age": {
+        "1歳": "14",
+        "2歳": "14",
+        "3歳": "14",
+        "4歳": "14",
+        "5歳": "14"
+      },
+      "website": "https://www.gkids.co.jp/facilities/nursery_111.html",
+      "distance_m": 402,
+      "walk_min": 5,
+      "total_vacancy": 36,
+      "google_maps_url": "https://www.google.com/maps/search/グローバルキッズ代々木八幡園+渋谷区",
+      "distance_home": 402,
+      "walk_home": 5,
+      "photos": [
+        "https://www.gkids.co.jp/_assets/img/mv-01rhktzs.jpg",
+        "https://www.gkids.co.jp/_assets/img/mv-02rhktzs.jpg",
+        "https://www.gkids.co.jp/_assets/img/mv-03rhktzs.jpg"
+      ],
+      "photo_url": "https://www.gkids.co.jp/facilities/nursery_111.html",
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "先生が丁寧で信頼できる",
+      "description": "イエナプラン教育のコンセプトを取り入れ、子どもの主体的な学びを実践。「本気で遊び心に寄り添う保育」をモットーに、動物とのふれあい体験なども提供。",
+      "review_url": "https://www.google.com/maps/search/グローバルキッズ代々木八幡園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 14,
+          "applicants": 14,
+          "ratio": 1.0,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 7,
+          "applicants": 1,
+          "ratio": 0.14,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 5,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 8,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 7,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 14,
+        "2歳": 7
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "太陽の子代々木西参道保育園",
+      "address": "渋谷区代々木4-27-6",
+      "lat": 35.6775,
+      "lng": 139.6909,
+      "phone": "03-6276-3681",
+      "capacity": 114,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 1,
+        "1歳": 2,
+        "2歳": 5,
+        "3歳": 0,
+        "4歳": 5,
+        "5歳": 6
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（園庭開放実施）",
+      "cap_by_age": {
+        "0歳": "6",
+        "1歳": "20",
+        "2歳": "22",
+        "3歳": "22",
+        "4歳": "22",
+        "5歳": "22"
+      },
+      "website": "https://www.kidslife-nursery.com/facility/tokyo/shibuya/yoyoginishisando/",
+      "distance_m": 483,
+      "walk_min": 6,
+      "total_vacancy": 19,
+      "google_maps_url": "https://www.google.com/maps/search/太陽の子代々木西参道保育園+渋谷区",
+      "distance_home": 483,
+      "walk_home": 6,
+      "photos": [
+        "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813115649/IMG_4368-scaled.jpg",
+        "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813113519/IMG_4398-scaled.jpg",
+        "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813113527/IMG_3931-scaled.jpg"
+      ],
+      "photo_url": "https://www.kidslife-nursery.com/facility/tokyo/shibuya/yoyoginishisando/",
+      "review_count": 3,
+      "sentiment": "普通",
+      "review_summary": "英語・ダンスあり園庭は狭い",
+      "description": "HITOWAキッズライフ運営。英語プログラム「ふぁんばりん」やダンスプログラムなど多彩な教育を無料提供。広いホールでの運動活動と食育・野菜栽培も充実。",
+      "review_url": "https://www.google.com/maps/search/太陽の子代々木西参道保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 6,
+          "applicants": 20,
+          "ratio": 3.33,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 14,
+          "applicants": 18,
+          "ratio": 1.29,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 5,
+          "applicants": 1,
+          "ratio": 0.2,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 1,
+          "applicants": 1,
+          "ratio": 1.0,
+          "min_score_text": "非公開"
+        },
+        "4歳": {
+          "recruit": 5,
+          "applicants": 1,
+          "ratio": 0.2,
+          "min_score_text": "非公開"
+        },
+        "5歳": {
+          "recruit": 6,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 6,
+        "1歳": 14,
+        "2歳": 5
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "はるの小川ちとせ保育園",
+      "address": "渋谷区代々木4-57-6",
+      "lat": 35.676,
+      "lng": 139.692,
+      "phone": "03-6276-0810",
+      "capacity": 79,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 0,
+        "4歳": 4,
+        "5歳": 1
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 46,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "46pt受託"
+      },
+      "extended_hours": "20:15",
+      "has_garden": false,
+      "garden_note": "園庭なし（代々木公園・参宮橋公園利用）",
+      "cap_by_age": {
+        "0歳": "8",
+        "1歳": "12",
+        "2歳": "12",
+        "3歳": "16",
+        "4歳": "16",
+        "5歳": "15"
+      },
+      "website": "https://www.chitosek.or.jp/preschools/harunoogawa",
+      "distance_m": 496,
+      "walk_min": 6,
+      "total_vacancy": 5,
+      "google_maps_url": "https://www.google.com/maps/search/はるの小川ちとせ保育園+渋谷区",
+      "distance_home": 496,
+      "walk_home": 6,
+      "photos": [
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/08/54harunoogawa_img13-1200x933.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/10/54harunoogawa_img09-600x600.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2024/06/54harunoogawa_img14-600x554.jpg"
+      ],
+      "photo_url": "https://www.chitosek.or.jp/preschools/harunoogawa",
+      "rating": 3.1,
+      "review_count": 5,
+      "sentiment": "普通",
+      "review_summary": "家庭的で考える力を育む",
+      "description": "ちとせ交友会運営。基本理念「Home」のもと、心安らぐ家庭的な保育を実践。「考えさせる」保育で自律性を育み、リトミック・英語・体操教室の専門プログラムも充実。",
+      "review_url": "https://www.google.com/maps/search/はるの小川ちとせ保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 8,
+          "applicants": 27,
+          "ratio": 3.38,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 3,
+          "applicants": 32,
+          "ratio": 10.67,
+          "min_score_text": "46pt受託"
+        },
+        "2歳": {
+          "recruit": 1,
+          "applicants": 2,
+          "ratio": 2.0,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 4,
+          "applicants": 2,
+          "ratio": 0.5,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 2,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 8,
+        "1歳": 3,
+        "2歳": 1
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "ゆめの樹保育園はつだい",
+      "address": "渋谷区初台2-13-11",
+      "lat": 35.673,
+      "lng": 139.6815,
+      "phone": "03-6276-6534",
+      "capacity": 64,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 7,
+        "2歳": 6,
+        "3歳": 0,
+        "4歳": 2,
+        "5歳": 10
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "非公開"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり",
+      "cap_by_age": {
+        "1歳": "14",
+        "2歳": "12",
+        "3歳": "12",
+        "4歳": "13",
+        "5歳": "13"
+      },
+      "website": "https://yumenoki-hatsudai.philos2011.com/",
+      "distance_m": 510,
+      "walk_min": 6,
+      "total_vacancy": 25,
+      "google_maps_url": "https://www.google.com/maps/search/ゆめの樹保育園はつだい+渋谷区",
+      "distance_home": 510,
+      "walk_home": 6,
+      "photos": [
+        "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/c9cc2d129641f31690e15a9cf02bdff9.jpg",
+        "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/d02d0fdf0af9527a54a63020fe8afa12.jpg",
+        "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/0310ace8d7fbff75670d0bdb4d0db966.jpg"
+      ],
+      "photo_url": "https://yumenoki-hatsudai.philos2011.com/",
+      "rating": 3.1,
+      "review_count": 44,
+      "sentiment": "普通",
+      "review_summary": "木の温もりある内装が好評",
+      "description": "「やりたい！楽しい！子どもが主役」を理念とし、子ども自身の育つ力を大切にする園。木のぬくもりを感じる内装で、異年齢交流・外部講師による専門教育・バケツ稲等の自然体験が特徴。",
+      "review_url": "https://www.google.com/maps/search/ゆめの樹保育園はつだい+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 14,
+          "applicants": 13,
+          "ratio": 0.93,
+          "min_score_text": "非公開"
+        },
+        "2歳": {
+          "recruit": 6,
+          "applicants": 2,
+          "ratio": 0.33,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 1,
+          "applicants": 1,
+          "ratio": 1.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 10,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 14,
+        "2歳": 6
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "初台保育園",
+      "address": "渋谷区初台2-17-22",
+      "lat": 35.6739,
+      "lng": 139.681,
+      "phone": "03-3379-1734",
+      "capacity": 117,
+      "category": "認可区立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 7,
+        "2歳": 1,
+        "3歳": 0,
+        "4歳": 1,
+        "5歳": 0
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "40pt未満",
+        "2歳": "非公開"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（230.50㎡）",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "22",
+        "2歳": "22",
+        "3歳": "22",
+        "4歳": "21",
+        "5歳": "21"
+      },
+      "website": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/11hatsudai.html",
+      "distance_m": 524,
+      "walk_min": 7,
+      "total_vacancy": 9,
+      "google_maps_url": "https://www.google.com/maps/search/初台保育園+渋谷区",
+      "distance_home": 524,
+      "walk_home": 7,
+      "photos": [
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/18f5fae080a24089b28a1a2799d178a3/11hatsudai02.jpg",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/528fe50a43e141049de514e81821206e/11hatsudai03.JPG",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/78472eb0424a4b0bb78edb861a75c76c/11hatsudai04.JPG"
+      ],
+      "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/11hatsudai.html",
+      "rating": 4.5,
+      "review_count": 4,
+      "sentiment": "良い",
+      "review_summary": "温かく優しい園で安心",
+      "description": "自然豊かな園庭が自慢の区立園。野菜栽培や食育活動が充実し、地域コーディネーターとの連携で伝統行事体験も実施。子どもの自主性を尊重する温かい保育が特徴。",
+      "review_url": "https://www.google.com/maps/search/初台保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 9,
+          "applicants": 22,
+          "ratio": 2.44,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 11,
+          "applicants": 14,
+          "ratio": 1.27,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 2,
+          "applicants": 3,
+          "ratio": 1.5,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 3,
+          "applicants": 1,
+          "ratio": 0.33,
+          "min_score_text": "非公開"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 9,
+        "1歳": 11,
+        "2歳": 2
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63868/"
+    },
+    {
+      "name": "AIAI NURSERY 初台本町",
+      "address": "渋谷区本町2-6-3",
+      "lat": 35.6755,
+      "lng": 139.6803,
+      "phone": "03-6304-2931",
+      "capacity": 35,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 6,
+        "2歳": 6,
+        "3歳": 8,
+        "4歳": 7,
+        "5歳": 4
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 44,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "44pt",
+        "2歳": "非公開"
+      },
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（ビル2F）",
+      "cap_by_age": {
+        "1歳": "10",
+        "2歳": "10",
+        "3歳": "10",
+        "4歳": "10",
+        "5歳": "10"
+      },
+      "website": "https://nursery.aiai-cc.co.jp/facility/hatsudaihonmachi/",
+      "distance_m": 583,
+      "walk_min": 7,
+      "total_vacancy": 31,
+      "google_maps_url": "https://www.google.com/maps/search/AIAI NURSERY 初台本町+渋谷区",
+      "distance_home": 583,
+      "walk_home": 7,
+      "photos": [
+        "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi.png",
+        "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi01.png",
+        "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi02.png"
+      ],
+      "photo_url": "https://nursery.aiai-cc.co.jp/facility/hatsudaihonmachi/",
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "アットホームで先生が明るい",
+      "description": "AIAI Child Care運営の小規模園。「もうひとつの家」をコンセプトに、家庭的な雰囲気の中で一人ひとりの自発性を大切にする保育。AIAIレポートで成長を可視化。",
+      "review_url": "https://www.google.com/maps/search/AIAI+NURSERY+初台本町+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 10,
+          "applicants": 13,
+          "ratio": 1.3,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 6,
+          "applicants": 1,
+          "ratio": 0.17,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 8,
+          "applicants": 1,
+          "ratio": 0.13,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 7,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 4,
+          "applicants": 1,
+          "ratio": 0.25,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 10,
+        "2歳": 6
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "さくらさくみらい初台",
+      "address": "渋谷区初台2-19-16",
+      "lat": 35.6735,
+      "lng": 139.6802,
+      "phone": "03-6276-6439",
+      "capacity": 70,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 1,
+        "2歳": 8,
+        "3歳": 6,
+        "4歳": 7,
+        "5歳": 9
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "20:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（近隣公園利用）",
+      "cap_by_age": {
+        "1歳": "12",
+        "2歳": "12",
+        "3歳": "15",
+        "4歳": "15",
+        "5歳": "16"
+      },
+      "website": "https://www.sakura-39.jp/hoiku/hatsudai",
+      "distance_m": 604,
+      "walk_min": 8,
+      "total_vacancy": 31,
+      "google_maps_url": "https://www.google.com/maps/search/さくらさくみらい初台+渋谷区",
+      "distance_home": 604,
+      "walk_home": 8,
+      "photos": [
+        "https://admin.sakura-39.jp/wp-content/uploads/files/mv_hatsudai_main-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/1_hatsudai-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/2_hatsudai-scaled.jpg"
+      ],
+      "photo_url": "https://www.sakura-39.jp/hoiku/hatsudai",
+      "rating": 5.0,
+      "review_count": 1,
+      "sentiment": "良い",
+      "review_summary": "先生が一生懸命で好印象",
+      "description": "「おうちのようなほいくえん」がコンセプト。明治神宮や代々木公園の自然を活かした戸外活動と、異年齢交流を通じた思いやりの心の育成を重視。",
+      "review_url": "https://www.google.com/maps/search/さくらさくみらい初台+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 10,
+          "applicants": 18,
+          "ratio": 1.8,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 8,
+          "applicants": 3,
+          "ratio": 0.38,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 6,
+          "applicants": 1,
+          "ratio": 0.17,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 7,
+          "applicants": 1,
+          "ratio": 0.14,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 9,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 10,
+        "2歳": 8
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "参宮橋ちとせ保育園",
+      "address": "渋谷区代々木4-50-13",
+      "lat": 35.6768,
+      "lng": 139.6935,
+      "phone": "03-6276-5375",
+      "capacity": 100,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 2,
+        "3歳": 0,
+        "4歳": 0,
+        "5歳": 0
+      },
+      "min_scores": {
+        "0歳": 41,
+        "1歳": 44,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "41pt",
+        "1歳": "44pt"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（屋上含む、参宮橋公園近接）",
+      "cap_by_age": {
+        "0歳": "10",
+        "1歳": "18",
+        "2歳": "18",
+        "3歳": "18",
+        "4歳": "18",
+        "5歳": "18"
+      },
+      "website": "https://www.chitosek.or.jp/preschools/sangubashi",
+      "distance_m": 653,
+      "walk_min": 8,
+      "total_vacancy": 2,
+      "google_maps_url": "https://www.google.com/maps/search/参宮橋ちとせ保育園+渋谷区",
+      "distance_home": 653,
+      "walk_home": 8,
+      "photos": [
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/18sangubashi_img4-600x424.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/18sangubashi_img09-600x449.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/10/18sangubashi_img05-600x400.jpg"
+      ],
+      "photo_url": "https://www.chitosek.or.jp/preschools/sangubashi",
+      "rating": 4.0,
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "広い保育室で方針が明確",
+      "description": "ちとせ交友会運営。認可基準より広い保育室と屋上水遊びスペースを完備。参宮橋公園・明治神宮に近く戸外活動に恵まれた環境で「考えさせる」保育を実践。",
+      "review_url": "https://www.google.com/maps/search/参宮橋ちとせ保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 10,
+          "applicants": 26,
+          "ratio": 2.6,
+          "min_score_text": "41pt"
+        },
+        "1歳": {
+          "recruit": 13,
+          "applicants": 37,
+          "ratio": 2.85,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 2,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 0,
+          "applicants": 2,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 10,
+        "1歳": 13,
+        "2歳": 2
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/91170/"
+    },
+    {
+      "name": "まちのこども園代々木公園",
+      "address": "渋谷区代々木神園町2",
+      "lat": 35.673,
+      "lng": 139.694,
+      "phone": "03-6804-7571",
+      "capacity": 128,
+      "category": "認定こども園",
+      "vacancy": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {},
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "代々木公園が園庭",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "18",
+        "2歳": "18",
+        "3歳": "27",
+        "4歳": "28",
+        "5歳": "28"
+      },
+      "website": "https://machihoiku.jp/yoyogikoen/",
+      "distance_m": 689,
+      "walk_min": 9,
+      "total_vacancy": 0,
+      "google_maps_url": "https://www.google.com/maps/search/まちのこども園代々木公園+渋谷区",
+      "distance_home": 689,
+      "walk_home": 9,
+      "photos": [
+        "https://machihoiku.jp/wp/wp-content/uploads/2020/05/yoyogi_koen2-1.svg",
+        "https://machihoiku.jp/wp/wp-content/uploads/2020/08/Karte_koen-scaled.jpg",
+        "https://machihoiku.jp/assets/img/detail/img_garden_4.jpg"
+      ],
+      "photo_url": "https://machihoiku.jp/yoyogikoen/",
+      "review_count": 2,
+      "sentiment": "良い",
+      "review_summary": "代々木公園が園庭で最高",
+      "description": "代々木公園内にある木造園舎の認定こども園。公園を第二園庭として自然体験が日常的に可能。囲炉裏での調理や野菜栽培など食育を重視し、地域との関係性を大切にする保育。",
+      "review_url": "https://www.google.com/maps/search/まちのこども園代々木公園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 12,
+          "applicants": 46,
+          "ratio": 3.83,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 8,
+          "applicants": 55,
+          "ratio": 6.88,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 1,
+          "applicants": 14,
+          "ratio": 14.0,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 2,
+          "applicants": 6,
+          "ratio": 3.0,
+          "min_score_text": "42pt"
+        },
+        "4歳": {
+          "recruit": 2,
+          "applicants": 1,
+          "ratio": 0.5,
+          "min_score_text": "非公開"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 12,
+        "1歳": 8,
+        "2歳": 1
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "聖ヨゼフ保育園西原",
+      "address": "渋谷区西原1-47-2",
+      "lat": 35.6697,
+      "lng": 139.6816,
+      "phone": "03-5452-3100",
+      "capacity": 59,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 3,
+        "1歳": 5,
+        "2歳": 7,
+        "3歳": 6,
+        "4歳": 7,
+        "5歳": 7
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {},
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（代々木西原公園も利用）",
+      "cap_by_age": {
+        "0歳": "6",
+        "1歳": "10",
+        "2歳": "10",
+        "3歳": "11",
+        "4歳": "11",
+        "5歳": "11"
+      },
+      "website": "https://www.seibo-hoiku.com/nishihara",
+      "distance_m": 730,
+      "walk_min": 9,
+      "total_vacancy": 35,
+      "google_maps_url": "https://www.google.com/maps/search/聖ヨゼフ保育園西原+渋谷区",
+      "distance_home": 730,
+      "walk_home": 9,
+      "photos": [
+        "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/58fd609b7d8c0ba767310d44.jpg",
+        "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/5b7a3dba3f719e7c16ea81fe.jpg",
+        "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/591a5c84e5bfe9274d93c7e2.png"
+      ],
+      "photo_url": "https://www.seibo-hoiku.com/nishihara",
+      "rating": 3.5,
+      "review_count": 2,
+      "sentiment": "良い",
+      "review_summary": "しつけと遊びのバランス良",
+      "description": "カトリック系保育園。「神様の愛を知り思いやりと助け合いを大切にする子ども」の育成が目標。園庭あり、しつけと遊びのバランスが良く、先生方が親切で安心して預けられると評判。",
+      "review_url": "https://www.google.com/maps/search/聖ヨゼフ保育園西原+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 11,
+          "applicants": 19,
+          "ratio": 1.73,
+          "min_score_text": "40pt"
+        },
+        "1歳": {
+          "recruit": 4,
+          "applicants": 13,
+          "ratio": 3.25,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 5,
+          "applicants": 5,
+          "ratio": 1.0,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 6,
+          "applicants": 1,
+          "ratio": 0.17,
+          "min_score_text": "非公開"
+        },
+        "4歳": {
+          "recruit": 7,
+          "applicants": 1,
+          "ratio": 0.14,
+          "min_score_text": "非公開"
+        },
+        "5歳": {
+          "recruit": 14,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 11,
+        "1歳": 4,
+        "2歳": 5
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/64701/"
+    },
+    {
+      "name": "富ヶ谷保育園",
+      "address": "渋谷区富ヶ谷2-30-8",
+      "lat": 35.6685,
+      "lng": 139.6842,
+      "phone": "03-3467-3602",
+      "capacity": 102,
+      "category": "認可区立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 2,
+        "4歳": 2,
+        "5歳": 1
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "40pt未満",
+        "2歳": "非公開"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（404.81㎡、芝生）",
+      "cap_by_age": {
+        "0歳": "7",
+        "1歳": "16",
+        "2歳": "16",
+        "3歳": "21",
+        "4歳": "21",
+        "5歳": "21"
+      },
+      "website": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/04tomigaya.html",
+      "distance_m": 736,
+      "walk_min": 9,
+      "total_vacancy": 5,
+      "google_maps_url": "https://www.google.com/maps/search/富ヶ谷保育園+渋谷区",
+      "distance_home": 736,
+      "walk_home": 9,
+      "photos": [
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/bf18dec0f1f64fdea45a7250bc30d119/04tomigaya02.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/a1893d690696436d9f4a6c3160a70937/04tomigaya003.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/e7ceddf1266b4607bdcc2b83171f805b/04tomigaya004.png"
+      ],
+      "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/04tomigaya.html",
+      "rating": 4.5,
+      "review_count": 4,
+      "sentiment": "良い",
+      "review_summary": "芝生園庭と食育が充実",
+      "description": "広い芝生園庭（404㎡）が自慢の区立園。「トミホ農園」での無農薬野菜栽培と食育、充実した絵本コーナーが特徴。日当たりの良い環境でのびのび保育を実践。",
+      "review_url": "https://www.google.com/maps/search/富ヶ谷保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 7,
+          "applicants": 21,
+          "ratio": 3.0,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 10,
+          "applicants": 26,
+          "ratio": 2.6,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 1,
+          "applicants": 6,
+          "ratio": 6.0,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 3,
+          "applicants": 1,
+          "ratio": 0.33,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 2,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 7,
+        "1歳": 10,
+        "2歳": 1
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63870/"
+    },
+    {
+      "name": "西原ほほえみ保育園",
+      "address": "渋谷区西原1-40-3",
+      "lat": 35.6699,
+      "lng": 139.6808,
+      "phone": "03-3466-0581",
+      "capacity": 63,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 1,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 7,
+        "4歳": 2,
+        "5歳": 5
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 44,
+        "2歳": 40,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "44pt",
+        "2歳": "40pt未満"
+      },
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "園庭不明（ガールスカウト会館1F）",
+      "cap_by_age": {
+        "0歳": "6",
+        "1歳": "10",
+        "2歳": "10",
+        "3歳": "12",
+        "4歳": "12",
+        "5歳": "13"
+      },
+      "website": "https://nishihara-hohoemi.roukyou.gr.jp/",
+      "distance_m": 762,
+      "walk_min": 10,
+      "total_vacancy": 15,
+      "google_maps_url": "https://www.google.com/maps/search/西原ほほえみ保育園+渋谷区",
+      "distance_home": 762,
+      "walk_home": 10,
+      "photos": [
+        "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2023/06/CIMG4045.jpg",
+        "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2023/06/CIMG4051-1024x768.jpg",
+        "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2025/04/9f06380a2b88b88a61ac97d65c8fbb7d-1024x768.jpg"
+      ],
+      "photo_url": "https://nishihara-hohoemi.roukyou.gr.jp/",
+      "rating": 3.4,
+      "review_count": 3,
+      "sentiment": "普通",
+      "review_summary": "個性を尊重する保育",
+      "description": "ワーカーズコープ運営。「1人ひとりを大切に保護者の心も支える保育園」をモットーに、個性を尊重した保育を実践。地域との協働や平和・命の尊重を大切にする。",
+      "review_url": "https://www.google.com/maps/search/西原ほほえみ保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 6,
+          "applicants": 26,
+          "ratio": 4.33,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 4,
+          "applicants": 22,
+          "ratio": 5.5,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 3,
+          "applicants": 4,
+          "ratio": 1.33,
+          "min_score_text": "40pt未満"
+        },
+        "3歳": {
+          "recruit": 5,
+          "applicants": 1,
+          "ratio": 0.2,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 2,
+          "applicants": 1,
+          "ratio": 0.5,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 5,
+          "applicants": 1,
+          "ratio": 0.2,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 6,
+        "1歳": 4,
+        "2歳": 3
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "さくらさくみらい西原",
+      "address": "渋谷区西原2-33-17",
+      "lat": 35.6721,
+      "lng": 139.6775,
+      "phone": "03-6804-7401",
+      "capacity": 70,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 1,
+        "2歳": 0,
+        "3歳": 6,
+        "4歳": 4,
+        "5歳": 11
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満",
+        "2歳": "非公開"
+      },
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（近隣公園利用）",
+      "cap_by_age": {
+        "1歳": "12",
+        "2歳": "12",
+        "3歳": "15",
+        "4歳": "15",
+        "5歳": "16"
+      },
+      "website": "https://www.sakura-39.jp/hoiku/nishihara",
+      "distance_m": 883,
+      "walk_min": 11,
+      "total_vacancy": 22,
+      "google_maps_url": "https://www.google.com/maps/search/さくらさくみらい西原+渋谷区",
+      "distance_home": 883,
+      "walk_home": 11,
+      "photos": [
+        "https://admin.sakura-39.jp/wp-content/uploads/files/mv_nishihara_main-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/1_nishihara-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/2_nishihara-scaled.jpg"
+      ],
+      "photo_url": "https://www.sakura-39.jp/hoiku/nishihara",
+      "review_count": 1,
+      "sentiment": "普通",
+      "review_summary": "おうちのような温かさ",
+      "description": "「おうちのようなほいくえん」がコンセプト。幡ヶ谷駅徒歩4分の閑静な住宅街に位置し、異年齢交流で思いやりの心を育み、食育と指先遊び・戸外遊びを重視。",
+      "review_url": "https://www.google.com/maps/search/さくらさくみらい西原+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 12,
+          "applicants": 21,
+          "ratio": 1.75,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 1,
+          "applicants": 3,
+          "ratio": 3.0,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 5,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 5,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 12,
+          "applicants": 1,
+          "ratio": 0.08,
+          "min_score_text": "非公開"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 12,
+        "2歳": 1
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "西原保育園ゆめ",
+      "address": "渋谷区西原1-22-20",
+      "lat": 35.669,
+      "lng": 139.6797,
+      "phone": "03-5790-8421",
+      "capacity": 106,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 4,
+        "3歳": 3,
+        "4歳": 0,
+        "5歳": 0
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {},
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "不明（近隣公園利用）",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "18",
+        "2歳": "18",
+        "3歳": "20",
+        "4歳": "20",
+        "5歳": "21"
+      },
+      "website": "https://shibuyaswc.jp/hoiku/yume/",
+      "distance_m": 903,
+      "walk_min": 11,
+      "total_vacancy": 7,
+      "google_maps_url": "https://www.google.com/maps/search/西原保育園ゆめ+渋谷区",
+      "distance_home": 903,
+      "walk_home": 11,
+      "photos": [
+        "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026-036-1000x480.jpg",
+        "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026029.jpg",
+        "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026028.jpg"
+      ],
+      "photo_url": "https://shibuyaswc.jp/hoiku/yume/",
+      "rating": 3.0,
+      "review_count": 3,
+      "sentiment": "普通",
+      "review_summary": "きれいだが先生にばらつき",
+      "description": "渋谷区社会福祉事業団運営。西原緑道沿いの三角屋根が目印。採光の良い明るい空間で、健康な体づくりと豊かな感性を育て、地域との関わりを大切にする保育を実践。",
+      "review_url": "https://www.google.com/maps/search/西原保育園ゆめ+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 10,
+          "applicants": 29,
+          "ratio": 2.9,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 6,
+          "applicants": 37,
+          "ratio": 6.17,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 4,
+          "applicants": 6,
+          "ratio": 1.5,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 1,
+          "applicants": 1,
+          "ratio": 1.0,
+          "min_score_text": "非公開"
+        },
+        "4歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 2,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 10,
+        "1歳": 6,
+        "2歳": 4
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63872/"
+    },
+    {
+      "name": "代々木保育園",
+      "address": "渋谷区代々木3-51-8",
+      "lat": 35.6804,
+      "lng": 139.6943,
+      "phone": "03-3370-7549",
+      "capacity": 95,
+      "category": "認可区立保育所",
+      "vacancy": {
+        "0歳": 6,
+        "1歳": 5,
+        "2歳": 8,
+        "3歳": 6,
+        "4歳": 7,
+        "5歳": 14
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "内定者なし",
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（215.94㎡）",
+      "cap_by_age": {
+        "0歳": "8",
+        "1歳": "14",
+        "2歳": "14",
+        "3歳": "18",
+        "4歳": "20",
+        "5歳": "21"
+      },
+      "website": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/13yoyogi.html",
+      "distance_m": 926,
+      "walk_min": 12,
+      "total_vacancy": 46,
+      "google_maps_url": "https://www.google.com/maps/search/代々木保育園+渋谷区",
+      "distance_home": 926,
+      "walk_home": 12,
+      "photos": [
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/154c882bdffe40c7a08c342fd89863d9/13yoyogi02.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/9b0073117299404e9d7bba54f370a9ca/13yoyogi03.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/18cdbce1f542437d8b51c6557aa519b1/13yoyogi04.png"
+      ],
+      "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/13yoyogi.html",
+      "rating": 4.5,
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "給食手作りで丁寧な対応",
+      "description": "明治神宮と代々木公園の自然を活用した区立園。「光の探究」をテーマとした年齢別学習活動が特徴。手作り給食と防災訓練が充実し、きめ細かい対応が好評。",
+      "review_url": "https://www.google.com/maps/search/代々木保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 8,
+          "applicants": 8,
+          "ratio": 1.0,
+          "min_score_text": "内定者なし"
+        },
+        "1歳": {
+          "recruit": 8,
+          "applicants": 7,
+          "ratio": 0.88,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 6,
+          "applicants": 2,
+          "ratio": 0.33,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 6,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 6,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 14,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 8,
+        "1歳": 8,
+        "2歳": 6
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63867/"
+    },
+    {
+      "name": "富ヶ谷ちとせ保育園",
+      "address": "渋谷区富ヶ谷1-31-3",
+      "lat": 35.666,
+      "lng": 139.6875,
+      "phone": "03-3460-4515",
+      "capacity": 90,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 4,
+        "3歳": 3,
+        "4歳": 2,
+        "5歳": 3
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {},
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "15",
+        "2歳": "15",
+        "3歳": "17",
+        "4歳": "17",
+        "5歳": "17"
+      },
+      "website": "https://www.chitosek.or.jp/preschools/tomigaya",
+      "distance_m": 981,
+      "walk_min": 12,
+      "total_vacancy": 12,
+      "google_maps_url": "https://www.google.com/maps/search/富ヶ谷ちとせ保育園+渋谷区",
+      "distance_home": 981,
+      "walk_home": 12,
+      "photos": [
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/05/19tomigaya_img15-1200x900.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/05/19tomigaya_img12-600x433.jpg",
+        "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/19tomigaya_img09-586x600.jpg"
+      ],
+      "photo_url": "https://www.chitosek.or.jp/preschools/tomigaya",
+      "rating": 2.6,
+      "review_count": 2,
+      "sentiment": "普通",
+      "review_summary": "行事豊富だが近隣問題あり",
+      "description": "ちとせ交友会運営。「自分で考え行動する子」を育む保育方針。リトミック・英語・食育活動とビュッフェ給食が特徴。年間行事が豊富で保護者参加型が多い。",
+      "review_url": "https://www.google.com/maps/search/富ヶ谷ちとせ保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 6,
+          "applicants": 25,
+          "ratio": 4.17,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 10,
+          "applicants": 27,
+          "ratio": 2.7,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 5,
+          "applicants": 2,
+          "ratio": 0.4,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 2,
+          "applicants": 1,
+          "ratio": 0.5,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 2,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 3,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 6,
+        "1歳": 10,
+        "2歳": 5
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/91172/"
+    },
+    {
+      "name": "幡ヶ谷保育園",
+      "address": "渋谷区本町5-35-12",
+      "lat": 35.6772,
+      "lng": 139.676,
+      "phone": "03-3379-1734",
+      "capacity": 100,
+      "category": "認可区立保育所",
+      "vacancy": {
+        "0歳": 6,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 1,
+        "4歳": 1,
+        "5歳": 2
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり（229.00㎡）",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "14",
+        "2歳": "14",
+        "3歳": "21",
+        "4歳": "21",
+        "5歳": "21"
+      },
+      "website": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/02hatagaya.html",
+      "distance_m": 1002,
+      "walk_min": 13,
+      "total_vacancy": 10,
+      "google_maps_url": "https://www.google.com/maps/search/幡ヶ谷保育園+渋谷区",
+      "distance_home": 1002,
+      "walk_home": 13,
+      "photos": [
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/c49fb6d0f30d40629063b20882c5ff18/02hatagaya01.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/6bc61ed22dec479c8b0f406c453b86e9/02hatagaya02.png",
+        "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/9c80f023c3324c78bb8ac9647ef6493a/02hatagaya03.png"
+      ],
+      "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/02hatagaya.html",
+      "rating": 5.0,
+      "review_count": 1,
+      "sentiment": "良い",
+      "review_summary": "マイナス面なし安心の園",
+      "description": "園庭で果実・野菜を栽培し食育に力を入れる区立園。異年齢交流で兄弟姉妹のような温かい雰囲気を実現。園前の遊歩道で安全な散歩体験も可能。",
+      "review_url": "https://www.google.com/maps/search/幡ヶ谷保育園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 9,
+          "applicants": 17,
+          "ratio": 1.89,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 8,
+          "applicants": 20,
+          "ratio": 2.5,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 2,
+          "applicants": 2,
+          "ratio": 1.0,
+          "min_score_text": "非公開"
+        },
+        "4歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 3,
+          "applicants": 1,
+          "ratio": 0.33,
+          "min_score_text": "非公開"
+        }
+      },
+      "prediction": {
+        "0歳": 9,
+        "1歳": 8,
+        "2歳": 0
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/63875/"
+    },
+    {
+      "name": "薫る風・上原こども園",
+      "address": "渋谷区上原2-2-17",
+      "lat": 35.6662,
+      "lng": 139.6833,
+      "phone": "03-3465-0415",
+      "capacity": 143,
+      "category": "認定こども園",
+      "vacancy": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 44,
+        "2歳": 42,
+        "3歳": null,
+        "4歳": 42,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "44pt",
+        "2歳": "42pt"
+      },
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "園庭あり",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "20",
+        "2歳": "20",
+        "3歳": "22",
+        "4歳": "22",
+        "5歳": "22"
+      },
+      "website": "https://kaorukaze.jp/",
+      "distance_m": 1004,
+      "walk_min": 13,
+      "total_vacancy": 0,
+      "google_maps_url": "https://www.google.com/maps/search/薫る風・上原こども園+渋谷区",
+      "distance_home": 1004,
+      "walk_home": 13,
+      "photos": [
+        "https://kaorukaze.jp/wp-content/uploads/2020/07/mainimg-1349x447.jpg",
+        "https://kaorukaze.jp/wp-content/uploads/2020/08/top_about-555x335.jpg",
+        "https://kaorukaze.jp/wp-content/uploads/2020/08/top_daily.jpg"
+      ],
+      "photo_url": "https://kaorukaze.jp/",
+      "rating": 4.0,
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "習い事が充実で先生も好評",
+      "description": "代々木上原駅徒歩5分の保育所型認定こども園。英語・日舞・硬筆・習字・体操・リトミック・けん玉など多彩な専門プログラムを提供。高齢者施設との世代間交流も実施。",
+      "review_url": "https://www.google.com/maps/search/薫る風・上原こども園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 9,
+          "applicants": 45,
+          "ratio": 5.0,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 13,
+          "applicants": 42,
+          "ratio": 3.23,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 6,
+          "applicants": 15,
+          "ratio": 2.5,
+          "min_score_text": "42pt"
+        },
+        "3歳": {
+          "recruit": 0,
+          "applicants": 4,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 3,
+          "applicants": 3,
+          "ratio": 1.0,
+          "min_score_text": "42pt"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 1,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 9,
+        "1歳": 13,
+        "2歳": 6
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/92823/"
+    },
+    {
+      "name": "西原りとるぱんぷきんず",
+      "address": "渋谷区西原2-46-4",
+      "lat": 35.6718,
+      "lng": 139.6753,
+      "phone": "03-5790-5012",
+      "capacity": 170,
+      "category": "認定こども園",
+      "vacancy": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 44,
+        "2歳": 44,
+        "3歳": 40,
+        "4歳": 42,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "44pt",
+        "2歳": "44pt受託",
+        "3歳": "40pt未満",
+        "4歳": "42pt",
+        "5歳": "非公開"
+      },
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "中庭・砂場あり（分園ANNEXあり）",
+      "cap_by_age": {
+        "0歳": "15",
+        "1歳": "24",
+        "2歳": "24",
+        "3歳": "25",
+        "4歳": "25",
+        "5歳": "25"
+      },
+      "website": "https://www.seikoukai.or.jp/nurseries/nishihara/",
+      "distance_m": 1082,
+      "walk_min": 14,
+      "total_vacancy": 0,
+      "google_maps_url": "https://www.google.com/maps/search/西原りとるぱんぷきんず+渋谷区",
+      "distance_home": 1082,
+      "walk_home": 14,
+      "photos": [
+        "https://www.seikoukai.or.jp/gupabol/2025/04/nishihara-post.jpg",
+        "https://www.seikoukai.or.jp/gupabol/2025/04/activity-image-section-first-1-10.webp",
+        "https://www.seikoukai.or.jp/gupabol/2025/04/activity-image-section-first-2-4.webp"
+      ],
+      "photo_url": "https://www.seikoukai.or.jp/nurseries/nishihara/",
+      "rating": 4.5,
+      "review_count": 5,
+      "sentiment": "良い",
+      "review_summary": "活気あり多彩なカリキュラム",
+      "description": "社会福祉法人清香会運営。モンテッソーリ活動と異年齢保育が特徴。ビュッフェ形式の給食と毎月のクッキング保育、園内菜園での食育体験が充実。分園ANNEXもあり大規模園。",
+      "review_url": "https://www.google.com/maps/search/西原りとるぱんぷきんず+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 15,
+          "applicants": 57,
+          "ratio": 3.8,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 10,
+          "applicants": 60,
+          "ratio": 6.0,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 3,
+          "applicants": 15,
+          "ratio": 5.0,
+          "min_score_text": "44pt受託"
+        },
+        "3歳": {
+          "recruit": 7,
+          "applicants": 11,
+          "ratio": 1.57,
+          "min_score_text": "40pt未満"
+        },
+        "4歳": {
+          "recruit": 4,
+          "applicants": 2,
+          "ratio": 0.5,
+          "min_score_text": "42pt"
+        },
+        "5歳": {
+          "recruit": 1,
+          "applicants": 2,
+          "ratio": 2.0,
+          "min_score_text": "非公開"
+        }
+      },
+      "prediction": {
+        "0歳": 15,
+        "1歳": 10,
+        "2歳": 3
+      },
+      "review_source": "みんなの保育園情報",
+      "minkou_url": "https://www.minkou.jp/kinder/school/64702/"
+    },
+    {
+      "name": "グローバルキッズ代々木上原園",
+      "address": "渋谷区西原3-15-10",
+      "lat": 35.6677,
+      "lng": 139.6779,
+      "phone": "03-5790-9171",
+      "capacity": 79,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 3,
+        "2歳": 11,
+        "3歳": 4,
+        "4歳": 12,
+        "5歳": 8
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満",
+        "2歳": "非公開"
+      },
+      "extended_hours": "20:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（近隣公園利用）",
+      "cap_by_age": {
+        "1歳": "14",
+        "2歳": "14",
+        "3歳": "17",
+        "4歳": "17",
+        "5歳": "17"
+      },
+      "website": "https://www.gkids.co.jp/facilities/nursery_115.html",
+      "distance_m": 1120,
+      "walk_min": 14,
+      "total_vacancy": 38,
+      "google_maps_url": "https://www.google.com/maps/search/グローバルキッズ代々木上原園+渋谷区",
+      "distance_home": 1120,
+      "walk_home": 14,
+      "photos": [
+        "https://www.gkids.co.jp/_assets/img/mv-01s10ek4.jpg",
+        "https://www.gkids.co.jp/_assets/img/b45e087a4f83a4c.jpg",
+        "https://www.gkids.co.jp/_assets/img/daily1-123s0lo54.jpg"
+      ],
+      "photo_url": "https://www.gkids.co.jp/facilities/nursery_115.html",
+      "rating": 5.0,
+      "review_count": 1,
+      "sentiment": "良い",
+      "review_summary": "駅近で体操教室が人気",
+      "description": "代々木上原駅徒歩2分の好立地。月2回の体操教室と旬の食材を活かした食育が特徴。「笑顔あふれる保育」で子どもの自発性・表現力を育む。",
+      "review_url": "https://www.google.com/maps/search/グローバルキッズ代々木上原園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 14,
+          "applicants": 24,
+          "ratio": 1.71,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 12,
+          "applicants": 2,
+          "ratio": 0.17,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 4,
+          "applicants": 1,
+          "ratio": 0.25,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 11,
+          "applicants": 1,
+          "ratio": 0.09,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 8,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 14,
+        "2歳": 12
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "まちのこども園代々木上原",
+      "address": "渋谷区上原2-24-15",
+      "lat": 35.667,
+      "lng": 139.6788,
+      "phone": "03-6407-8828",
+      "capacity": 108,
+      "category": "認定こども園",
+      "vacancy": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": null,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {},
+      "extended_hours": "20:30",
+      "has_garden": true,
+      "garden_note": "中庭あり（築山・水場・畑・砂場）",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "18",
+        "2歳": "18",
+        "3歳": "21",
+        "4歳": "21",
+        "5歳": "21"
+      },
+      "website": "https://machihoiku.jp/yoyogiuehara/",
+      "distance_m": 1123,
+      "walk_min": 14,
+      "total_vacancy": 0,
+      "google_maps_url": "https://www.google.com/maps/search/まちのこども園代々木上原+渋谷区",
+      "distance_home": 1123,
+      "walk_home": 14,
+      "photos": [
+        "https://machihoiku.jp/wp/wp-content/uploads/2020/08/Karte_uehara-1-scaled.jpg",
+        "https://machihoiku.jp/assets/img/detail/img_garden_2.jpg",
+        "https://machihoiku.jp/assets/img/detail/img_garden_4.jpg"
+      ],
+      "photo_url": "https://machihoiku.jp/yoyogiuehara/",
+      "review_count": 1,
+      "sentiment": "良い",
+      "review_summary": "地域連携が独自で魅力的",
+      "description": "子どもが「ここにいる」と安心して遊び込める環境を重視する認定こども園。オープンアトリエや集中スペース等の多様な環境設計と、地域・大学との連携が特徴。",
+      "review_url": "https://www.google.com/maps/search/まちのこども園代々木上原+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 9,
+          "applicants": 46,
+          "ratio": 5.11,
+          "min_score_text": "44pt"
+        },
+        "1歳": {
+          "recruit": 6,
+          "applicants": 49,
+          "ratio": 8.17,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 4,
+          "applicants": 14,
+          "ratio": 3.5,
+          "min_score_text": "42pt"
+        },
+        "3歳": {
+          "recruit": 3,
+          "applicants": 10,
+          "ratio": 3.33,
+          "min_score_text": "44pt"
+        },
+        "4歳": {
+          "recruit": 0,
+          "applicants": 3,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 9,
+        "1歳": 6,
+        "2歳": 4
+      },
+      "review_source": "口コミサイト",
+      "minkou_url": "https://www.minkou.jp/kinder/school/92825/"
+    },
+    {
+      "name": "ポピンズナーサリースクール代々木上原",
+      "address": "渋谷区上原2-42-3",
+      "lat": 35.6672,
+      "lng": 139.6773,
+      "phone": "03-5738-1131",
+      "capacity": 90,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 1,
+        "4歳": 4,
+        "5歳": 1
+      },
+      "min_scores": {
+        "0歳": 42,
+        "1歳": 44,
+        "2歳": null,
+        "3歳": 42,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "42pt",
+        "1歳": "44pt",
+        "3歳": "42pt"
+      },
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "屋上テラスあり（園庭なし）",
+      "cap_by_age": {
+        "0歳": "12",
+        "1歳": "15",
+        "2歳": "15",
+        "3歳": "16",
+        "4歳": "16",
+        "5歳": "16"
+      },
+      "website": "https://www.poppins.co.jp/educare/room-search/yoyogiuehara/",
+      "distance_m": 1197,
+      "walk_min": 15,
+      "total_vacancy": 6,
+      "google_maps_url": "https://www.google.com/maps/search/ポピンズナーサリースクール代々木上原+渋谷区",
+      "distance_home": 1197,
+      "walk_home": 15,
+      "photos": [
+        "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z621958-scaled.jpg",
+        "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z621856-scaled.jpg",
+        "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z622024-scaled.jpg"
+      ],
+      "photo_url": "https://www.poppins.co.jp/educare/room-search/yoyogiuehara/",
+      "review_count": 2,
+      "sentiment": "良い",
+      "review_summary": "エデュケアで質の高い保育",
+      "description": "ポピンズ独自の「エデュケア」（教育と保育の融合）で人生の基礎を育む。SDGs教育・食育・Web連絡帳を導入し、準耐火木造の園舎で自然素材に触れる環境を提供。",
+      "review_url": "https://www.google.com/maps/search/ポピンズナーサリースクール代々木上原+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 12,
+          "applicants": 37,
+          "ratio": 3.08,
+          "min_score_text": "42pt"
+        },
+        "1歳": {
+          "recruit": 3,
+          "applicants": 36,
+          "ratio": 12.0,
+          "min_score_text": "44pt"
+        },
+        "2歳": {
+          "recruit": 0,
+          "applicants": 9,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 3,
+          "applicants": 3,
+          "ratio": 1.0,
+          "min_score_text": "42pt"
+        },
+        "4歳": {
+          "recruit": 5,
+          "applicants": 2,
+          "ratio": 0.4,
+          "min_score_text": "非公開"
+        },
+        "5歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 12,
+        "1歳": 3,
+        "2歳": 0
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "さくらさくみらい上原",
+      "address": "渋谷区上原3-37-9",
+      "lat": 35.6654,
+      "lng": 139.6802,
+      "phone": "03-6804-7833",
+      "capacity": 77,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": null,
+        "1歳": 0,
+        "2歳": 2,
+        "3歳": 5,
+        "4歳": 7,
+        "5歳": 4
+      },
+      "min_scores": {
+        "0歳": null,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "1歳": "40pt未満",
+        "2歳": "非公開"
+      },
+      "extended_hours": "20:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（近隣公園利用）",
+      "cap_by_age": {
+        "1歳": "12",
+        "2歳": "12",
+        "3歳": "17",
+        "4歳": "18",
+        "5歳": "18"
+      },
+      "website": "https://www.sakura-39.jp/hoiku/uehara",
+      "distance_m": 1198,
+      "walk_min": 15,
+      "total_vacancy": 18,
+      "google_maps_url": "https://www.google.com/maps/search/さくらさくみらい上原+渋谷区",
+      "distance_home": 1198,
+      "walk_home": 15,
+      "photos": [
+        "https://admin.sakura-39.jp/wp-content/uploads/files/mv_uehara-1-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/uehara_hibinoyousu1-scaled.jpg",
+        "https://admin.sakura-39.jp/wp-content/uploads/files/uehara_hibinoyousu2-scaled.jpg"
+      ],
+      "photo_url": "https://www.sakura-39.jp/hoiku/uehara",
+      "rating": 4.5,
+      "review_count": 3,
+      "sentiment": "良い",
+      "review_summary": "先生と保護者の仲が良い",
+      "description": "「おうちのようなほいくえん」コンセプトのさくらさくみらい系列園。失敗を恐れず多様な体験を重視し、クラス別野菜栽培と食育、四季を感じる散歩を日常化。",
+      "review_url": "https://www.google.com/maps/search/さくらさくみらい上原+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 0,
+          "applicants": 0,
+          "ratio": 0,
+          "min_score_text": ""
+        },
+        "1歳": {
+          "recruit": 12,
+          "applicants": 20,
+          "ratio": 1.67,
+          "min_score_text": "40pt未満"
+        },
+        "2歳": {
+          "recruit": 3,
+          "applicants": 2,
+          "ratio": 0.67,
+          "min_score_text": "非公開"
+        },
+        "3歳": {
+          "recruit": 4,
+          "applicants": 1,
+          "ratio": 0.25,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 7,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 4,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 0,
+        "1歳": 12,
+        "2歳": 3
+      },
+      "review_source": "みんなの保育園情報"
+    },
+    {
+      "name": "グローバルキッズ幡ヶ谷園",
+      "address": "渋谷区幡ヶ谷2-42-7",
+      "lat": 35.6765,
+      "lng": 139.672,
+      "phone": "03-5350-6451",
+      "capacity": 60,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 0,
+        "1歳": 0,
+        "2歳": 2,
+        "3歳": 0,
+        "4歳": 3,
+        "5歳": 3
+      },
+      "min_scores": {
+        "0歳": 40,
+        "1歳": 42,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "40pt未満",
+        "1歳": "42pt"
+      },
+      "extended_hours": "19:30",
+      "has_garden": false,
+      "garden_note": "園庭なし（近隣公園利用）",
+      "cap_by_age": {
+        "0歳": "6",
+        "1歳": "10",
+        "2歳": "10",
+        "3歳": "12",
+        "4歳": "11",
+        "5歳": "11"
+      },
+      "website": "https://www.gkids.co.jp/facilities/nursery_114.html",
+      "distance_m": 1341,
+      "walk_min": 17,
+      "total_vacancy": 8,
+      "google_maps_url": "https://www.google.com/maps/search/グローバルキッズ幡ヶ谷園+渋谷区",
+      "distance_home": 1341,
+      "walk_home": 17,
+      "photos": [
+        "https://www.gkids.co.jp/_assets/img/mv-01s10ecp.jpg",
+        "https://www.gkids.co.jp/_assets/img/mv-02s10ecp.jpg",
+        "https://www.gkids.co.jp/_assets/img/mv-03s10ee7.jpg"
+      ],
+      "photo_url": "https://www.gkids.co.jp/facilities/nursery_114.html",
+      "review_count": 2,
+      "sentiment": "普通",
+      "review_summary": "職員の雰囲気は明るい",
+      "description": "「思いやりのある子、のびのび楽しむ子」を育む保育方針。屋上テラスと近隣公園を活用した戸外遊びが充実。保育士・看護師・栄養士の職種間連携が特徴。",
+      "review_url": "https://www.google.com/maps/search/グローバルキッズ幡ヶ谷園+渋谷区+保育園",
+      "application_data": {
+        "0歳": {
+          "recruit": 6,
+          "applicants": 22,
+          "ratio": 3.67,
+          "min_score_text": "40pt未満"
+        },
+        "1歳": {
+          "recruit": 9,
+          "applicants": 18,
+          "ratio": 2.0,
+          "min_score_text": "42pt"
+        },
+        "2歳": {
+          "recruit": 2,
+          "applicants": 1,
+          "ratio": 0.5,
+          "min_score_text": "内定者なし"
+        },
+        "3歳": {
+          "recruit": 1,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "4歳": {
+          "recruit": 3,
+          "applicants": 0,
+          "ratio": 0.0,
+          "min_score_text": "内定者なし"
+        },
+        "5歳": {
+          "recruit": 3,
+          "applicants": 1,
+          "ratio": 0.33,
+          "min_score_text": "内定者なし"
+        }
+      },
+      "prediction": {
+        "0歳": 6,
+        "1歳": 9,
+        "2歳": 2
+      },
+      "review_source": "口コミサイト"
+    },
+    {
+      "name": "笹幡保育園",
+      "address": "渋谷区笹塚2-34-12",
+      "lat": 35.6735,
+      "lng": 139.671,
+      "phone": "03-3377-5586",
+      "capacity": 80,
+      "category": "認可私立保育所",
+      "vacancy": {
+        "0歳": 2,
+        "1歳": 0,
+        "2歳": 0,
+        "3歳": 4,
+        "4歳": 6,
+        "5歳": 11
+      },
+      "min_scores": {
+        "0歳": 44,
+        "1歳": 40,
+        "2歳": null,
+        "3歳": null,
+        "4歳": null,
+        "5歳": null
+      },
+      "min_score_notes": {
+        "0歳": "44pt",
+        "1歳": "40pt未満"
+      },
+      "extended_hours": "19:30",
+      "has_garden": true,
+      "garden_note": "園庭あり",
+      "cap_by_age": {
+        "0歳": "9",
+        "1歳": "12",
+        "2歳": "12",
+        "3歳": "16",
+        "4歳": "16",
+        "5歳": "15"
+      },
+      "website": "https://sasahata.roukyou.gr.jp/",
+      "distance_m": 1425,
+      "walk_min": 18,
+      "total_vacancy": 23,
+      "google_maps_url": "https://www.google.com/maps/search/笹幡保育園+渋谷区",
+      "distance_home": 1425,
+      "walk_home": 18,
+      "photos": [
+        "https://sasahata.roukyou.gr.jp/wp-content/uploads/2025/01/top_banner-2-1024x504.png",
+        "https://sasahata.roukyou.gr.jp/wp-content/uploads/2024/07/goaisatu-3-1024x510.png",
+        "https://sasahata.roukyou.gr.jp/wp-content/uploads/2026/02/IMG_1534-225x300.jpg"
+      ],
+      "photo_url": "https://sasahata.roukyou.gr.jp/",
+      "review_count": 0,
+      "sentiment": "不明",
+      "review_summary": "口コミ少なく評価未定",
+      "description": "ワーカーズコープ運営。「こどもファースト」を掲げ、子どもの気持ちを第一に考える保育を実践。職員間の情報共有を徹底し、子ども・保護者・職員全てに笑顔あふれる園を目指す。",
+      "review_url": "https://www.google.com/maps/search/笹幡保育園+渋谷区+保育園"
+    }
+  ]
+}

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保活マトリクス - 南池袋</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; background: #0d1117; color: #c9d1d9; }
+
+.header {
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid #21262d;
+}
+.header h1 { font-size: 22px; font-weight: 700; color: #f0f6fc; }
+.header .sub { font-size: 13px; color: #8b949e; margin-top: 4px; }
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pill-group {
+  display: flex;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.pill-btn {
+  padding: 5px 14px;
+  font-size: 13px;
+  border: none;
+  background: #161b22;
+  color: #8b949e;
+  cursor: pointer;
+  border-right: 1px solid #30363d;
+}
+.pill-btn:last-child { border-right: none; }
+.pill-btn.active { background: #1f6feb; color: #fff; }
+
+.ctrl-select {
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.ctrl-label { font-size: 13px; color: #8b949e; }
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.ftag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #30363d;
+  background: #161b22;
+  color: #8b949e;
+  cursor: pointer;
+}
+.ftag.active { background: #1a3a1a; border-color: #238636; color: #3fb950; }
+
+.summary {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #c9d1d9;
+}
+.summary .n { color: #58a6ff; font-weight: 700; }
+
+/* テーブル */
+.table-wrap {
+  overflow-x: auto;
+  padding: 0 16px 40px;
+  margin-top: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 1200px;
+}
+thead { position: sticky; top: 0; z-index: 10; }
+thead th {
+  background: #161b22;
+  color: #8b949e;
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 2px solid #30363d;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+thead th:hover { color: #f0f6fc; }
+thead th.sorted { color: #58a6ff; }
+
+tbody tr {
+  border-bottom: 1px solid #21262d;
+  transition: background 0.1s;
+}
+tbody tr:hover { background: #161b22; }
+
+tbody td {
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+
+/* セル装飾 */
+.name-cell a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.name-cell a:hover { text-decoration: underline; }
+
+.addr-cell a {
+  color: #8b949e;
+  text-decoration: none;
+  font-size: 12px;
+}
+.addr-cell a:hover { color: #58a6ff; }
+
+.phone-cell a {
+  color: #8b949e;
+  text-decoration: none;
+  font-size: 12px;
+}
+.phone-cell a:hover { color: #58a6ff; }
+
+.walk-cell {
+  font-weight: 700;
+  color: #f0f6fc;
+  text-align: right;
+}
+.dist-cell {
+  font-size: 12px;
+  color: #8b949e;
+  text-align: right;
+}
+
+.vacancy-cell {
+  text-align: center;
+  font-weight: 700;
+}
+.vacancy-cell.has { color: #3fb950; }
+.vacancy-cell.none { color: #484f58; }
+
+.border-cell {
+  text-align: center;
+}
+.border-cell .easy { color: #3fb950; }
+.border-cell .hard { color: #d29922; }
+.border-cell .impossible { color: #f85149; }
+
+.trend-cell { text-align: center; white-space: nowrap; }
+.trend-cell .trend-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28px;
+  margin: 0 1px;
+}
+.trend-cell .trend-month {
+  font-size: 9px;
+  color: #484f58;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.trend-cell .trend-val {
+  font-size: 12px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 4px;
+}
+.trend-cell .trend-val.has { background: rgba(63,185,80,0.15); color: #3fb950; }
+.trend-cell .trend-val.none { background: #161b22; color: #30363d; }
+
+.tag-good { color: #3fb950; font-size: 12px; }
+.tag-bad { color: #484f58; font-size: 12px; }
+.tag-ext { color: #58a6ff; font-size: 12px; }
+.tag-warn { color: #d29922; font-size: 12px; }
+
+.status-cell { text-align: center; font-weight: 600; font-size: 12px; }
+.status-always-vacancy { color: #3fb950; }
+.status-vacancy-trend { color: #58a6ff; }
+.status-sometimes { color: #d29922; }
+.status-always-full { color: #f85149; }
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: #484f58;
+  border-top: 1px solid #21262d;
+}
+
+/* ===== LIGHTBOX ===== */
+.lb-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lb-overlay.active { display: flex; }
+.lb-close {
+  position: absolute;
+  top: 16px; right: 24px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+  background: none; border: none;
+  line-height: 1;
+}
+.lb-close:hover { color: #f87171; }
+.lb-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.lb-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 90vw;
+}
+.lb-arrow {
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px; height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.lb-arrow:hover { background: rgba(255,255,255,0.25); }
+.lb-arrow:disabled { opacity: 0.2; cursor: default; }
+.lb-img {
+  max-width: 70vw;
+  max-height: 70vh;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+.lb-counter {
+  color: #8b949e;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+}
+.lb-thumbs {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  justify-content: center;
+}
+.lb-thumb {
+  width: 50px; height: 38px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.5;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+.lb-thumb.active { opacity: 1; border-color: #58a6ff; }
+.lb-thumb:hover { opacity: 0.8; }
+.lb-link {
+  margin-top: 12px;
+  text-align: center;
+}
+.lb-link a {
+  color: #58a6ff;
+  font-size: 13px;
+  text-decoration: none;
+}
+.lb-link a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Lightbox -->
+<div class="lb-overlay" id="lightbox" onclick="if(event.target===this)closeLB()">
+  <button class="lb-close" onclick="closeLB()">&times;</button>
+  <div class="lb-title" id="lb-title"></div>
+  <div class="lb-main">
+    <button class="lb-arrow" id="lb-prev" onclick="lbNav(-1)">&#8249;</button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <button class="lb-arrow" id="lb-next" onclick="lbNav(1)">&#8250;</button>
+  </div>
+  <div class="lb-counter" id="lb-counter"></div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+  <div class="lb-link" id="lb-link"></div>
+</div>
+
+<div class="header">
+  <h1>保活マトリクス</h1>
+  <div class="sub">各園の空き・ボーダー・園庭・延長を横断比較</div>
+  <div class="controls">
+    <span class="ctrl-label">対象:</span>
+    <div class="pill-group" id="age-pills"></div>
+    <span class="ctrl-label">距離:</span>
+    <select class="ctrl-select" id="max-dist">
+      <option value="500">500m</option>
+      <option value="1000" selected>1km</option>
+      <option value="1500">1.5km</option>
+      <option value="2000">2km</option>
+      <option value="99999">全て</option>
+    </select>
+  </div>
+  <div class="filter-row">
+    <div class="ftag" id="f-vacancy" onclick="toggle('vacancy')">空きあり</div>
+    <div class="ftag" id="f-garden" onclick="toggle('garden')">園庭あり</div>
+    <div class="ftag" id="f-ext" onclick="toggle('ext')">延長20時〜</div>
+  </div>
+  <div class="summary" id="summary"></div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+<div class="footer" id="footer"></div>
+
+<script>
+let DATA = null;
+let HIST = {}; // 時系列データ
+let selectedAge = '1歳';
+let filters = { vacancy: false, garden: false, ext: false };
+let sortCol = 'distance';
+let sortAsc = true;
+
+const ages = ['0歳','1歳','2歳','3歳','4歳','5歳'];
+
+function toggle(key) {
+  filters[key] = !filters[key];
+  document.getElementById(`f-${key}`).classList.toggle('active', filters[key]);
+  render();
+}
+
+function parseExtHour(s) {
+  if (!s) return 19;
+  const m = s.match(/(\d+)時/);
+  return m ? parseInt(m[1]) : 19;
+}
+
+async function loadData() {
+  const resp = await fetch('data/hokatsu_data.json');
+  DATA = await resp.json();
+
+  // 時系列データも読み込み
+  try {
+    const hr = await fetch('data/history.json');
+    HIST = await hr.json();
+  } catch(e) { HIST = {}; }
+
+  const pg = document.getElementById('age-pills');
+  ages.forEach(a => {
+    const b = document.createElement('button');
+    b.className = `pill-btn${a===selectedAge?' active':''}`;
+    b.textContent = a;
+    b.onclick = () => { selectedAge = a; render(); };
+    pg.appendChild(b);
+  });
+
+  render();
+}
+
+function setSort(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  render();
+}
+
+function render() {
+  const maxDist = parseInt(document.getElementById('max-dist').value);
+  document.querySelectorAll('.pill-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === selectedAge));
+
+  let rows = DATA.facilities.filter(f => {
+    if (!f.distance_home || f.distance_home > maxDist) return false;
+    const v = f.vacancy?.[selectedAge] || 0;
+    if (filters.vacancy && v <= 0) return false;
+    if (filters.garden && !f.has_garden) return false;
+    if (filters.ext && parseExtHour(f.extended_hours) < 20) return false;
+    return true;
+  });
+
+  // 空き推移を付与
+  rows = rows.map(r => {
+    const h = HIST[r.name];
+    r._trend = h ? h.map(v => v?.[selectedAge] ?? null) : [];
+    r._trendStatus = getTrendStatus(r._trend);
+    r._v = r.vacancy?.[selectedAge] || 0;
+    r._score = r.min_scores?.[selectedAge] ?? null;
+    r._ext = parseExtHour(r.extended_hours);
+    return r;
+  });
+
+  // ソート
+  rows.sort((a, b) => {
+    let va, vb;
+    switch(sortCol) {
+      case 'distance': va = a.distance_home; vb = b.distance_home; break;
+      case 'vacancy': va = a._v; vb = b._v; break;
+      case 'score': va = a._score ?? 999; vb = b._score ?? 999; break;
+      case 'garden': va = a.has_garden ? 0 : 1; vb = b.has_garden ? 0 : 1; break;
+      case 'ext': va = a._ext; vb = b._ext; break;
+      case 'trend': va = trendRank(a._trendStatus); vb = trendRank(b._trendStatus); break;
+      case 'review': va = a.rating || 0; vb = b.rating || 0; break;
+      case 'cap': va = parseInt(a.cap_by_age?.[selectedAge]) || 0; vb = parseInt(b.cap_by_age?.[selectedAge]) || 0; break;
+      default: va = a.distance_home; vb = b.distance_home;
+    }
+    return sortAsc ? (va||0)-(vb||0) : (vb||0)-(va||0);
+  });
+
+  // 統計
+  const allInRange = DATA.facilities.filter(f => f.distance_home && f.distance_home <= maxDist);
+  const wv = allInRange.filter(f => (f.vacancy?.[selectedAge]||0) > 0).length;
+  document.getElementById('summary').innerHTML =
+    `<span class="n">${allInRange.length}</span>園中 ` +
+    `<span class="n">${wv}</span>園に${selectedAge}クラスの空き / 表示: <span class="n">${rows.length}</span>園` +
+    ` <span style="color:#8b949e;font-size:12px;">（空きデータ: 2026/2/3時点 R8年4月2次選考分 / 次回更新: 4/1 17:00以降）</span>`;
+
+  // ヘッダー
+  const MY_SCORE = 40; // 父20+母20+転園-1+区外認可→区内+1
+  const cols = [
+    { key:'type', label:'種別', sort:true },
+    { key:'photo', label:'写真', sort:false },
+    { key:'name', label:'園名', sort:false },
+    { key:'distance', label:'距離', sort:true },
+    { key:'vacancy', label:`${selectedAge}空き`, sort:true },
+    { key:'cap', label:`${selectedAge}定員`, sort:true },
+    { key:'score', label:`ボーダー(自分:${MY_SCORE})`, sort:true },
+    { key:'trend', label:'空き推移(10月→4月)', sort:true },
+    { key:'garden', label:'園庭', sort:true },
+    { key:'ext', label:'延長', sort:true },
+    { key:'review', label:'評判', sort:true },
+  ];
+  const thead = document.getElementById('thead');
+  thead.innerHTML = '<tr>' + cols.map(c =>
+    `<th class="${sortCol===c.key?'sorted':''}" ${c.sort?`onclick="setSort('${c.key}')"`:''}>${c.label}${sortCol===c.key?(sortAsc?' ↑':' ↓'):''}</th>`
+  ).join('') + '</tr>';
+
+  // ボディ
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = rows.map(r => {
+    const walk = r.walk_home || Math.round(r.distance_home/80);
+    const addr = r.address || '';
+    const addrFull = addr ? `豊島区${addr}` : '';
+    const mapsUrl = r.google_maps_url ||
+      (addrFull ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('東京都'+addrFull)}` : '');
+
+    // 園名 + 紹介
+    const nameHtml = r.website
+      ? `<a href="${r.website}" target="_blank">${r.name}</a>`
+      : r.name;
+    const descHtml = r.description ? `<span style="font-size:11px;color:#8b949e;line-height:1.4;">${r.description}</span>` : '';
+
+    // 空き
+    const vClass = r._v > 0 ? 'has' : 'none';
+    const vText = r._v > 0 ? r._v + '名' : '満席';
+
+    // 口コミ（クリックでGoogle Maps口コミへ）
+    const reviewLink = r.review_url || `https://www.google.com/maps/search/${encodeURIComponent(r.name + ' 豊島区 保育園')}`;
+    let reviewHtml = '';
+    if (r.rating) {
+      const stars = '★'.repeat(Math.round(r.rating)) + '☆'.repeat(5-Math.round(r.rating));
+      reviewHtml = `<a href="${reviewLink}" target="_blank" style="text-decoration:none;"><span style="color:#fbbf24;font-size:13px;">${r.rating}</span> <span style="font-size:10px;color:#fbbf24;">${stars.substring(0,5)}</span></a><br><span style="font-size:11px;color:#8b949e;">${r.review_summary||''}</span>`;
+    } else if (r.sentiment && r.sentiment !== '不明') {
+      const sentColor = r.sentiment === '良い' ? '#3fb950' : '#8b949e';
+      reviewHtml = `<a href="${reviewLink}" target="_blank" style="text-decoration:none;color:${sentColor};font-size:12px;">${r.sentiment}</a><br><span style="font-size:11px;color:#8b949e;">${r.review_summary||''}</span>`;
+    } else {
+      reviewHtml = `<a href="${reviewLink}" target="_blank" style="color:#484f58;font-size:11px;">口コミを見る</a>`;
+    }
+
+    // 年齢別定員
+    const ageCap = r.cap_by_age?.[selectedAge] || r.cap_by_age?.['4・5歳'] || '-';
+    const capHtml = ageCap;
+
+    // ボーダー（前年入園最低点 vs 自分の点数）
+    let scoreHtml = '';
+    if (r._score !== null && r._score !== undefined) {
+      const diff = MY_SCORE - r._score;
+      if (diff >= 0) {
+        scoreHtml = `<span class="easy">${r._score}</span><br><span style="font-size:11px;color:#3fb950;">+${diff} OK</span>`;
+      } else {
+        const cls = diff >= -15 ? 'hard' : 'impossible';
+        scoreHtml = `<span class="${cls}">${r._score}</span><br><span style="font-size:11px;color:${diff>=-15?'#d29922':'#f85149'};">${diff}点不足</span>`;
+      }
+    } else {
+      scoreHtml = `<span class="easy">-</span><br><span style="font-size:11px;color:#3fb950;">全員内定</span>`;
+    }
+
+    // 空き推移ドット
+    const trendDots = r._trend.length > 0
+      ? r._trend.map((v,i) => {
+          const labels = ['10月','11月','12月','1月','4①','4②'];
+          const val = v!==null&&v>0 ? v : 0;
+          const cls = val > 0 ? 'has' : 'none';
+          return `<span class="trend-item"><span class="trend-month">${labels[i]}</span><span class="trend-val ${cls}">${val>0?val:'-'}</span></span>`;
+        }).join('')
+      : '-';
+    const trendLabel = r._trendStatus;
+    const trendClass =
+      trendLabel === '常に空き' ? 'status-always-vacancy' :
+      trendLabel === '空き傾向' ? 'status-vacancy-trend' :
+      trendLabel === '変動' ? 'status-sometimes' :
+      trendLabel === '常に満席' ? 'status-always-full' : '';
+
+    // 傾向分析コメント
+    let trendComment = '';
+    if (trendLabel === '常に空き') {
+      const vals = r._trend.filter(v => v !== null && v > 0);
+      const avg = vals.length ? (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1) : 0;
+      trendComment = `平均${avg}名空き`;
+    } else if (trendLabel === '変動') {
+      const months = ['10月','11月','12月','1月','4月①','4月②'];
+      const openMonths = r._trend.map((v,i) => v!==null&&v>0 ? months[i] : null).filter(Boolean);
+      trendComment = openMonths.length ? `${openMonths.join('・')}に空き` : '';
+    } else if (trendLabel === '空き傾向') {
+      trendComment = '最近空きが増加中';
+    } else if (trendLabel === '常に満席') {
+      trendComment = '半年間空きゼロ';
+    }
+
+    // 園庭
+    const gardenHtml = r.has_garden === true
+      ? `<span class="tag-good">🌳 あり</span>`
+      : r.has_garden === false
+        ? `<span class="tag-bad">なし</span>`
+        : '<span class="tag-bad">-</span>';
+
+    // 延長
+    const extHtml = r._ext >= 20
+      ? `<span class="tag-ext">🌙 ${r.extended_hours}</span>`
+      : `<span style="color:#8b949e;">${r.extended_hours || '-'}</span>`;
+
+    // 種別
+    let typeLabel = '';
+    if (r.category?.includes('地域型') || r.category?.includes('小規模') || r.name?.includes('早樹') || r.name?.includes('イルカ') || r.name?.includes('すくすく') || r.name?.includes('ドリームキッズ') || r.name?.includes('ソラーナ')) typeLabel = '小規模';
+    else if (r.category?.includes('公立')) typeLabel = '区立';
+    else if (r.category?.includes('私立')) typeLabel = '私立';
+    else typeLabel = '私立';
+
+    // 連絡先
+    const phone = r.phone || '';
+    const phoneHtml = phone ? `<a href="tel:${phone}">${phone}</a>` : '';
+    const mapsLink = mapsUrl ? `<a href="${mapsUrl}" target="_blank">📍地図</a>` : '';
+
+    // 写真（クリックでライトボックス拡大表示）
+    const allPhotos = r.photos || [];
+    const thumbs = allPhotos.slice(0, 2);
+    const photoLink = r.photo_url || r.website || '';
+    const photosJson = JSON.stringify(allPhotos).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const photoHtml = thumbs.length > 0
+      ? `<div style="display:flex;gap:2px;cursor:pointer;" onclick="openLB(${JSON.stringify(allPhotos).replace(/"/g, "'")}, '${r.name.replace(/'/g, "\\'")}', '${photoLink}')">` +
+        thumbs.map((u,i) => `<img src="${u}" style="width:60px;height:45px;object-fit:cover;border-radius:4px;" onerror="this.style.display='none'" title="クリックで拡大">`).join('') +
+        (allPhotos.length > 2 ? `<span style="font-size:10px;color:#8b949e;align-self:center;">+${allPhotos.length-2}</span>` : '') +
+        `</div>`
+      : (photoLink ? `<a href="${photoLink}" target="_blank" style="color:#484f58;font-size:11px;">写真なし</a>` : '<span style="color:#484f58;font-size:11px;">-</span>');
+
+    // 種別タグ色分け
+    const typeColor = typeLabel === '区立' ? '#1f6feb' : typeLabel === '小規模' ? '#d29922' : '#3fb950';
+    const typeBg = typeLabel === '区立' ? 'rgba(31,111,235,0.15)' : typeLabel === '小規模' ? 'rgba(210,153,34,0.15)' : 'rgba(63,185,80,0.08)';
+
+    return `<tr>
+      <td style="text-align:center;"><span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;background:${typeBg};color:${typeColor};white-space:nowrap;">${typeLabel}</span></td>
+      <td style="min-width:130px;">${photoHtml}</td>
+      <td class="name-cell" style="min-width:260px;">
+        ${nameHtml}<br>
+        ${descHtml}<br>
+        <span class="addr-cell">${mapsUrl?`<a href="${mapsUrl}" target="_blank">📍${addrFull||'地図'}</a>`:(addrFull||'')}${phone?` <a href="tel:${phone}" style="color:#8b949e;text-decoration:none;">📞${phone}</a>`:''}</span>
+      </td>
+      <td class="walk-cell">${walk}分<br><span class="dist-cell">${r.distance_home}m</span></td>
+      <td class="vacancy-cell ${vClass}">${vText}</td>
+      <td style="text-align:center;">${capHtml}</td>
+      <td class="border-cell">${scoreHtml}</td>
+      <td class="trend-cell">${trendDots}<br><span class="${trendClass}" style="font-size:11px;">${trendLabel||''}</span>${trendComment?`<br><span style="font-size:10px;color:#8b949e;">${trendComment}</span>`:''}</td>
+      <td>${gardenHtml}</td>
+      <td>${extHtml}</td>
+      <td style="max-width:150px;">${reviewHtml}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('footer').textContent =
+    `${rows.length}件 / データ: ${DATA.generated_at || '-'}`;
+}
+
+function getTrendStatus(trend) {
+  if (!trend || trend.length === 0) return '';
+  const valid = trend.filter(v => v !== null);
+  if (valid.length === 0) return '';
+  if (valid.every(v => v > 0)) return '常に空き';
+  if (valid.every(v => v === 0)) return '常に満席';
+  if (valid.length >= 2 && valid[valid.length-1] > 0 && valid.filter(v=>v>0).length >= valid.length/2) return '空き傾向';
+  return '変動';
+}
+function trendRank(s) {
+  if (s === '常に空き') return 0;
+  if (s === '空き傾向') return 1;
+  if (s === '変動') return 2;
+  if (s === '常に満席') return 3;
+  return 4;
+}
+
+document.getElementById('max-dist').addEventListener('change', render);
+// ===== Lightbox =====
+let lbPhotos = [];
+let lbIdx = 0;
+let lbName = '';
+let lbUrl = '';
+
+function openLB(photos, name, url, startIdx) {
+  lbPhotos = photos;
+  lbIdx = startIdx || 0;
+  lbName = name;
+  lbUrl = url;
+  document.getElementById('lightbox').classList.add('active');
+  updateLB();
+  document.addEventListener('keydown', lbKey);
+}
+
+function closeLB() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.removeEventListener('keydown', lbKey);
+}
+
+function lbNav(dir) {
+  lbIdx = Math.max(0, Math.min(lbPhotos.length - 1, lbIdx + dir));
+  updateLB();
+}
+
+function lbKey(e) {
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+}
+
+function updateLB() {
+  document.getElementById('lb-img').src = lbPhotos[lbIdx];
+  document.getElementById('lb-title').textContent = lbName;
+  document.getElementById('lb-counter').textContent = `${lbIdx + 1} / ${lbPhotos.length}`;
+  document.getElementById('lb-prev').disabled = lbIdx === 0;
+  document.getElementById('lb-next').disabled = lbIdx === lbPhotos.length - 1;
+
+  // サムネイル
+  document.getElementById('lb-thumbs').innerHTML = lbPhotos.map((u, i) =>
+    `<img class="lb-thumb${i === lbIdx ? ' active' : ''}" src="${u}" onclick="lbIdx=${i};updateLB()" onerror="this.style.display='none'">`
+  ).join('');
+
+  // 公式サイトリンク
+  document.getElementById('lb-link').innerHTML = lbUrl
+    ? `<a href="${lbUrl}" target="_blank">🌐 ${lbName}の公式サイトを見る →</a>`
+    : '';
+}
+
+loadData();
+</script>
+</body>
+</html>

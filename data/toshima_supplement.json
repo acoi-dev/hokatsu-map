@@ -1,0 +1,137 @@
+[
+  {
+    "name": "いけぶくろこころ保育園",
+    "distance_m": 1104,
+    "photos": [
+      "https://enmikke.jp/uploads/4D4gOibywYOekRQtFV3N6ZtOFq0L5oqR/main/53d58c2ce7d5d06dcbdbc460509afed1.jpg?1657871469",
+      "https://cocoro-fukushikai.com/ikebukuro/assets/images/slide-img-01.webp",
+      "https://cocoro-fukushikai.com/ikebukuro/assets/images/slide-img-02.webp"
+    ],
+    "photo_url": "https://cocoro-fukushikai.com/ikebukuro/",
+    "website": "https://cocoro-fukushikai.or.jp/nursery/%E3%81%84%E3%81%91%E3%81%B6%E3%81%8F%E3%82%8D%E3%81%93%E3%81%93%E3%82%8D%E4%BF%9D%E8%82%B2%E5%9C%92/",
+    "rating": 5.0,
+    "review_count": 1,
+    "sentiment": "良い",
+    "review_summary": "運動・学習が充実し先生の連携◎、子どもが楽しく通園",
+    "review_sources": {
+      "minkou": {"score": 5.0, "count": 1}
+    },
+    "notes": "社会福祉法人こころ福祉会運営。英語ダンス・体操指導あり。2-5歳対象。池袋1-13-18イマス池袋ビル3F"
+  },
+  {
+    "name": "おはよう保育園 西巣鴨",
+    "distance_m": 1144,
+    "photos": [
+      "https://enmikke.jp/uploads/O7AkRiDxvJjg2XV9aAmIqWxFKhG7pRyN/main/cdd43339d452befd545e650384c756fc.jpg?1654012140",
+      "https://www.ohayokids.co.jp/img/logo_shisetsu_nishisugamo.png"
+    ],
+    "photo_url": "https://www.ohayokids.co.jp/shisetsu_nishisugamo.html",
+    "website": "https://www.ohayokids.co.jp/shisetsu_nishisugamo.html",
+    "rating": 5.0,
+    "review_count": 2,
+    "sentiment": "良い",
+    "review_summary": "少人数で先生が丁寧、縦割り保育で社会性◎、屋上プール・野菜栽培あり",
+    "review_sources": {
+      "chibinavi": {"score": 5.0, "count": 2},
+      "third_party_eval": {"score": 915, "max": 1000, "rank": "豊島区45位/92園"}
+    },
+    "notes": "株式会社おはようキッズ運営。定員52名。H30開園。体操プログラムあり。西巣鴨1-22-8"
+  },
+  {
+    "name": "グローバルキッズ西池袋園",
+    "distance_m": 1177,
+    "photos": [
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-00s10abm.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-01s10abm.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/sv1-077qyqq01.jpg"
+    ],
+    "photo_url": "https://www.gkids.co.jp/facilities/nursery_080.html",
+    "website": "https://www.gkids.co.jp/facilities/nursery_080.html",
+    "rating": 4.24,
+    "review_count": 4,
+    "sentiment": "良い",
+    "review_summary": "リトミック・英語・体操充実、先生が丁寧、準備物少なく親も助かる。水増し請求問題の報道あり注意",
+    "review_sources": {
+      "minkou": {"score": 4.24, "count": 4}
+    },
+    "notes": "グローバルキッズ運営。0-5歳。目白駅徒歩8分。西池袋2-19-5ラクレーシェ目白。園庭なし・近隣公園利用"
+  },
+  {
+    "name": "太陽の子池袋本町保育園",
+    "distance_m": 1208,
+    "photos": [
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/34/20250530143500/IMG_2114-scaled.jpg",
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/34/20250530143546/IMG_2121-scaled.jpg",
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/34/20250530143632/IMG_1043-scaled.jpg"
+    ],
+    "photo_url": "https://www.kidslife-nursery.com/facility/tokyo/toshima/ikebukurohoncho/",
+    "website": "https://www.kidslife-nursery.com/facility/tokyo/toshima/ikebukurohoncho/",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "review_summary": "口コミなし。英語教育(ふぁんばりん)・食育・つながり保育が特徴。持ち物少なく保護者負担軽減",
+    "review_sources": {
+      "minkou": null,
+      "note": "口コミサイトに保護者レビューなし(2026年3月時点)"
+    },
+    "notes": "HITOWAキッズライフ運営。2014年6月開園。0-3歳・定員20名。北池袋駅徒歩5分。池袋本町1-31-2。絵本4万冊目標"
+  },
+  {
+    "name": "池袋第一保育園",
+    "distance_m": 1214,
+    "photos": [
+      "https://www.city.toshima.lg.jp/images/1977/ike1-hoikushitsu-240404_1.jpg",
+      "https://www.city.toshima.lg.jp/images/1977/ike1-betsumune-240404_1.jpg"
+    ],
+    "photo_url": "https://www.city.toshima.lg.jp/280/kosodate/kosodate/hoikuen/kuritsu/006119.html",
+    "website": "https://www.city.toshima.lg.jp/280/kosodate/kosodate/hoikuen/kuritsu/006119.html",
+    "rating": 4.13,
+    "review_count": 6,
+    "sentiment": "良い",
+    "review_summary": "区立で安定運営、先生が明るく子どもが園好き。園庭あり・地域交流活発。方針不明瞭との声も",
+    "review_sources": {
+      "minkou": {"score": 4.13, "count": 6},
+      "third_party_eval": {"score": 916, "max": 1000, "rank": "豊島区43位/92園"}
+    },
+    "notes": "区立認可。1961年開園。定員111名。0-5歳。園庭あり・園庭開放あり。0歳児は別棟平屋。上池袋3-39-11。延長19:15まで"
+  },
+  {
+    "name": "イルカ保育園",
+    "distance_m": 1253,
+    "photos": [
+      "https://www.iruka-seika.com/images/DSC06072.JPG",
+      "https://www.iruka-seika.com/images/DSC06102.JPG",
+      "https://www.iruka-seika.com/images/about05.png"
+    ],
+    "photo_url": "https://www.iruka-seika.com/about/",
+    "website": "https://www.iruka-seika.com/",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "review_summary": "口コミなし。イルカのように優しく強い子を育む方針。小規模ならではの手厚い保育",
+    "review_sources": {
+      "note": "口コミサイトに保護者レビューなし(2026年3月時点)"
+    },
+    "notes": "小規模認可保育園(2015年11月認可)。池袋2-15-2武蔵屋第2ビル1F。提携園:池袋第三保育園。食べる・遊ぶ・愛するの3本柱"
+  },
+  {
+    "name": "キッズガーデン西巣鴨",
+    "distance_m": 1312,
+    "photos": [
+      "https://www.kidsgarden.co.jp/wp/wp-content/themes/kidsgarden/img/facility/nishisugamo/img-nishisugamo_01.jpg",
+      "https://www.kidsgarden.co.jp/wp/wp-content/themes/kidsgarden/img/facility/nishisugamo/img-nishisugamo_02.jpg",
+      "https://www.kidsgarden.co.jp/wp/wp-content/themes/kidsgarden/img/facility/nishisugamo/img-nishisugamo_03.jpg"
+    ],
+    "photo_url": "https://www.kidsgarden.co.jp/facility/nishisugamo/",
+    "website": "https://www.kidsgarden.co.jp/nursery/guide/nishisugamo/",
+    "rating": 3.0,
+    "review_count": 1,
+    "sentiment": "普通",
+    "review_summary": "伸芽会共同開発の教育プログラムあり、居心地のよい園づくり。第三者評価886点とやや低め",
+    "review_sources": {
+      "homemate": {"score": 3.0, "count": 1},
+      "third_party_eval": {"score": 886, "max": 1000, "rank": "豊島区73位/92園"}
+    },
+    "notes": "KID'S PREP.PROGRAM(伸芽会共同開発)。定員50名。0歳(57日)-5歳。板橋駅徒歩10分・巣鴨新田駅徒歩7分。西巣鴨1-15-12"
+  }
+]

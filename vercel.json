@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    { "source": "/toshima", "destination": "/matrix.html" },
+    { "source": "/shibuya", "destination": "/matrix_shibuya.html" }
+  ],
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=600" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+[
+  {
+    "name": "グローバルキッズ東池袋園",
+    "garden": true,
+    "garden_note": "屋上園庭あり（豊島区庁舎ビル2F、屋上に自然豊かな園庭）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://www.gkids.co.jp/facilities/nursery_101.html",
+    "google_maps": "https://www.google.com/maps/search/グローバルキッズ東池袋園+豊島区"
+  },
+  {
+    "name": "ミアヘルサ保育園ひびき池袋",
+    "garden": false,
+    "garden_note": "園庭の情報なし（ビル内園舎のため園庭なしの可能性が高い）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://www.merhalsa.jp/hoikuen/nursery/ikebukuro/",
+    "google_maps": "https://www.google.com/maps/search/ミアヘルサ保育園ひびき池袋+豊島区"
+  },
+  {
+    "name": "同援さくら保育園",
+    "garden": true,
+    "garden_note": "園庭あり。園庭開放も実施",
+    "extended_hours": "22:15",
+    "extended_hours_detail": "延長: 18:15-22:15（豊島区内最長クラス。休日保育・病後児保育あり）",
+    "website": "https://doen.jp/introduction/nuture/sakura",
+    "google_maps": "https://www.google.com/maps/search/同援さくら保育園+豊島区"
+  },
+  {
+    "name": "ピオーネ雑司が谷保育園",
+    "garden": false,
+    "garden_note": "園庭なし。屋上あり（水遊び・走り回れる）。近隣公園を利用",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://www.isto.or.jp/pione-zoushigaya/",
+    "google_maps": "https://www.google.com/maps/search/ピオーネ雑司が谷保育園+豊島区"
+  },
+  {
+    "name": "ベネッセ 雑司が谷保育園",
+    "garden": false,
+    "garden_note": "園庭なし。近隣の鬼子母神や公園で代替",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://hoiku.benesse-style-care.co.jp/facilities/area_tokyo/toshima/h-zoshigaya/",
+    "google_maps": "https://www.google.com/maps/search/ベネッセ雑司が谷保育園+豊島区"
+  },
+  {
+    "name": "クオリスキッズ東池袋保育園",
+    "garden": true,
+    "garden_note": "園庭あり（プール・遊具・絵本充実）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://quolis-kids.com/114_higashiikebukuro/",
+    "google_maps": "https://www.google.com/maps/search/クオリスキッズ東池袋保育園+豊島区"
+  },
+  {
+    "name": "グローバルキッズ雑司が谷園",
+    "garden": false,
+    "garden_note": "園庭なし。500m圏内の公園で散歩を重視",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://www.gkids.co.jp/facilities/nursery_100.html",
+    "google_maps": "https://www.google.com/maps/search/グローバルキッズ雑司が谷園+豊島区"
+  },
+  {
+    "name": "雑司が谷すきっぷ保育園",
+    "garden": null,
+    "garden_note": "不明（公式サイトで「園庭などで自由遊び」の記載あるが確認取れず。要問合せ）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 延長含め7:15-19:15",
+    "website": "https://www.skip-hoikuen.com/zoshigaya/",
+    "google_maps": "https://www.google.com/maps/search/雑司が谷すきっぷ保育園+豊島区"
+  },
+  {
+    "name": "西池袋そらいろ保育園",
+    "garden": true,
+    "garden_note": "園庭あり",
+    "extended_hours": "20:15",
+    "extended_hours_detail": "標準: 18:15-20:15（2時間延長可能）",
+    "website": "https://sorairo.mitsu-bachi.net/",
+    "google_maps": "https://www.google.com/maps/search/西池袋そらいろ保育園+豊島区"
+  },
+  {
+    "name": "雑司が谷保育園",
+    "garden": true,
+    "garden_note": "園庭あり",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://sakuragaoka.jpn.com/zoshigaya/",
+    "google_maps": "https://www.google.com/maps/search/雑司が谷保育園+豊島区"
+  },
+  {
+    "name": "目白第二保育園",
+    "garden": true,
+    "garden_note": "園庭あり（区立保育園）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://www.city.toshima.lg.jp/286/kosodate/kosodate/hoikuen/kuritsu/006128.html",
+    "google_maps": "https://www.google.com/maps/search/目白第二保育園+豊島区"
+  },
+  {
+    "name": "目白ひかり保育園",
+    "garden": true,
+    "garden_note": "園庭あり",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15（満1歳以上対象）",
+    "website": "https://www.m-hikari.org/",
+    "google_maps": "https://www.google.com/maps/search/目白ひかり保育園+豊島区"
+  },
+  {
+    "name": "東池袋第一保育園",
+    "garden": true,
+    "garden_note": "園庭あり（園庭開放: 月-金 10:00-12:00）",
+    "extended_hours": "20:00",
+    "extended_hours_detail": "標準: 18:15-20:00",
+    "website": "https://www.kidslife-nursery.com/facility/tokyo/toshima/higashiikebukuro1/",
+    "google_maps": "https://www.google.com/maps/search/東池袋第一保育園+豊島区"
+  },
+  {
+    "name": "グローバルキッズ西池袋園",
+    "garden": true,
+    "garden_note": "園庭あり",
+    "extended_hours": "20:15",
+    "extended_hours_detail": "標準: 18:16-20:15（2時間延長可能）",
+    "website": "https://www.gkids.co.jp/facilities/nursery_080.html",
+    "google_maps": "https://www.google.com/maps/search/グローバルキッズ西池袋園+豊島区"
+  },
+  {
+    "name": "まちの保育園 東池袋",
+    "garden": true,
+    "garden_note": "園庭あり（面積3546.9㎡との情報あり）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://machino-higashiikebukuro.com/",
+    "google_maps": "https://www.google.com/maps/search/まちの保育園+東池袋+豊島区"
+  },
+  {
+    "name": "東池袋第二保育園",
+    "garden": true,
+    "garden_note": "園庭あり（陽当たり良好）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://www.city.toshima.lg.jp/278/kosodate/kosodate/hoikuen/kuritsu/006116.html",
+    "google_maps": "https://www.google.com/maps/search/東池袋第二保育園+豊島区"
+  },
+  {
+    "name": "ドリームキッズかみいけ保育園",
+    "garden": false,
+    "garden_note": "園庭なし（小規模保育園・0-2歳、近隣公園利用）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15（スポット400円/回）",
+    "website": "https://coco-dreamkids.jp/",
+    "google_maps": "https://www.google.com/maps/search/ドリームキッズかみいけ保育園+豊島区"
+  },
+  {
+    "name": "キッズガーデン南大塚",
+    "garden": false,
+    "garden_note": "園庭なし（ビル3階。線路向かいの公園で代替）",
+    "extended_hours": "20:15",
+    "extended_hours_detail": "標準: 18:15-20:15（月極1h=4,000円、2h=7,000円）",
+    "website": "https://www.kidsgarden.co.jp/nursery/facility/minamiootsuka/",
+    "google_maps": "https://www.google.com/maps/search/キッズガーデン南大塚+豊島区"
+  },
+  {
+    "name": "東池袋早樹保育園",
+    "garden": false,
+    "garden_note": "園庭なし（小規模保育園・0-2歳）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15（延長10分200円）",
+    "website": "https://www.city.toshima.lg.jp/268/kosodate/kosodate/hoikuen/chiikigata/034795.html",
+    "google_maps": "https://www.google.com/maps/search/東池袋早樹保育園+豊島区"
+  },
+  {
+    "name": "アンソレイユ保育園",
+    "garden": true,
+    "garden_note": "園庭あり（広い園庭。近隣に公園もあり）",
+    "extended_hours": "20:15",
+    "extended_hours_detail": "標準: 18:15-20:15（月極1h=4,000円、2h=6,000円）",
+    "website": "https://ensoleille-hoikuen.jp/",
+    "google_maps": "https://www.google.com/maps/search/アンソレイユ保育園+豊島区"
+  },
+  {
+    "name": "ベネッセ目白保育園",
+    "garden": true,
+    "garden_note": "園庭あり（西武池袋線線路沿い、園庭から電車見物可。L字型園舎）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://hoiku.benesse-style-care.co.jp/facilities/area_tokyo/toshima/h-mejiro/",
+    "google_maps": "https://www.google.com/maps/search/ベネッセ目白保育園+豊島区"
+  },
+  {
+    "name": "イルカ保育園",
+    "garden": false,
+    "garden_note": "園庭なし（小規模保育園・0-2歳、ビル1階。近隣公園で戸外活動）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://www.iruka-seika.com/",
+    "google_maps": "https://www.google.com/maps/search/イルカ保育園+豊島区+池袋"
+  },
+  {
+    "name": "南大塚早樹保育園",
+    "garden": false,
+    "garden_note": "園庭なし（小規模保育園・0-2歳）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "http://minamiohtsuka.saki-hoikuen.jp/guidance.html",
+    "google_maps": "https://www.google.com/maps/search/南大塚早樹保育園+豊島区"
+  },
+  {
+    "name": "ニチイキッズかみいけぶくろ保育園",
+    "garden": true,
+    "garden_note": "中庭あり（園舎中央にフワフワの緑の中庭、砂場付き）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://www.nichiikids.net/nursery/kamiikebukuro/",
+    "google_maps": "https://www.google.com/maps/search/ニチイキッズかみいけぶくろ保育園+豊島区"
+  },
+  {
+    "name": "北大塚すくすくルーム",
+    "garden": true,
+    "garden_note": "園庭あり（砂場・おままごとコーナー・ウッドテーブル、夏は水遊び）",
+    "extended_hours": "18:00",
+    "extended_hours_detail": "標準保育: 8:00-18:00（短時間: 9:00-17:00）。小規模のため延長は限定的",
+    "website": "https://kitaootukasukusukuroom.com/",
+    "google_maps": "https://www.google.com/maps/search/北大塚すくすくルーム+豊島区"
+  },
+  {
+    "name": "いけぶくろこころ保育園",
+    "garden": false,
+    "garden_note": "園庭なし（ビル3階の施設。限られた環境だが工夫して保育）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:16-19:15",
+    "website": "https://cocoro-fukushikai.or.jp/nursery/%E3%81%84%E3%81%91%E3%81%B6%E3%81%8F%E3%82%8D%E3%81%93%E3%81%93%E3%82%8D%E4%BF%9D%E8%82%B2%E5%9C%92/",
+    "google_maps": "https://www.google.com/maps/search/いけぶくろこころ保育園+豊島区"
+  },
+  {
+    "name": "大塚りとるぱんぷきんず",
+    "garden": true,
+    "garden_note": "園庭あり（149.58㎡、砂場あり）",
+    "extended_hours": "20:15",
+    "extended_hours_detail": "標準: 18:16-20:15",
+    "website": "https://www.seikoukai.or.jp/facilities/otsuka/",
+    "google_maps": "https://www.google.com/maps/search/大塚りとるぱんぷきんず+豊島区"
+  },
+  {
+    "name": "AIAI NURSERY 第一東池袋",
+    "garden": false,
+    "garden_note": "園庭なし",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://nursery.aiai-cc.co.jp/facility/higashi-ikebukuro/",
+    "google_maps": "https://www.google.com/maps/search/AIAI+NURSERY+第一東池袋+豊島区"
+  },
+  {
+    "name": "AIAI NURSERY 第二東池袋",
+    "garden": false,
+    "garden_note": "園庭なし（公式に「園庭：無」と明記）",
+    "extended_hours": "19:15",
+    "extended_hours_detail": "標準: 18:15-19:15",
+    "website": "https://nursery.aiai-cc.co.jp/facility/higashiikebukuro2nd/",
+    "google_maps": "https://www.google.com/maps/search/AIAI+NURSERY+第二東池袋+豊島区"
+  }
+]

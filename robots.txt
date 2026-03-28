@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://hoimii.jp/sitemap.xml
+
+# データファイルはクロール不要
+Disallow: /data/

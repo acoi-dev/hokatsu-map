@@ -1,0 +1,192 @@
+[
+  {
+    "name": "グローバルキッズ東池袋園",
+    "rating": null,
+    "review_count": 1,
+    "sentiment": "良い",
+    "summary": "屋上園庭あり、食育充実、施設きれい",
+    "portal_ratings": {
+      "minkou": null,
+      "chibinavi": {"score": 4.0, "count": 1},
+      "third_party_eval_rank": "豊島区43位"
+    }
+  },
+  {
+    "name": "ミアヘルサ保育園ひびき池袋",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "良い",
+    "summary": "先生の連携良好、施設清潔、見守る保育",
+    "portal_ratings": {
+      "minkou": {"score": 4.56, "count": 2},
+      "third_party_eval_rank": "豊島区22位(938点)"
+    }
+  },
+  {
+    "name": "同援さくら保育園",
+    "rating": null,
+    "review_count": 5,
+    "sentiment": "良い",
+    "summary": "延長22時、休日保育あり、先生評価高い",
+    "portal_ratings": {
+      "minkou": {"score": 4.18, "count": 5},
+      "third_party_eval_rank": "豊島区24位(935点)"
+    }
+  },
+  {
+    "name": "ピオーネ雑司が谷保育園",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "summary": "手話・英語あり、家庭的雰囲気、病児保育可",
+    "portal_ratings": {
+      "minkou": null,
+      "third_party_eval_rank": "豊島区8位(959点)"
+    }
+  },
+  {
+    "name": "ベネッセ 雑司が谷保育園",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "summary": "2020年開園、ベネッセ運営、駅徒歩2分",
+    "portal_ratings": {
+      "minkou": null,
+      "third_party_eval_rank": "豊島区13位(948点)"
+    }
+  },
+  {
+    "name": "クオリスキッズ東池袋保育園",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "良い",
+    "summary": "2021年開園、先生穏やか、給食好評",
+    "portal_ratings": {
+      "hoikuis": {"score": 4.0, "count": 1}
+    }
+  },
+  {
+    "name": "グローバルキッズ雑司が谷園",
+    "rating": null,
+    "review_count": 4,
+    "sentiment": "良い",
+    "summary": "明るい雰囲気、リトミック・英語充実",
+    "portal_ratings": {
+      "minkou": {"score": 4.57, "count": 4},
+      "minkou_rank": "豊島区16位"
+    }
+  },
+  {
+    "name": "雑司が谷すきっぷ保育園",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "良い",
+    "summary": "床暖房完備、英語・科学体験あり、新しい",
+    "portal_ratings": {
+      "chibinavi": {"score": 4.5, "count": 2}
+    }
+  },
+  {
+    "name": "西池袋そらいろ保育園",
+    "rating": null,
+    "review_count": 4,
+    "sentiment": "普通",
+    "summary": "食育◎、自主性重視、一部ルールに不満も",
+    "portal_ratings": {
+      "minkou": {"score": 4.0, "count": 4},
+      "third_party_eval_rank": "豊島区3位(962点)"
+    }
+  },
+  {
+    "name": "雑司が谷保育園",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "普通",
+    "summary": "区立、地域密着、のびのび保育、園庭あり",
+    "portal_ratings": {
+      "minkou": {"score": 3.44, "count": 2},
+      "third_party_eval_rank": "豊島区10位(955点)"
+    }
+  },
+  {
+    "name": "目白第二保育園",
+    "rating": null,
+    "review_count": 5,
+    "sentiment": "普通",
+    "summary": "区立、基本に忠実、園庭あり、先生経験豊富",
+    "portal_ratings": {
+      "minkou": {"score": 3.94, "count": 5}
+    }
+  },
+  {
+    "name": "目白ひかり保育園",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "良い",
+    "summary": "個別対応丁寧、体幹遊び充実、先生が近い",
+    "portal_ratings": {
+      "chibinavi": {"score": 5.0, "count": 2}
+    }
+  },
+  {
+    "name": "東池袋第一保育園",
+    "rating": null,
+    "review_count": 7,
+    "sentiment": "良い",
+    "summary": "先生親切、イベント豊富、園庭やや狭い",
+    "portal_ratings": {
+      "minkou": {"score": 4.14, "count": 7}
+    }
+  },
+  {
+    "name": "グローバルキッズ西池袋園",
+    "rating": null,
+    "review_count": 4,
+    "sentiment": "良い",
+    "summary": "リトミック・英語・体操あり、準備物少ない",
+    "portal_ratings": {
+      "minkou": {"score": 4.24, "count": 4}
+    }
+  },
+  {
+    "name": "まちの保育園 東池袋",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "普通",
+    "summary": "地域連携重視、保育士評価やや低め",
+    "portal_ratings": {
+      "hoikuis": {"score": 2.9, "count": 2}
+    }
+  },
+  {
+    "name": "東池袋第二保育園",
+    "rating": null,
+    "review_count": 4,
+    "sentiment": "普通",
+    "summary": "区立、広い園庭、昔ながらの保育、先生優しい",
+    "portal_ratings": {
+      "minkou": {"score": 3.87, "count": 4}
+    }
+  },
+  {
+    "name": "ドリームキッズかみいけ保育園",
+    "rating": null,
+    "review_count": 1,
+    "sentiment": "普通",
+    "summary": "小規模12名、アットホーム、0-2歳のみ",
+    "portal_ratings": {
+      "hoikuis_parent": {"score": 1.2, "count": 1}
+    }
+  },
+  {
+    "name": "キッズガーデン南大塚",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "summary": "教育プログラム充実、大塚駅近、給食好評",
+    "portal_ratings": {
+      "minkou": null,
+      "third_party_eval_rank": "豊島区20位(939点)"
+    }
+  }
+]

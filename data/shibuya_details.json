@@ -1,0 +1,393 @@
+[
+  {
+    "name": "元代々木保育園",
+    "photos": [
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/f92b1fadd9c14523a1746c9417c29cb3/19motoyoyogi01.jpg",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/842b744920024847b42661e4332de509/19motoyoyogi002.jpg",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/7ef2565ff526422c94eecd56fe163c0d/19motoyoyogi03.jpg"
+    ],
+    "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/19motoyoyogi.html",
+    "description": "園庭・屋上での自由遊びと自然体験を重視する区立園。食育イベントや異年齢児交流が充実し、のびのびと過ごせる家庭的な雰囲気が特徴。",
+    "rating": 4.8,
+    "review_count": 4,
+    "sentiment": "良い",
+    "review_summary": "のびのび保育で親の負担少"
+  },
+  {
+    "name": "みんなのみらいをつくる保育園初台",
+    "photos": [
+      "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_1.jpg",
+      "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_2-1.jpg",
+      "https://mirai.florence.or.jp/mirai/wp-content/uploads/2018/09/hatsudai_3.jpg"
+    ],
+    "photo_url": "https://mirai.florence.or.jp/minnanomirai/hatsudai/",
+    "description": "NPO法人フローレンス運営。「シチズンシップ保育」で自ら考え行動する力を育成。サークルタイムや感情カード等の独自プログラムを導入し、おしゃれで清潔な施設が好評。",
+    "rating": 3.3,
+    "review_count": 14,
+    "sentiment": "普通",
+    "review_summary": "おしゃれ施設で先進的保育"
+  },
+  {
+    "name": "代々木至誠こども園",
+    "photos": [
+      "https://yoyogi.shisei-hoiku.jp/wp-content/gallery/main_banner/main04.jpg",
+      "https://yoyogi.shisei-hoiku.jp/wp-content/gallery/fixed/kodomoen_image.jpg"
+    ],
+    "photo_url": "https://yoyogi.shisei-hoiku.jp/",
+    "description": "100年以上の歴史を持つ社会福祉法人至誠学舎立川運営の認定こども園。モンテッソーリ教育を取り入れ、家庭的な雰囲気の中で子どもの主体性を尊重する保育を実践。",
+    "rating": 5.0,
+    "review_count": 2,
+    "sentiment": "良い",
+    "review_summary": "モンテッソーリで高評価"
+  },
+  {
+    "name": "グローバルキッズ代々木八幡園",
+    "photos": [
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-01rhktzs.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-02rhktzs.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-03rhktzs.jpg"
+    ],
+    "photo_url": "https://www.gkids.co.jp/facilities/nursery_111.html",
+    "description": "イエナプラン教育のコンセプトを取り入れ、子どもの主体的な学びを実践。「本気で遊び心に寄り添う保育」をモットーに、動物とのふれあい体験なども提供。",
+    "rating": null,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "先生が丁寧で信頼できる"
+  },
+  {
+    "name": "太陽の子代々木西参道保育園",
+    "photos": [
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813115649/IMG_4368-scaled.jpg",
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813113519/IMG_4398-scaled.jpg",
+      "https://dewf361ndt2jp.cloudfront.net/wp-content/uploads/sites/92/20250813113527/IMG_3931-scaled.jpg"
+    ],
+    "photo_url": "https://www.kidslife-nursery.com/facility/tokyo/shibuya/yoyoginishisando/",
+    "description": "HITOWAキッズライフ運営。英語プログラム「ふぁんばりん」やダンスプログラムなど多彩な教育を無料提供。広いホールでの運動活動と食育・野菜栽培も充実。",
+    "rating": null,
+    "review_count": 3,
+    "sentiment": "普通",
+    "review_summary": "英語・ダンスあり園庭は狭い"
+  },
+  {
+    "name": "はるの小川ちとせ保育園",
+    "photos": [
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/08/54harunoogawa_img13-1200x933.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/10/54harunoogawa_img09-600x600.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2024/06/54harunoogawa_img14-600x554.jpg"
+    ],
+    "photo_url": "https://www.chitosek.or.jp/preschools/harunoogawa",
+    "description": "ちとせ交友会運営。基本理念「Home」のもと、心安らぐ家庭的な保育を実践。「考えさせる」保育で自律性を育み、リトミック・英語・体操教室の専門プログラムも充実。",
+    "rating": 3.1,
+    "review_count": 5,
+    "sentiment": "普通",
+    "review_summary": "家庭的で考える力を育む"
+  },
+  {
+    "name": "ゆめの樹保育園はつだい",
+    "photos": [
+      "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/c9cc2d129641f31690e15a9cf02bdff9.jpg",
+      "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/d02d0fdf0af9527a54a63020fe8afa12.jpg",
+      "https://yumenoki-hatsudai.philos2011.com/wp-content/uploads/2023/10/0310ace8d7fbff75670d0bdb4d0db966.jpg"
+    ],
+    "photo_url": "https://yumenoki-hatsudai.philos2011.com/",
+    "description": "「やりたい！楽しい！子どもが主役」を理念とし、子ども自身の育つ力を大切にする園。木のぬくもりを感じる内装で、異年齢交流・外部講師による専門教育・バケツ稲等の自然体験が特徴。",
+    "rating": 3.1,
+    "review_count": 44,
+    "sentiment": "普通",
+    "review_summary": "木の温もりある内装が好評"
+  },
+  {
+    "name": "初台保育園",
+    "photos": [
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/18f5fae080a24089b28a1a2799d178a3/11hatsudai02.jpg",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/528fe50a43e141049de514e81821206e/11hatsudai03.JPG",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/78472eb0424a4b0bb78edb861a75c76c/11hatsudai04.JPG"
+    ],
+    "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/11hatsudai.html",
+    "description": "自然豊かな園庭が自慢の区立園。野菜栽培や食育活動が充実し、地域コーディネーターとの連携で伝統行事体験も実施。子どもの自主性を尊重する温かい保育が特徴。",
+    "rating": 4.5,
+    "review_count": 4,
+    "sentiment": "良い",
+    "review_summary": "温かく優しい園で安心"
+  },
+  {
+    "name": "AIAI NURSERY 初台本町",
+    "photos": [
+      "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi.png",
+      "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi01.png",
+      "https://nursery.aiai-cc.co.jp/cms/wp-content/uploads/2018/12/hatsudaihonmachi02.png"
+    ],
+    "photo_url": "https://nursery.aiai-cc.co.jp/facility/hatsudaihonmachi/",
+    "description": "AIAI Child Care運営の小規模園。「もうひとつの家」をコンセプトに、家庭的な雰囲気の中で一人ひとりの自発性を大切にする保育。AIAIレポートで成長を可視化。",
+    "rating": null,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "アットホームで先生が明るい"
+  },
+  {
+    "name": "さくらさくみらい初台",
+    "photos": [
+      "https://admin.sakura-39.jp/wp-content/uploads/files/mv_hatsudai_main-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/1_hatsudai-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/2_hatsudai-scaled.jpg"
+    ],
+    "photo_url": "https://www.sakura-39.jp/hoiku/hatsudai",
+    "description": "「おうちのようなほいくえん」がコンセプト。明治神宮や代々木公園の自然を活かした戸外活動と、異年齢交流を通じた思いやりの心の育成を重視。",
+    "rating": 5.0,
+    "review_count": 1,
+    "sentiment": "良い",
+    "review_summary": "先生が一生懸命で好印象"
+  },
+  {
+    "name": "参宮橋ちとせ保育園",
+    "photos": [
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/18sangubashi_img4-600x424.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/18sangubashi_img09-600x449.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/10/18sangubashi_img05-600x400.jpg"
+    ],
+    "photo_url": "https://www.chitosek.or.jp/preschools/sangubashi",
+    "description": "ちとせ交友会運営。認可基準より広い保育室と屋上水遊びスペースを完備。参宮橋公園・明治神宮に近く戸外活動に恵まれた環境で「考えさせる」保育を実践。",
+    "rating": 4.0,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "広い保育室で方針が明確"
+  },
+  {
+    "name": "まちのこども園代々木公園",
+    "photos": [
+      "https://machihoiku.jp/wp/wp-content/uploads/2020/05/yoyogi_koen2-1.svg",
+      "https://machihoiku.jp/wp/wp-content/uploads/2020/08/Karte_koen-scaled.jpg",
+      "https://machihoiku.jp/assets/img/detail/img_garden_4.jpg"
+    ],
+    "photo_url": "https://machihoiku.jp/yoyogikoen/",
+    "description": "代々木公園内にある木造園舎の認定こども園。公園を第二園庭として自然体験が日常的に可能。囲炉裏での調理や野菜栽培など食育を重視し、地域との関係性を大切にする保育。",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "良い",
+    "review_summary": "代々木公園が園庭で最高"
+  },
+  {
+    "name": "聖ヨゼフ保育園西原",
+    "photos": [
+      "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/58fd609b7d8c0ba767310d44.jpg",
+      "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/5b7a3dba3f719e7c16ea81fe.jpg",
+      "https://www.seibo-hoiku.com/library/58db1a12ea7600e903b3d488/591a5c84e5bfe9274d93c7e2.png"
+    ],
+    "photo_url": "https://www.seibo-hoiku.com/nishihara",
+    "description": "カトリック系保育園。「神様の愛を知り思いやりと助け合いを大切にする子ども」の育成が目標。園庭あり、しつけと遊びのバランスが良く、先生方が親切で安心して預けられると評判。",
+    "rating": 3.5,
+    "review_count": 2,
+    "sentiment": "良い",
+    "review_summary": "しつけと遊びのバランス良"
+  },
+  {
+    "name": "富ヶ谷保育園",
+    "photos": [
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/bf18dec0f1f64fdea45a7250bc30d119/04tomigaya02.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/a1893d690696436d9f4a6c3160a70937/04tomigaya003.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/e7ceddf1266b4607bdcc2b83171f805b/04tomigaya004.png"
+    ],
+    "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/04tomigaya.html",
+    "description": "広い芝生園庭（404㎡）が自慢の区立園。「トミホ農園」での無農薬野菜栽培と食育、充実した絵本コーナーが特徴。日当たりの良い環境でのびのび保育を実践。",
+    "rating": 4.5,
+    "review_count": 4,
+    "sentiment": "良い",
+    "review_summary": "芝生園庭と食育が充実"
+  },
+  {
+    "name": "西原ほほえみ保育園",
+    "photos": [
+      "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2023/06/CIMG4045.jpg",
+      "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2023/06/CIMG4051-1024x768.jpg",
+      "https://nishihara-hohoemi.roukyou.gr.jp/wp-content/uploads/2025/04/9f06380a2b88b88a61ac97d65c8fbb7d-1024x768.jpg"
+    ],
+    "photo_url": "https://nishihara-hohoemi.roukyou.gr.jp/",
+    "description": "ワーカーズコープ運営。「1人ひとりを大切に保護者の心も支える保育園」をモットーに、個性を尊重した保育を実践。地域との協働や平和・命の尊重を大切にする。",
+    "rating": 3.4,
+    "review_count": 3,
+    "sentiment": "普通",
+    "review_summary": "個性を尊重する保育"
+  },
+  {
+    "name": "さくらさくみらい西原",
+    "photos": [
+      "https://admin.sakura-39.jp/wp-content/uploads/files/mv_nishihara_main-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/1_nishihara-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/2_nishihara-scaled.jpg"
+    ],
+    "photo_url": "https://www.sakura-39.jp/hoiku/nishihara",
+    "description": "「おうちのようなほいくえん」がコンセプト。幡ヶ谷駅徒歩4分の閑静な住宅街に位置し、異年齢交流で思いやりの心を育み、食育と指先遊び・戸外遊びを重視。",
+    "rating": null,
+    "review_count": 1,
+    "sentiment": "普通",
+    "review_summary": "おうちのような温かさ"
+  },
+  {
+    "name": "西原保育園ゆめ",
+    "photos": [
+      "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026-036-1000x480.jpg",
+      "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026029.jpg",
+      "https://shibuyaswc.jp/wp-content/uploads/2021/01/20201026028.jpg"
+    ],
+    "photo_url": "https://shibuyaswc.jp/hoiku/yume/",
+    "description": "渋谷区社会福祉事業団運営。西原緑道沿いの三角屋根が目印。採光の良い明るい空間で、健康な体づくりと豊かな感性を育て、地域との関わりを大切にする保育を実践。",
+    "rating": 3.0,
+    "review_count": 3,
+    "sentiment": "普通",
+    "review_summary": "きれいだが先生にばらつき"
+  },
+  {
+    "name": "代々木保育園",
+    "photos": [
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/154c882bdffe40c7a08c342fd89863d9/13yoyogi02.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/9b0073117299404e9d7bba54f370a9ca/13yoyogi03.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/18cdbce1f542437d8b51c6557aa519b1/13yoyogi04.png"
+    ],
+    "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/13yoyogi.html",
+    "description": "明治神宮と代々木公園の自然を活用した区立園。「光の探究」をテーマとした年齢別学習活動が特徴。手作り給食と防災訓練が充実し、きめ細かい対応が好評。",
+    "rating": 4.5,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "給食手作りで丁寧な対応"
+  },
+  {
+    "name": "富ヶ谷ちとせ保育園",
+    "photos": [
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/05/19tomigaya_img15-1200x900.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2023/05/19tomigaya_img12-600x433.jpg",
+      "https://www.chitosek.or.jp/admin/wp-content/uploads/2021/02/19tomigaya_img09-586x600.jpg"
+    ],
+    "photo_url": "https://www.chitosek.or.jp/preschools/tomigaya",
+    "description": "ちとせ交友会運営。「自分で考え行動する子」を育む保育方針。リトミック・英語・食育活動とビュッフェ給食が特徴。年間行事が豊富で保護者参加型が多い。",
+    "rating": 2.6,
+    "review_count": 2,
+    "sentiment": "普通",
+    "review_summary": "行事豊富だが近隣問題あり"
+  },
+  {
+    "name": "幡ヶ谷保育園",
+    "photos": [
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/c49fb6d0f30d40629063b20882c5ff18/02hatagaya01.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/6bc61ed22dec479c8b0f406c453b86e9/02hatagaya02.png",
+      "https://images.city.shibuya.tokyo.jp/assets/12995aba8b194961be709ba879857f70/9c80f023c3324c78bb8ac9647ef6493a/02hatagaya03.png"
+    ],
+    "photo_url": "https://www.city.shibuya.tokyo.jp/shisetsu/hoikuen/hoikuen/02hatagaya.html",
+    "description": "園庭で果実・野菜を栽培し食育に力を入れる区立園。異年齢交流で兄弟姉妹のような温かい雰囲気を実現。園前の遊歩道で安全な散歩体験も可能。",
+    "rating": 5.0,
+    "review_count": 1,
+    "sentiment": "良い",
+    "review_summary": "マイナス面なし安心の園"
+  },
+  {
+    "name": "薫る風・上原こども園",
+    "photos": [
+      "https://kaorukaze.jp/wp-content/uploads/2020/07/mainimg-1349x447.jpg",
+      "https://kaorukaze.jp/wp-content/uploads/2020/08/top_about-555x335.jpg",
+      "https://kaorukaze.jp/wp-content/uploads/2020/08/top_daily.jpg"
+    ],
+    "photo_url": "https://kaorukaze.jp/",
+    "description": "代々木上原駅徒歩5分の保育所型認定こども園。英語・日舞・硬筆・習字・体操・リトミック・けん玉など多彩な専門プログラムを提供。高齢者施設との世代間交流も実施。",
+    "rating": 4.0,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "習い事が充実で先生も好評"
+  },
+  {
+    "name": "西原りとるぱんぷきんず",
+    "photos": [
+      "https://www.seikoukai.or.jp/gupabol/2025/04/nishihara-post.jpg",
+      "https://www.seikoukai.or.jp/gupabol/2025/04/activity-image-section-first-1-10.webp",
+      "https://www.seikoukai.or.jp/gupabol/2025/04/activity-image-section-first-2-4.webp"
+    ],
+    "photo_url": "https://www.seikoukai.or.jp/nurseries/nishihara/",
+    "description": "社会福祉法人清香会運営。モンテッソーリ活動と異年齢保育が特徴。ビュッフェ形式の給食と毎月のクッキング保育、園内菜園での食育体験が充実。分園ANNEXもあり大規模園。",
+    "rating": 4.5,
+    "review_count": 5,
+    "sentiment": "良い",
+    "review_summary": "活気あり多彩なカリキュラム"
+  },
+  {
+    "name": "グローバルキッズ代々木上原園",
+    "photos": [
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-01s10ek4.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/b45e087a4f83a4c.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/daily1-123s0lo54.jpg"
+    ],
+    "photo_url": "https://www.gkids.co.jp/facilities/nursery_115.html",
+    "description": "代々木上原駅徒歩2分の好立地。月2回の体操教室と旬の食材を活かした食育が特徴。「笑顔あふれる保育」で子どもの自発性・表現力を育む。",
+    "rating": 5.0,
+    "review_count": 1,
+    "sentiment": "良い",
+    "review_summary": "駅近で体操教室が人気"
+  },
+  {
+    "name": "まちのこども園代々木上原",
+    "photos": [
+      "https://machihoiku.jp/wp/wp-content/uploads/2020/08/Karte_uehara-1-scaled.jpg",
+      "https://machihoiku.jp/assets/img/detail/img_garden_2.jpg",
+      "https://machihoiku.jp/assets/img/detail/img_garden_4.jpg"
+    ],
+    "photo_url": "https://machihoiku.jp/yoyogiuehara/",
+    "description": "子どもが「ここにいる」と安心して遊び込める環境を重視する認定こども園。オープンアトリエや集中スペース等の多様な環境設計と、地域・大学との連携が特徴。",
+    "rating": null,
+    "review_count": 1,
+    "sentiment": "良い",
+    "review_summary": "地域連携が独自で魅力的"
+  },
+  {
+    "name": "ポピンズナーサリースクール代々木上原",
+    "photos": [
+      "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z621958-scaled.jpg",
+      "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z621856-scaled.jpg",
+      "https://www.poppins.co.jp/educare/wp/wp-content/uploads/2025/07/Z622024-scaled.jpg"
+    ],
+    "photo_url": "https://www.poppins.co.jp/educare/room-search/yoyogiuehara/",
+    "description": "ポピンズ独自の「エデュケア」（教育と保育の融合）で人生の基礎を育む。SDGs教育・食育・Web連絡帳を導入し、準耐火木造の園舎で自然素材に触れる環境を提供。",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "良い",
+    "review_summary": "エデュケアで質の高い保育"
+  },
+  {
+    "name": "さくらさくみらい上原",
+    "photos": [
+      "https://admin.sakura-39.jp/wp-content/uploads/files/mv_uehara-1-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/uehara_hibinoyousu1-scaled.jpg",
+      "https://admin.sakura-39.jp/wp-content/uploads/files/uehara_hibinoyousu2-scaled.jpg"
+    ],
+    "photo_url": "https://www.sakura-39.jp/hoiku/uehara",
+    "description": "「おうちのようなほいくえん」コンセプトのさくらさくみらい系列園。失敗を恐れず多様な体験を重視し、クラス別野菜栽培と食育、四季を感じる散歩を日常化。",
+    "rating": 4.5,
+    "review_count": 3,
+    "sentiment": "良い",
+    "review_summary": "先生と保護者の仲が良い"
+  },
+  {
+    "name": "グローバルキッズ幡ヶ谷園",
+    "photos": [
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-01s10ecp.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-02s10ecp.jpg",
+      "https://www.gkids.co.jp/facilities/_assets/img/mv-03s10ee7.jpg"
+    ],
+    "photo_url": "https://www.gkids.co.jp/facilities/nursery_114.html",
+    "description": "「思いやりのある子、のびのび楽しむ子」を育む保育方針。屋上テラスと近隣公園を活用した戸外遊びが充実。保育士・看護師・栄養士の職種間連携が特徴。",
+    "rating": null,
+    "review_count": 2,
+    "sentiment": "普通",
+    "review_summary": "職員の雰囲気は明るい"
+  },
+  {
+    "name": "笹幡保育園",
+    "photos": [
+      "https://sasahata.roukyou.gr.jp/wp-content/uploads/2025/01/top_banner-2-1024x504.png",
+      "https://sasahata.roukyou.gr.jp/wp-content/uploads/2024/07/goaisatu-3-1024x510.png",
+      "https://sasahata.roukyou.gr.jp/wp-content/uploads/2026/02/IMG_1534-225x300.jpg"
+    ],
+    "photo_url": "https://sasahata.roukyou.gr.jp/",
+    "description": "ワーカーズコープ運営。「こどもファースト」を掲げ、子どもの気持ちを第一に考える保育を実践。職員間の情報共有を徹底し、子ども・保護者・職員全てに笑顔あふれる園を目指す。",
+    "rating": null,
+    "review_count": 0,
+    "sentiment": "不明",
+    "review_summary": "口コミ少なく評価未定"
+  }
+]

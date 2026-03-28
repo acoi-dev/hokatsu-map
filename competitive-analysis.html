@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保活サービス競合分析 2026年3月版</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, 'Hiragino Sans', sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.7; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+  h1 { text-align: center; font-size: 2em; margin: 30px 0 10px; color: #fff; }
+  .subtitle { text-align: center; color: #888; margin-bottom: 40px; font-size: 0.95em; }
+
+  /* Executive Summary */
+  .exec-summary { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #333; border-radius: 12px; padding: 30px; margin-bottom: 40px; }
+  .exec-summary h2 { color: #60a5fa; margin-bottom: 15px; font-size: 1.3em; }
+  .exec-summary p { color: #ccc; margin-bottom: 10px; }
+  .exec-summary .highlight { color: #f59e0b; font-weight: bold; }
+
+  /* SEO Results */
+  .seo-section { background: #111118; border: 1px solid #2a2a3a; border-radius: 12px; padding: 25px; margin-bottom: 30px; }
+  .seo-section h2 { color: #a78bfa; margin-bottom: 15px; }
+  .seo-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  .seo-table th { background: #1e1e2e; color: #a78bfa; padding: 10px; text-align: left; border-bottom: 2px solid #333; }
+  .seo-table td { padding: 10px; border-bottom: 1px solid #222; }
+  .seo-table tr:hover { background: #1a1a2a; }
+  .rank-1 { color: #fbbf24; font-weight: bold; }
+  .rank-2 { color: #d1d5db; font-weight: bold; }
+  .rank-3 { color: #cd7f32; font-weight: bold; }
+
+  /* Service Cards */
+  .service-grid { display: grid; gap: 25px; }
+  .service-card {
+    background: #111118;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 25px;
+    transition: border-color 0.3s;
+  }
+  .service-card:hover { border-color: #60a5fa; }
+  .service-card.tier-s { border-left: 4px solid #fbbf24; }
+  .service-card.tier-a { border-left: 4px solid #60a5fa; }
+  .service-card.tier-b { border-left: 4px solid #34d399; }
+  .service-card.tier-c { border-left: 4px solid #888; }
+  .service-card.tier-dead { border-left: 4px solid #ef4444; }
+
+  .service-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+  .service-name { font-size: 1.3em; font-weight: bold; color: #fff; }
+  .service-operator { color: #888; font-size: 0.85em; }
+  .tier-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .tier-badge.s { background: #fbbf2433; color: #fbbf24; }
+  .tier-badge.a { background: #60a5fa33; color: #60a5fa; }
+  .tier-badge.b { background: #34d39933; color: #34d399; }
+  .tier-badge.c { background: #88888833; color: #aaa; }
+  .tier-badge.dead { background: #ef444433; color: #ef4444; }
+
+  .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+  @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } }
+
+  .feature-box { background: #0d0d15; border-radius: 8px; padding: 15px; }
+  .feature-box h4 { color: #60a5fa; margin-bottom: 8px; font-size: 0.9em; }
+  .feature-box.weakness h4 { color: #f87171; }
+  .feature-box.biz h4 { color: #fbbf24; }
+  .feature-box.scale h4 { color: #34d399; }
+
+  .feature-list { list-style: none; }
+  .feature-list li { padding: 3px 0; font-size: 0.85em; color: #bbb; }
+  .feature-list li::before { content: ""; margin-right: 6px; }
+  .feature-list.weakness li::before { content: ""; }
+  .feature-list.biz li::before { content: ""; }
+
+  /* Capability Matrix */
+  .matrix-section { background: #111118; border: 1px solid #2a2a3a; border-radius: 12px; padding: 25px; margin: 30px 0; overflow-x: auto; }
+  .matrix-section h2 { color: #60a5fa; margin-bottom: 15px; }
+  .matrix { width: 100%; border-collapse: collapse; font-size: 0.8em; min-width: 900px; }
+  .matrix th { background: #1e1e2e; color: #a78bfa; padding: 8px 6px; text-align: center; border: 1px solid #333; white-space: nowrap; }
+  .matrix th:first-child { text-align: left; min-width: 160px; }
+  .matrix td { padding: 8px 6px; text-align: center; border: 1px solid #222; }
+  .matrix td:first-child { text-align: left; font-weight: bold; color: #ddd; }
+  .matrix tr:nth-child(even) { background: #0d0d15; }
+  .matrix .yes { color: #34d399; font-weight: bold; }
+  .matrix .partial { color: #fbbf24; }
+  .matrix .no { color: #555; }
+
+  /* Gap Analysis */
+  .gap-section { background: linear-gradient(135deg, #1a0a2e 0%, #0e1a2e 100%); border: 1px solid #333; border-radius: 12px; padding: 30px; margin: 30px 0; }
+  .gap-section h2 { color: #f59e0b; margin-bottom: 15px; }
+  .gap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .gap-card { background: #0d0d1599; border: 1px solid #333; border-radius: 8px; padding: 20px; }
+  .gap-card h3 { color: #f59e0b; margin-bottom: 10px; font-size: 1em; }
+  .gap-card p { color: #bbb; font-size: 0.9em; }
+
+  .note { color: #666; font-size: 0.8em; margin-top: 30px; text-align: center; }
+  a { color: #60a5fa; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>保活サービス 競合分析レポート</h1>
+<p class="subtitle">2026年3月20日調査 | 全12サービス徹底比較</p>
+
+<!-- Executive Summary -->
+<div class="exec-summary">
+  <h2>エグゼクティブサマリー</h2>
+  <p>日本の保活（保育園探し）サービス市場は、<span class="highlight">コドモン「ホイシル」</span>と<span class="highlight">BABY JOB「えんさがそっ♪」</span>の2強体制が確立している。両者は東京都「保活ワンストップサービス」の公式パートナーとして19自治体1,276園をカバーし、行政との連携で独占的地位を築いている。</p>
+  <p>一方で、<span class="highlight">どのサービスも「空き状況のリアルタイム表示」「入園可能性の自動判定」「スコア自動計算」を十分に実現できていない</span>。これらは保活者が最も必要としている機能にもかかわらず、全サービスが自治体PDFへのリンクや解説記事で代替しているに過ぎない。</p>
+  <p>口コミ・レビューの蓄積量では<span class="highlight">minkou（14万件）</span>が圧倒的だが、保活特化ではなく園の総合評価サイトの位置づけ。保活特化サービスの口コミは質・量ともに不十分で、ユーザーが本当に知りたい「入れたか/落ちたか」「何点で内定したか」の情報は極めて少ない。</p>
+</div>
+
+<!-- SEO Analysis -->
+<div class="seo-section">
+  <h2>SEO競争力分析 - 実際のGoogle検索結果</h2>
+  <table class="seo-table">
+    <thead>
+      <tr>
+        <th>検索クエリ</th>
+        <th>1位</th>
+        <th>2位</th>
+        <th>3位</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>「保育園 空き 豊島区」</td>
+        <td class="rank-1">としまらいふ（個人ブログ）</td>
+        <td class="rank-2">ホイシル</td>
+        <td class="rank-3">豊島区ママフレ</td>
+        <td>ホイシルが2位。保活サポートも上位</td>
+      </tr>
+      <tr>
+        <td>「保育園 空き 渋谷区」</td>
+        <td class="rank-1">渋谷区公式HP</td>
+        <td class="rank-2">ホイシル</td>
+        <td class="rank-3">保活サポート</td>
+        <td>自治体公式が最強。ホイシル安定2位</td>
+      </tr>
+      <tr>
+        <td>「保活 アプリ」</td>
+        <td class="rank-1">個人ブログ記事</td>
+        <td class="rank-2">きっと（App Store）</td>
+        <td class="rank-3">えんさがそっ♪</td>
+        <td>まとめ記事・ASO順が上位</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color:#888; font-size:0.85em; margin-top:12px;">
+    <strong>SEO総評:</strong> ホイシルは「保育園 空き ○○区」系のキーワードで安定的に上位表示。ただし自治体公式HPが1位を占めることが多く、民間サービスは2-3位が限界。えんさがそっ♪はSEOよりも東京都ワンストップ経由の流入に依存。KIDSNA園ナビ、保活サポートも一部クエリで上位出現。
+  </p>
+</div>
+
+<!-- Capability Matrix -->
+<div class="matrix-section">
+  <h2>機能比較マトリクス</h2>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>サービス名</th>
+        <th>園検索</th>
+        <th>マップ</th>
+        <th>空き状況</th>
+        <th>見学予約</th>
+        <th>口コミ</th>
+        <th>指数計算</th>
+        <th>入園判定</th>
+        <th>保育料計算</th>
+        <th>比較機能</th>
+        <th>全国対応</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ホイシル</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>えんさがそっ♪</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>みんなの保育園情報</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>ここdeサーチ</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>保活サポート</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>KIDSNA園ナビ</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>東京都ワンストップ</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+      </tr>
+      <tr>
+        <td>保活なび</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+      </tr>
+      <tr>
+        <td>きっと</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+      </tr>
+      <tr>
+        <td>Picon</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+      </tr>
+      <tr>
+        <td>23区保育園マップ</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+      </tr>
+      <tr>
+        <td>ほいらく</td>
+        <td class="yes">&#9679;</td>
+        <td class="partial">&#9651;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="yes">&#9679;</td>
+        <td class="no">&#10005;</td>
+        <td class="no">&#10005;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="color:#888; font-size:0.8em; margin-top:10px;">&#9679; = 対応 / &#9651; = 一部対応・限定的 / &#10005; = 非対応</p>
+</div>
+
+<!-- Individual Service Cards -->
+<div class="service-grid">
+
+<!-- 1. ホイシル -->
+<div class="service-card tier-s">
+  <div class="service-header">
+    <div>
+      <div class="service-name">1. ホイシル (HoiciL)</div>
+      <div class="service-operator">運営: 株式会社コドモン | <a href="https://www.hoicil.com" target="_blank">hoicil.com</a></div>
+    </div>
+    <span class="tier-badge s">Tier S - 市場リーダー</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>全国68,163施設の検索（掲載数No.1）</li>
+        <li>ネット見学予約（6,575施設対応）</li>
+        <li>地図ベースの施設検索</li>
+        <li>施設の条件絞り込み（園庭あり・延長保育等）</li>
+        <li>応援メッセージ（在園保護者のみ投稿可）</li>
+        <li>一時保育の検索・予約</li>
+        <li>東京都保活ワンストップ公式パートナー（2年連続）</li>
+        <li>施設のHP無料作成（コドモン導入園向け）</li>
+        <li>コドモンICT連携で園の情報が常に最新</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>空き状況のリアルタイム表示なし（自治体HPへのリンクのみ）</li>
+        <li>入園可能性の判定・予測機能なし</li>
+        <li>保育指数（スコア）の自動計算なし</li>
+        <li>口コミは「応援メッセージ」形式で、ネガティブ情報が出にくい</li>
+        <li>保育料のシミュレーション機能なし</li>
+        <li>保護者同士のコミュニティ機能なし</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>コドモンICTシステムのSaaS月額（5,500円〜）が主収益</li>
+        <li>全国25,124施設がコドモン導入（2026年3月時点）</li>
+        <li>ARR 15億円超、売上前期比約2倍で成長</li>
+        <li>ホイシル自体は無料（コドモン導入園への付加価値）</li>
+        <li>外部資金調達なしで成長（キャッシュフロー経営）</li>
+        <li>保育士採用支援（自治体との連携協定）</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>掲載施設数: 68,163施設（業界No.1）</li>
+        <li>ネット受付施設数: 6,575施設（業界No.1）</li>
+        <li>問い合わせ数: 前年比246%増</li>
+        <li>月間PV/UU: 非公開（推定200-500万PV）</li>
+        <li>SEO: 「保育園 空き ○○区」で安定2位</li>
+        <li>東京都19自治体1,276園でワンストップ対応</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 2. えんさがそっ♪ -->
+<div class="service-card tier-s">
+  <div class="service-header">
+    <div>
+      <div class="service-name">2. えんさがそっ♪</div>
+      <div class="service-operator">運営: BABY JOB株式会社（TOKYO PRO Market上場） | <a href="https://ensagaso.com" target="_blank">ensagaso.com</a></div>
+    </div>
+    <span class="tier-badge s">Tier S - 市場リーダー</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>保育施設の検索（施設種別・開園時間で絞り込み）</li>
+        <li>ネット見学予約</li>
+        <li>口コミ投稿・閲覧（在園/見学者の保護者）</li>
+        <li>キープリスト（お気に入り保存＋メモ＋共有）</li>
+        <li>パートナーとの情報共有機能（シェア）</li>
+        <li>園の先生が更新する最新情報の閲覧</li>
+        <li>保活コラム記事（指数の解説等）</li>
+        <li>東京都保活ワンストップ公式パートナー</li>
+        <li>DXイノベーション大賞2024特別賞受賞</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>空き状況のリアルタイム自動取得なし</li>
+        <li>入園可能性の判定・予測機能なし</li>
+        <li>保育指数の自動計算ツールなし（記事解説のみ）</li>
+        <li>保育料シミュレーションなし</li>
+        <li>口コミの蓄積量がminkouに比べ少ない</li>
+        <li>全国の掲載施設数はホイシルに劣る</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>主力は「手ぶら登園」（保育園向け紙おむつサブスク）</li>
+        <li>2024年2月期 売上16.5億円（前期比88%増）</li>
+        <li>手ぶら登園 導入施設5,000超</li>
+        <li>2024年12月 TOKYO PRO Market上場</li>
+        <li>えんさがそっ♪は園児集客チャネルとして園に提供</li>
+        <li>園向け課金（プレミアム掲載・動画制作等）</li>
+        <li>「誰でも決済」（園向けキャッシュレス）も展開</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>月間ユーザー: 40万人超</li>
+        <li>リリース3週間でPV30,000超（2022年当時）</li>
+        <li>見学予約対応施設: 拡大中（具体数非公開）</li>
+        <li>SEO: 保活系キーワードで中位</li>
+        <li>東京都ワンストップ経由の流入が主力</li>
+        <li>Instagram等SNSでの認知獲得に注力</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 3. みんなの保育園情報 -->
+<div class="service-card tier-a">
+  <div class="service-header">
+    <div>
+      <div class="service-name">3. みんなの幼稚園・保育園情報 (minkou)</div>
+      <div class="service-operator">運営: 株式会社イトクロ | <a href="https://www.minkou.jp/kinder/" target="_blank">minkou.jp/kinder</a></div>
+    </div>
+    <span class="tier-badge a">Tier A - 口コミ王者</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>全国47,903校の施設情報</li>
+        <li>口コミ142,867件（圧倒的業界最大）</li>
+        <li>多軸評価（先生・教育内容・施設・アクセス・方針）</li>
+        <li>口コミランキング（総合・カテゴリ別）</li>
+        <li>都道府県・市区町村・駅からの検索</li>
+        <li>閲覧履歴の記録</li>
+        <li>学校（小中高大）と同一プラットフォーム</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>空き状況の表示なし</li>
+        <li>見学予約機能なし</li>
+        <li>指数計算・入園判定なし</li>
+        <li>保育料シミュレーションなし</li>
+        <li>保活に特化していない（園の総合評価サイト）</li>
+        <li>口コミは匿名性が高く信頼性にばらつき</li>
+        <li>「入れたか/落ちたか」の保活実体験情報が少ない</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>広告収益モデル（ディスプレイ広告）</li>
+        <li>学校・教育施設向けの掲載広告</li>
+        <li>みんなの学校情報（小中高大）と共通基盤</li>
+        <li>SEOドリブンの集客→広告マネタイズ</li>
+        <li>株式会社イトクロ（東証グロース市場）</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>掲載校数: 47,903校</li>
+        <li>口コミ数: 142,867件</li>
+        <li>教育カテゴリで国内3位（Similarweb）</li>
+        <li>月間訪問数: 推定1,000万以上（サイト全体）</li>
+        <li>SEO: 「○○保育園 口コミ」で強い</li>
+        <li>園名指名検索で高順位</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 4. ここdeサーチ -->
+<div class="service-card tier-a">
+  <div class="service-header">
+    <div>
+      <div class="service-name">4. ここdeサーチ</div>
+      <div class="service-operator">運営: こども家庭庁（WAM委託） | <a href="https://www.wam.go.jp/kokodesearch/" target="_blank">wam.go.jp/kokodesearch</a></div>
+    </div>
+    <span class="tier-badge a">Tier A - 行政公式DB</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>全国の認可・認可外保育施設の公式情報</li>
+        <li>地域・最寄り駅からの検索</li>
+        <li>施設種別（認可/認可外/認定こども園等）で絞り込み</li>
+        <li>定員・実際の保育料の表示</li>
+        <li>施設の保育内容・保育者情報</li>
+        <li>2025年4月〜経営情報の見える化（新制度）</li>
+        <li>CSV形式でのデータダウンロード</li>
+        <li>マップ表示対応</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>UIが古く使いにくい（行政システム特有）</li>
+        <li>見学予約機能なし</li>
+        <li>口コミ・レビュー機能なし</li>
+        <li>指数計算・入園判定なし</li>
+        <li>空き状況はリアルタイムではない（施設報告ベース）</li>
+        <li>モバイル最適化が不十分</li>
+        <li>データ更新頻度が低い（施設側の入力依存）</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>国の事業（税金で運営）</li>
+        <li>こども家庭庁の子ども・子育て支援情報公表制度</li>
+        <li>施設は情報公表が義務</li>
+        <li>WAM（福祉医療機構）が運営委託先</li>
+        <li>収益化の概念なし</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>全国の認可施設をほぼ網羅（数万施設）</li>
+        <li>自治体HPからのリンクで一定の流入</li>
+        <li>SEO: 弱い（UIがJS依存で検索エンジンに不利）</li>
+        <li>一般保護者の認知度は非常に低い</li>
+        <li>主に自治体・事業者向けデータベースとして機能</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 5. 東京都保活ワンストップ -->
+<div class="service-card tier-a">
+  <div class="service-header">
+    <div>
+      <div class="service-name">5. 東京都保活ワンストップポータルサイト</div>
+      <div class="service-operator">運営: 東京都 / GovTech東京 | <a href="https://hokatsu-onestop.metro.tokyo.lg.jp/" target="_blank">hokatsu-onestop.metro.tokyo.lg.jp</a></div>
+    </div>
+    <span class="tier-badge a">Tier A - 行政ハブ</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>保育施設一覧・詳細表示</li>
+        <li>見学予約（ホイシル/えんさがそっ♪経由）</li>
+        <li>保活オンライン相談（11自治体）</li>
+        <li>保育指数シミュレーション（9自治体）</li>
+        <li>自治体の入園申請ページへのリンク</li>
+        <li>保活関連の最新情報の配信</li>
+        <li>19自治体1,276園をカバー（2025年9月拡大）</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>東京都限定（他道府県は対象外）</li>
+        <li>19自治体のみ（23区すべてではない）</li>
+        <li>実体はホイシル/えんさがそっ♪へのポータル</li>
+        <li>口コミ・レビュー機能なし</li>
+        <li>指数シミュレーションは9自治体のみ</li>
+        <li>空き状況のリアルタイム表示は限定的</li>
+        <li>入園申請のオンライン完結はまだ一部</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>東京都の行政事業（税金運営）</li>
+        <li>GovTech東京が推進</li>
+        <li>民間（ホイシル/えんさがそっ♪）との官民連携</li>
+        <li>保育ICTシステム事業者とも連携</li>
+        <li>自治体DXの一環として予算化</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>対象: 19自治体1,276園</li>
+        <li>2024年度: 3自治体123園からスタート</li>
+        <li>2025年度: 19自治体に大幅拡大</li>
+        <li>SEO: 「保活ワンストップ」で上位</li>
+        <li>東京都の広報チャネルで周知</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 6. 保活サポート -->
+<div class="service-card tier-b">
+  <div class="service-header">
+    <div>
+      <div class="service-name">6. 保活サポート（旧: 保活のミカタ）</div>
+      <div class="service-operator">運営: 株式会社canwork | <a href="https://www.hokatsunomikata.com/" target="_blank">hokatsunomikata.com</a></div>
+    </div>
+    <span class="tier-badge b">Tier B - SEO特化</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>全国の保育園検索</li>
+        <li>待機児童数ランキング</li>
+        <li>入園決定率の表示（区ごと）</li>
+        <li>保育料ランキング</li>
+        <li>空き状況情報（ここdeサーチ連携）</li>
+        <li>保活ノウハウ記事</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>見学予約機能なし</li>
+        <li>口コミ機能なし</li>
+        <li>指数計算なし</li>
+        <li>入園判定なし</li>
+        <li>個人または小規模チーム運営で更新頻度にムラ</li>
+        <li>データはここdeサーチの二次利用</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>広告収益（アドセンス等）</li>
+        <li>SEOコンテンツマーケティング</li>
+        <li>小規模運営のメディアサイト</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>SEO: 「保育園 空き ○○区」で3-5位程度</li>
+        <li>「○○区 待機児童」で上位</li>
+        <li>記事コンテンツのSEOが強い</li>
+        <li>月間PV: 非公開（推定数十万PV）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 7. KIDSNA園ナビ -->
+<div class="service-card tier-b">
+  <div class="service-header">
+    <div>
+      <div class="service-name">7. KIDSNA園ナビ</div>
+      <div class="service-operator">運営: 株式会社ネクストビート | <a href="https://ennavi.kidsna.com/" target="_blank">ennavi.kidsna.com</a></div>
+    </div>
+    <span class="tier-badge b">Tier B - メディア連携</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>約35,000件の保育園・幼稚園情報</li>
+        <li>園オリジナル紹介ムービー制作・掲載</li>
+        <li>保育士インタビュー記事</li>
+        <li>園見学のオンライン申込</li>
+        <li>保活コラム・ハウツー記事</li>
+        <li>KIDSNAメディア（月間800万PV）との連携</li>
+        <li>キズナシッター（ベビーシッター）との連携</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>空き状況の表示なし</li>
+        <li>口コミ・レビュー機能なし</li>
+        <li>指数計算なし</li>
+        <li>保活ワンストップ非参画</li>
+        <li>園向けの課金サービスが主で、保護者向け機能は限定的</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>園向け課金（プレミアム掲載・動画制作）</li>
+        <li>園児集客支援サービス</li>
+        <li>保育士求人「保育士バンク！」との連携</li>
+        <li>KIDSNAメディアの広告収益</li>
+        <li>ネクストビートはライフイベント領域のプラットフォーム</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>掲載施設数: 約35,000件</li>
+        <li>KIDSNA全体: 月間800万PV</li>
+        <li>SEO: 保活コラムで中位</li>
+        <li>園名検索では一部表示あり</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 8. 保活なび -->
+<div class="service-card tier-c">
+  <div class="service-header">
+    <div>
+      <div class="service-name">8. 保活なび</div>
+      <div class="service-operator">運営: 株式会社ウッドバレー | <a href="https://hokatsu-navi.com/" target="_blank">hokatsu-navi.com</a></div>
+    </div>
+    <span class="tier-badge c">Tier C - ニッチアプリ</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>保育園検索（エリア・施設種類・距離・キーワード）</li>
+        <li>マップ検索（現在地周辺）</li>
+        <li>口コミ投稿・閲覧（評価スコアあり）</li>
+        <li>口コミランキング</li>
+        <li>お気に入り登録</li>
+        <li>保活基礎知識コンテンツ</li>
+        <li>iOS/Androidアプリ提供</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>対象エリア限定（東京・神奈川・埼玉・千葉）</li>
+        <li>空き状況表示なし</li>
+        <li>見学予約機能なし</li>
+        <li>指数計算なし</li>
+        <li>ユーザー数が少なく口コミの蓄積も薄い</li>
+        <li>開発リソースが限定的（小規模チーム）</li>
+        <li>最終更新が不明瞭</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>アプリ内広告（推定）</li>
+        <li>小規模運営で収益性は低いと推定</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>DL数: 非公開（推定数千〜数万）</li>
+        <li>SEO: ほぼ表示されない</li>
+        <li>認知度: 非常に低い</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 9. きっと -->
+<div class="service-card tier-c">
+  <div class="service-header">
+    <div>
+      <div class="service-name">9. 保活アプリ「きっと」</div>
+      <div class="service-operator">運営: 株式会社プレジニア | <a href="https://apps.apple.com/jp/app/id1188511968" target="_blank">App Store</a></div>
+    </div>
+    <span class="tier-badge c">Tier C - 開発停滞</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>保育園マッピング（自宅からの徒歩距離・時間表示）</li>
+        <li>電話番号・住所のワンタップ表示</li>
+        <li>見学メモ登録機能</li>
+        <li>お気に入り登録（入園希望順に整理）</li>
+        <li>iOSアプリ</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>対象エリア限定（東京23区・横浜・川崎・大阪等）</li>
+        <li>データが2016年頃のまま更新されていない疑い</li>
+        <li>新設保育園が反映されていない</li>
+        <li>空き状況・指数計算・口コミ一切なし</li>
+        <li>Androidアプリなし</li>
+        <li>開発が実質停止している可能性</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>無料アプリ（収益モデル不明）</li>
+        <li>保活経験者の個人プロジェクト発</li>
+        <li>持続的な収益化は実現できていない模様</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>App Storeレビュー: 少数</li>
+        <li>ASO: 「保活 アプリ」でApp Store上位</li>
+        <li>Web SEO: ほぼ表示されない</li>
+        <li>認知度: 保活ブログ記事経由のみ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 10. Picon -->
+<div class="service-card tier-c">
+  <div class="service-header">
+    <div>
+      <div class="service-name">10. Picon（ピコン）</div>
+      <div class="service-operator">運営: nt Inc. | <a href="https://nt-inc.jp/picon/" target="_blank">nt-inc.jp/picon</a></div>
+    </div>
+    <span class="tier-badge c">Tier C - 新興マイナー</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>できること（機能一覧）</h4>
+      <ul class="feature-list">
+        <li>全国対応の保育園検索</li>
+        <li>マップ検索</li>
+        <li>認可/認可外の切り替え表示</li>
+        <li>施設詳細（定員・保育料・職員数）</li>
+        <li>園へのメッセージ・問い合わせ機能</li>
+        <li>保活メモ・お気に入り</li>
+        <li>iOS/Android/Web対応</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>できないこと（弱点）</h4>
+      <ul class="feature-list weakness">
+        <li>空き状況表示なし</li>
+        <li>口コミ機能なし</li>
+        <li>指数計算なし</li>
+        <li>DL数100+（Google Play表示）で極めて少ない</li>
+        <li>園側のレスポンスが得られるか不明</li>
+        <li>認知度がほぼゼロ</li>
+      </ul>
+    </div>
+    <div class="feature-box biz">
+      <h4>ビジネスモデル</h4>
+      <ul class="feature-list biz">
+        <li>「HOIKU and WELLNESS Partner」を標榜</li>
+        <li>保育士が開発に関与</li>
+        <li>収益モデル不明確</li>
+      </ul>
+    </div>
+    <div class="feature-box scale">
+      <h4>ユーザー規模・SEO</h4>
+      <ul class="feature-list">
+        <li>Google Play DL数: 100+</li>
+        <li>SEO: ほぼ表示されない</li>
+        <li>2021年10月リリース</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 11. ママスタ保活 -->
+<div class="service-card tier-dead">
+  <div class="service-header">
+    <div>
+      <div class="service-name">11. ママスタ保活</div>
+      <div class="service-operator">運営: 株式会社インタースペース | <a href="https://hokatsu.mamastar.jp/" target="_blank">hokatsu.mamastar.jp</a></div>
+    </div>
+    <span class="tier-badge dead">サービス終了</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>サービス概要（終了前）</h4>
+      <ul class="feature-list">
+        <li>エリア・駅・現在地からの保育園検索</li>
+        <li>保育園種別・保育年齢・土日/延長保育の条件検索</li>
+        <li>23区の保育所数・定員数・入園決定率の表示</li>
+        <li>現在地からの地図表示</li>
+        <li>マンション建設情報（来年度の競争予測に活用）</li>
+      </ul>
+    </div>
+    <div class="feature-box weakness">
+      <h4>終了の背景</h4>
+      <ul class="feature-list weakness">
+        <li>2025年3月26日15時にサービス終了</li>
+        <li>終了理由は公式発表なし</li>
+        <li>推定: 待機児童の減少でニーズ縮小</li>
+        <li>推定: ホイシル/えんさがそっ♪との競争に敗退</li>
+        <li>推定: 行政ワンストップ化で民間の立ち位置が縮小</li>
+        <li>ママスタ本体のリソースを他事業に集中</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 12. その他発見サービス -->
+<div class="service-card tier-b">
+  <div class="service-header">
+    <div>
+      <div class="service-name">12. その他発見されたサービス</div>
+    </div>
+    <span class="tier-badge b">番外編</span>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-box">
+      <h4>東京23区保育園マップ (23kids.tokyo)</h4>
+      <ul class="feature-list">
+        <li>個人運営の23区保育園マップ</li>
+        <li>Googleマップ上に全認可・認証・小規模・認可外を表示</li>
+        <li>保育料計算機（夫婦年収入力で各区の月額保育料試算）</li>
+        <li>23区の認可保育園空き状況一覧（年1回更新）</li>
+        <li>23区の待機児童数比較</li>
+        <li>弱点: データ更新が2020年8月で停止</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <h4>ほいらく (hoiraku.jp) - 岡山特化</h4>
+      <ul class="feature-list">
+        <li>岡山市の保育施設検索</li>
+        <li>保育利用調整点数シミュレーション（数少ない指数計算ツール）</li>
+        <li>保育料金シミュレーション</li>
+        <li>弱点: 岡山限定で全国展開なし</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <h4>キーン保育園探し (kinne.jp)</h4>
+      <ul class="feature-list">
+        <li>東京都の保育園検索（23区+多摩）</li>
+        <li>プロの入園相談員による無料相談</li>
+        <li>見学予約の代行サービス</li>
+        <li>豊富な写真・施設情報</li>
+        <li>リアルタイム空き状況の更新を今後予定</li>
+        <li>弱点: 口コミなし、指数計算なし</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <h4>えんみっけ！(enmikke.jp)</h4>
+      <ul class="feature-list">
+        <li>横浜市公式パートナーの園探しサイト</li>
+        <li>保育士・幼稚園教諭の就職活動支援が主目的</li>
+        <li>園見学予約機能あり</li>
+        <li>横浜市が掲載料を負担（園は無料）</li>
+        <li>弱点: 横浜市限定、保護者向けよりは求職者向け</li>
+      </ul>
+    </div>
+  </div>
+  <div class="feature-grid" style="margin-top:15px;">
+    <div class="feature-box">
+      <h4>自治体LINE保活支援（練馬区等）</h4>
+      <ul class="feature-list">
+        <li>LINE公式アカウントで保育指数シミュレーション</li>
+        <li>チャットボットで保活Q&A</li>
+        <li>約30問の質問で指数を試算（所要10-15分）</li>
+        <li>子育て情報の配信</li>
+        <li>弱点: 各自治体ごとに個別提供、横展開されていない</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <h4>東京都保育園空き状況マップ (hoiku-map.tokyo)</h4>
+      <ul class="feature-list">
+        <li>東京都の保育園空き状況をマップで可視化</li>
+        <li>JavaScript依存のWebアプリ</li>
+        <li>弱点: 詳細不明、SEOほぼなし</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- service-grid end -->
+
+<!-- Gap Analysis -->
+<div class="gap-section">
+  <h2>市場のギャップ分析 - 誰もやっていないこと</h2>
+  <div class="gap-grid">
+    <div class="gap-card">
+      <h3>1. リアルタイム空き状況の自動取得・表示</h3>
+      <p>全サービスが自治体HPへのリンクか、手動更新のデータに依存。自治体が月1回PDFで公開する空き状況を自動的にスクレイピング・構造化して表示するサービスは存在しない。保護者は今も各区のHPを個別に巡回する必要がある。</p>
+    </div>
+    <div class="gap-card">
+      <h3>2. 入園可能性のAI予測・判定</h3>
+      <p>「この園に、このスコアで、この年齢で申し込んだら入れるか？」を予測するサービスは皆無。過去の入園実績データ（最低スコア等）は一部自治体が公開しているが、それを統合して判定するサービスがない。保護者は「入れるかわからない」まま申し込んでいる。</p>
+    </div>
+    <div class="gap-card">
+      <h3>3. 汎用的な保育指数シミュレーター</h3>
+      <p>自治体ごとに異なる指数計算をカバーするシミュレーターは、一部自治体がLINEやチャットボットで個別提供しているのみ。「ほいらく」が岡山市向けに提供しているが、全国対応のものはゼロ。東京都ワンストップでも9自治体のみ。</p>
+    </div>
+    <div class="gap-card">
+      <h3>4. 「入れた/落ちた」のリアル体験共有</h3>
+      <p>minkouは14万件の口コミがあるが、園の教育方針や雰囲気の評価が中心。「何点で申し込んで入れた/落ちた」「第何希望で内定した」という保活実体験の共有プラットフォームはない。これが保護者にとって最も価値のある情報。</p>
+    </div>
+    <div class="gap-card">
+      <h3>5. 園ごとの過年度ボーダーライン可視化</h3>
+      <p>「この園の0歳クラスは過去3年間、最低何点で入園できたか」を可視化しているサービスはない。一部自治体は最低指数を公開しているが、園×年齢×年度のマトリクスで比較できるツールは存在しない。</p>
+    </div>
+    <div class="gap-card">
+      <h3>6. 保育料の横断比較シミュレーション</h3>
+      <p>23kids.tokyoが区ごとの保育料計算機を提供していたが2020年で更新停止。認可/認証/認可外の保育料を年収に基づいて横断的に比較できる最新サービスはない。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Why unknown section -->
+<div class="seo-section">
+  <h2>なぜ保活サービスはユーザーに知られていないのか</h2>
+  <table class="seo-table">
+    <thead>
+      <tr>
+        <th>原因</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">利用期間が極端に短い</td>
+        <td>保活は人生で1-2回、各回3-6ヶ月程度。口コミが蓄積する前にユーザーが離脱する。サービスを使い終わった人が二度と戻ってこないため、自然な口コミ拡散が起きにくい。</td>
+      </tr>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">自治体HPが最強の情報源</td>
+        <td>空き状況・申込方法・指数表は自治体HPに全て掲載されている。Google検索でも自治体公式が1位。民間サービスは「自治体HPの情報を見やすく整理しただけ」になりがちで差別化が難しい。</td>
+      </tr>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">ママ友ネットワークの方が信頼される</td>
+        <td>「あの園の先生はこう」「ここは入りやすかった」というリアル口コミはLINEグループやInstagramで流通。匿名の口コミサイトより、知人の体験談の方が信頼性が高い。</td>
+      </tr>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">待機児童の減少</td>
+        <td>2017年のピーク（26,081人）から2024年は2,680人まで減少。「保育園落ちた日本死ね」の時代と比べ、保活の切実さが薄れている地域が多い。激戦区は都心部に限定されてきている。</td>
+      </tr>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">ビジネスモデルが弱い</td>
+        <td>保護者への直接課金は困難（無料が当然の領域）。園への課金も少子化で園の経営余力が減少。広告モデルも保活期間の短さからLTV低い。結果、大規模な広告投資ができない。</td>
+      </tr>
+      <tr>
+        <td style="white-space:nowrap; font-weight:bold; color:#f59e0b;">情報の自治体依存</td>
+        <td>保育園情報の大部分は自治体が管理。民間がリアルタイムの空き情報や指数計算を提供するには自治体との連携が不可欠だが、自治体ごとにデータ形式もシステムも異なり、全国統一的なサービス提供が困難。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Competitive Positioning Summary -->
+<div class="exec-summary" style="margin-top:30px;">
+  <h2>競合ポジショニング総括</h2>
+  <p><strong>勝者:</strong> <span class="highlight">ホイシル</span>（掲載数・SEO・行政連携で圧倒）+ <span class="highlight">えんさがそっ♪</span>（口コミ・UX・東京都ワンストップで追随）</p>
+  <p><strong>ニッチ生存:</strong> <span class="highlight">minkou</span>（口コミ14万件の資産）、<span class="highlight">保活サポート</span>（SEOコンテンツ）</p>
+  <p><strong>苦戦・停滞:</strong> 保活なび、きっと、Picon（小規模・更新停止・認知度ゼロ）</p>
+  <p><strong>撤退:</strong> ママスタ保活（2025年3月終了）</p>
+  <p style="margin-top: 15px;"><strong>最大の機会:</strong> 全サービスが「<span class="highlight">空き状況のリアルタイム表示</span>」「<span class="highlight">入園可能性のスコア判定</span>」「<span class="highlight">園ごとのボーダーライン可視化</span>」を実現できていない。これらを1つのアプリで統合提供することが、既存の2強を崩す唯一の戦略となる。特に東京都23区特化でデータ密度を高め、「保育園版 SUUMO」のポジションを取ることが最も有望。</p>
+</div>
+
+<p class="note">
+  調査日: 2026年3月20日 | データソース: Google検索結果、各サービス公式サイト、プレスリリース、App Store/Google Play<br>
+  ※ 月間PV等の一部数値は公開情報からの推定値を含みます
+</p>
+
+</div>
+</body>
+</html>

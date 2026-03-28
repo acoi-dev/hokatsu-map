@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保活リスト - 南池袋</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+
+.header {
+  background: #fff;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e5e5e7;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header h1 { font-size: 22px; font-weight: 700; }
+.header .sub { font-size: 13px; color: #86868b; margin-top: 2px; }
+
+.summary {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #1d1d1f;
+  line-height: 1.5;
+}
+.summary .num { font-weight: 700; color: #0071e3; }
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ctrl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #86868b;
+}
+.ctrl select {
+  background: #f5f5f7;
+  border: 1px solid #d2d2d7;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1d1d1f;
+}
+.pill-group {
+  display: flex;
+  gap: 0;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pill-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  background: #fff;
+  color: #86868b;
+  cursor: pointer;
+  border-right: 1px solid #d2d2d7;
+  transition: all 0.15s;
+}
+.pill-btn:last-child { border-right: none; }
+.pill-btn.active { background: #0071e3; color: #fff; }
+
+.filter-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid #d2d2d7;
+  background: #fff;
+  color: #86868b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tag.active { background: #e8f5e9; border-color: #4caf50; color: #2e7d32; }
+
+/* カードリスト */
+.list { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: all 0.15s;
+  border-left: 4px solid transparent;
+}
+.card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.card.has-vacancy { border-left-color: #4caf50; }
+.card.no-vacancy { border-left-color: #e0e0e0; }
+
+.card-row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.card-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+.card-name a {
+  color: #1d1d1f;
+  text-decoration: none;
+}
+.card-name a:hover { color: #0071e3; text-decoration: underline; }
+.card-dist {
+  font-size: 13px;
+  color: #86868b;
+  white-space: nowrap;
+  margin-left: 12px;
+  text-align: right;
+}
+.card-dist .walk { font-size: 16px; font-weight: 600; color: #1d1d1f; }
+
+.card-row2 {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vacancy-badge {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.vacancy-badge.has { background: #e8f5e9; color: #2e7d32; }
+.vacancy-badge.none { background: #f5f5f5; color: #999; }
+.vacancy-badge.border-high { background: #fff3e0; color: #e65100; }
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f5f5f7;
+  color: #666;
+}
+.card-tag.garden { background: #e8f5e9; color: #2e7d32; }
+.card-tag.no-garden { background: #fafafa; color: #bbb; }
+.card-tag.ext-long { background: #e3f2fd; color: #1565c0; }
+.card-tag.capacity { background: #f3e5f5; color: #7b1fa2; }
+
+.card-row3 {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #86868b;
+  flex-wrap: wrap;
+}
+.card-row3 a {
+  color: #0071e3;
+  text-decoration: none;
+}
+.card-row3 a:hover { text-decoration: underline; }
+
+.card-address {
+  font-size: 12px;
+  color: #86868b;
+  margin-top: 4px;
+}
+.card-address a {
+  color: #86868b;
+  text-decoration: none;
+}
+.card-address a:hover { color: #0071e3; text-decoration: underline; }
+
+.card-score {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #86868b;
+}
+.score-val { font-weight: 600; }
+.score-val.easy { color: #2e7d32; }
+.score-val.hard { color: #e65100; }
+.score-val.impossible { color: #c62828; }
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #86868b;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: #bbb;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>保活リスト</h1>
+  <div class="sub" id="sub-header"></div>
+  <div class="summary" id="summary"></div>
+  <div class="controls">
+    <div class="ctrl">対象:</div>
+    <div class="pill-group" id="age-pills"></div>
+    <div class="ctrl">
+      距離:
+      <select id="max-dist">
+        <option value="500">500m</option>
+        <option value="1000" selected>1km</option>
+        <option value="1500">1.5km</option>
+        <option value="2000">2km</option>
+        <option value="99999">全て</option>
+      </select>
+    </div>
+  </div>
+  <div class="filter-tags">
+    <div class="tag" id="tag-vacancy" onclick="toggleFilter('vacancy')">空きあり</div>
+    <div class="tag" id="tag-garden" onclick="toggleFilter('garden')">園庭あり</div>
+    <div class="tag" id="tag-ext" onclick="toggleFilter('ext')">延長20時以降</div>
+  </div>
+</div>
+
+<div class="list" id="list"></div>
+<div class="footer" id="footer"></div>
+
+<script>
+let DATA = null;
+let selectedAge = '1歳';
+let filters = { vacancy: false, garden: false, ext: false };
+
+const ages = ['0歳','1歳','2歳','3歳','4歳','5歳'];
+
+async function loadData() {
+  const resp = await fetch('data/hokatsu_data.json');
+  DATA = await resp.json();
+
+  // 年齢ピル生成
+  const pillGroup = document.getElementById('age-pills');
+  ages.forEach(age => {
+    const btn = document.createElement('button');
+    btn.className = `pill-btn${age === selectedAge ? ' active' : ''}`;
+    btn.textContent = age;
+    btn.onclick = () => { selectedAge = age; render(); };
+    pillGroup.appendChild(btn);
+  });
+
+  render();
+}
+
+function toggleFilter(key) {
+  filters[key] = !filters[key];
+  document.getElementById(`tag-${key}`).classList.toggle('active', filters[key]);
+  render();
+}
+
+function parseExtHour(str) {
+  if (!str) return 19;
+  const m = str.match(/(\d+)時/);
+  if (m) return parseInt(m[1]);
+  return 19;
+}
+
+function render() {
+  const maxDist = parseInt(document.getElementById('max-dist').value);
+
+  // ピル更新
+  document.querySelectorAll('.pill-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === selectedAge);
+  });
+
+  // フィルタ
+  let facilities = DATA.facilities.filter(f => {
+    if (!f.distance_home || f.distance_home > maxDist) return false;
+    const v = f.vacancy?.[selectedAge] || 0;
+    if (filters.vacancy && v <= 0) return false;
+    if (filters.garden && !f.has_garden) return false;
+    if (filters.ext && parseExtHour(f.extended_hours) < 20) return false;
+    return true;
+  });
+
+  // 近い順
+  facilities.sort((a, b) => (a.distance_home || 99999) - (b.distance_home || 99999));
+
+  // 統計
+  const allInRange = DATA.facilities.filter(f => f.distance_home && f.distance_home <= maxDist);
+  const withVacancy = allInRange.filter(f => (f.vacancy?.[selectedAge] || 0) > 0).length;
+
+  document.getElementById('sub-header').textContent =
+    `豊島区 / 各園の空き・ボーダー・距離を一覧比較`;
+  document.getElementById('summary').innerHTML =
+    `自宅から<span class="num">${maxDist >= 1000 ? (maxDist/1000)+'km' : maxDist+'m'}</span>圏内に` +
+    `<span class="num">${allInRange.length}</span>園、` +
+    `${selectedAge}クラスに空きがある園は<span class="num">${withVacancy}</span>園`;
+
+  // リスト描画
+  const listEl = document.getElementById('list');
+  listEl.innerHTML = '';
+
+  if (facilities.length === 0) {
+    listEl.innerHTML = '<div class="empty-state">条件に合う園がありません</div>';
+    return;
+  }
+
+  facilities.forEach(f => {
+    const v = f.vacancy?.[selectedAge] || 0;
+    const score = f.min_scores?.[selectedAge];
+    const walk = f.walk_home || Math.round((f.distance_home || 0) / 80);
+    const ext = f.extended_hours || '';
+    const extHour = parseExtHour(ext);
+
+    // 園名リンク
+    const nameLink = f.website
+      ? `<a href="${f.website}" target="_blank">${f.name}</a>`
+      : f.name;
+
+    // 住所 → Google Maps
+    const addr = f.address || '';
+    const addrFull = addr ? `豊島区${addr}` : '';
+    const mapsUrl = f.google_maps_url ||
+      (addrFull ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('東京都' + addrFull)}` : '');
+    const addrLink = mapsUrl
+      ? `<a href="${mapsUrl}" target="_blank">📍 ${addrFull || '地図'}</a>`
+      : addrFull;
+
+    // 電話番号
+    const phone = f.phone || '';
+    const phoneLink = phone ? `<a href="tel:${phone}">📞 ${phone}</a>` : '';
+
+    // 空きバッジ
+    let vacancyHtml;
+    if (v > 0 && (score === null || score === undefined)) {
+      vacancyHtml = `<span class="vacancy-badge has">${selectedAge} 空き${v}名</span>`;
+    } else if (v > 0 && score !== null && score !== undefined) {
+      vacancyHtml = `<span class="vacancy-badge border-high">${selectedAge} 空き${v}名 (ボーダー${score})</span>`;
+    } else {
+      vacancyHtml = `<span class="vacancy-badge none">${selectedAge} 満席</span>`;
+    }
+
+    // タグ
+    let tags = [];
+    if (f.has_garden === true) {
+      tags.push(`<span class="card-tag garden">🌳 園庭あり${f.garden_note ? '('+f.garden_note+')' : ''}</span>`);
+    } else if (f.has_garden === false) {
+      tags.push(`<span class="card-tag no-garden">園庭なし</span>`);
+    }
+    if (extHour >= 20) {
+      tags.push(`<span class="card-tag ext-long">🌙 ${ext}</span>`);
+    } else if (ext) {
+      tags.push(`<span class="card-tag">${ext}</span>`);
+    }
+    if (f.total_capacity) {
+      tags.push(`<span class="card-tag capacity">定員${f.total_capacity}</span>`);
+    }
+    if (f.category) {
+      const catLabel = f.category.includes('小規模') ? '小規模(0-2歳)' :
+                       f.category.includes('地域型') ? '小規模(0-2歳)' : '';
+      if (catLabel) tags.push(`<span class="card-tag">${catLabel}</span>`);
+    }
+
+    // スコア判定
+    let scoreHtml = '';
+    if (score !== null && score !== undefined) {
+      const diff = 20 - score;
+      if (diff >= 0) {
+        scoreHtml = `ボーダー <span class="score-val easy">${score}</span> → 点数20でOK`;
+      } else if (diff >= -15) {
+        scoreHtml = `ボーダー <span class="score-val hard">${score}</span> → 点数20では${-diff}点不足`;
+      } else {
+        scoreHtml = `ボーダー <span class="score-val impossible">${score}</span> → 点数20では${-diff}点不足`;
+      }
+    } else if (v > 0) {
+      scoreHtml = `<span class="score-val easy">前年全員内定</span> → 点数20で入れる可能性◎`;
+    } else {
+      scoreHtml = `<span class="score-val">前年全員内定</span>（現在満席）`;
+    }
+
+    const card = document.createElement('div');
+    card.className = `card ${v > 0 ? 'has-vacancy' : 'no-vacancy'}`;
+    card.innerHTML = `
+      <div class="card-row1">
+        <div class="card-name">${nameLink}</div>
+        <div class="card-dist">
+          <div class="walk">徒歩${walk}分</div>
+          <div>${f.distance_home}m</div>
+        </div>
+      </div>
+      <div class="card-address">${addrLink}</div>
+      <div class="card-row2">
+        ${vacancyHtml}
+        <div class="card-tags">${tags.join('')}</div>
+      </div>
+      <div class="card-score">${scoreHtml}</div>
+      <div class="card-row3">
+        ${phoneLink}
+        ${f.website ? `<a href="${f.website}" target="_blank">🌐 公式サイト</a>` : ''}
+        ${mapsUrl ? `<a href="${mapsUrl}" target="_blank">🗺 Google Maps</a>` : ''}
+      </div>
+    `;
+    listEl.appendChild(card);
+  });
+
+  document.getElementById('footer').textContent =
+    `${facilities.length}件表示 / データ: ${DATA.generated_at || '-'}`;
+}
+
+document.getElementById('max-dist').addEventListener('change', render);
+loadData();
+</script>
+</body>
+</html>

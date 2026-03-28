@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>豊島区 保育園 空き状況分析レポート</title>
+<style>
+  :root {
+    --red: #ef4444;
+    --orange: #f97316;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --purple: #8b5cf6;
+    --gray: #6b7280;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --card2: #334155;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --border: #475569;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #f8fafc;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    margin: 30px 0 16px 0;
+    padding-left: 12px;
+    border-left: 4px solid;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title.red { border-color: var(--red); color: var(--red); }
+  .section-title.orange { border-color: var(--orange); color: var(--orange); }
+  .section-title.green { border-color: var(--green); color: var(--green); }
+
+  .cards { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .card-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .badge-red { background: rgba(239,68,68,0.2); color: var(--red); }
+  .badge-orange { background: rgba(249,115,22,0.2); color: var(--orange); }
+  .badge-green { background: rgba(34,197,94,0.2); color: var(--green); }
+  .badge-blue { background: rgba(59,130,246,0.2); color: var(--blue); }
+  .badge-purple { background: rgba(139,92,246,0.2); color: var(--purple); }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .info-item {
+    background: var(--card2);
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  .info-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .info-value {
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .vacancy-chart {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .vacancy-bar {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+  .vacancy-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .vacancy-dot.empty { background: rgba(239,68,68,0.25); color: var(--red); }
+  .vacancy-dot.full { background: rgba(34,197,94,0.25); color: var(--green); }
+  .vacancy-arrow { color: var(--text-dim); font-size: 0.8rem; }
+
+  .reason-box {
+    background: var(--card2);
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 12px;
+    border-left: 3px solid;
+  }
+  .reason-box.red { border-color: var(--red); }
+  .reason-box.orange { border-color: var(--orange); }
+  .reason-box.green { border-color: var(--green); }
+  .reason-box h4 {
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+    color: var(--text-dim);
+  }
+  .reason-box p, .reason-box ul {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .reason-box ul { padding-left: 18px; }
+  .reason-box li { margin-bottom: 4px; }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+  }
+  .feature-tag {
+    background: rgba(59,130,246,0.15);
+    color: var(--blue);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.85rem;
+  }
+  .summary-table th, .summary-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary-table th {
+    background: var(--card2);
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .summary-table tr:hover { background: rgba(255,255,255,0.03); }
+
+  .conclusion {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 30px;
+  }
+  .conclusion h2 { font-size: 1.2rem; margin-bottom: 14px; color: #f8fafc; }
+  .conclusion p { font-size: 0.92rem; line-height: 1.8; color: var(--text); margin-bottom: 10px; }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    h1 { font-size: 1.4rem; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>豊島区 東池袋エリア 保育園 空き状況分析</h1>
+<p class="subtitle">2歳クラスの空き推移と各園の特徴・人気度を横断比較 / 2026年3月調査</p>
+
+<!-- ===================== 比較テーブル ===================== -->
+<h2 class="section-title" style="border-color: var(--blue); color: var(--blue);">全10園 比較サマリ</h2>
+<div style="overflow-x: auto;">
+<table class="summary-table">
+<thead>
+<tr>
+  <th>園名</th>
+  <th>種別</th>
+  <th>運営法人</th>
+  <th>全体定員</th>
+  <th>2歳定員</th>
+  <th>開園年</th>
+  <th>空き状況</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>東池袋早樹保育園</td><td>小規模A</td><td>株式会社日本チャイルドサポート</td><td>12</td><td>5</td><td>2013年</td><td style="color:var(--red)">常に空き</td></tr>
+<tr><td>キッズガーデン南大塚</td><td>私立認可</td><td>株式会社Kids Smile Project</td><td>60</td><td>11</td><td>2015年</td><td style="color:var(--red)">常に空き</td></tr>
+<tr><td>南大塚早樹保育園</td><td>小規模</td><td>株式会社日本チャイルドサポート</td><td>12</td><td>5</td><td>2014年</td><td style="color:var(--red)">常に空き</td></tr>
+<tr><td>ニチイキッズかみいけぶくろ</td><td>私立認可</td><td>株式会社ニチイ学館</td><td>70</td><td>14</td><td>2019年</td><td style="color:var(--red)">常に空き</td></tr>
+<tr><td>クオリスキッズ東池袋</td><td>私立認可</td><td>株式会社クオリス</td><td>60</td><td>12</td><td>2021年</td><td style="color:var(--orange)">空き傾向</td></tr>
+<tr><td>東池袋第一保育園</td><td>私立認可</td><td>HITOWAキッズライフ</td><td>100</td><td>19</td><td>民営化2023年</td><td style="color:var(--orange)">空き傾向</td></tr>
+<tr><td>ミアヘルサひびき池袋</td><td>私立認可</td><td>ミアヘルサ株式会社</td><td>50</td><td>11</td><td>2019年</td><td style="color:var(--orange)">空き傾向</td></tr>
+<tr><td>まちの保育園東池袋</td><td>私立認可</td><td>社会福祉法人毛里田睦会</td><td>40</td><td>6</td><td>2017年</td><td style="color:var(--green)">常に満席</td></tr>
+<tr><td>同援さくら保育園</td><td>私立認可</td><td>社福 恩賜財団東京都同胞援護会</td><td>110</td><td>20</td><td>2006年</td><td style="color:var(--green)">常に満席</td></tr>
+<tr><td>グローバルキッズ雑司が谷</td><td>私立認可</td><td>株式会社グローバルキッズ</td><td>66</td><td>12</td><td>2017年</td><td style="color:var(--green)">常に満席</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===================== 常に空きあり ===================== -->
+<h2 class="section-title red">常に空きあり（2歳クラスが半年間埋まらない）</h2>
+
+<div class="cards">
+
+<!-- 1. 東池袋早樹保育園 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">1. 東池袋早樹保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">東池袋2-13-7 東急ドエル・アルス大塚台1F</div>
+    </div>
+    <span class="badge badge-red">小規模保育A型</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社日本チャイルドサポート</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2013年11月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">12名（0歳2/1歳5/2歳5）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">JR大塚駅 徒歩4分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">対象年齢</div>
+      <div class="info-value">生後57日〜2歳児クラス</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移（直近6期）</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot empty">4</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">4</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">4</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">4</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">小規模・少人数</span>
+    <span class="feature-tag">マンション1F</span>
+    <span class="feature-tag">手作り給食</span>
+  </div>
+
+  <div class="reason-box red">
+    <h4>空きが続く主な理由（考察）</h4>
+    <ul>
+      <li><strong>「3歳の壁」問題</strong>：小規模保育は2歳クラスまでしか在籍できず、3歳から転園が必須。保護者はこの「二度手間」を嫌い、最初から0〜5歳の認可園を選ぶ傾向が強い</li>
+      <li><strong>定員5名に対して空き4名</strong>：2歳で小規模に入れるメリットが薄い（残り1年しかいられない）。1歳入園が本命で、2歳は「残り枠」扱い</li>
+      <li><strong>マンション1階で園庭なし</strong>：外遊びは近隣公園まで移動が必要。2歳児は活発になる時期で、園庭のある園を選びたい保護者心理</li>
+      <li><strong>口コミ・評判の情報が極めて少ない</strong>：保育口コミサイトにレビューほぼゼロ。判断材料がなく候補に入りにくい</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. キッズガーデン南大塚 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">2. キッズガーデン南大塚</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">南大塚3-20-6 大塚FTビル3F</div>
+    </div>
+    <span class="badge badge-red">私立認可</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社Kids Smile Project</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2015年9月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">60名（0歳6/1歳10/2歳11/3歳11/4・5歳22）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜20:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">JR大塚駅 徒歩3分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">教育プログラム</div>
+      <div class="info-value">伸芽会共同開発 KID'S PREP. PROGRAM</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot empty">3</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">3</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">3</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">3</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">伸芽会プログラム</span>
+    <span class="feature-tag">延長20:15まで</span>
+    <span class="feature-tag">大塚駅3分</span>
+    <span class="feature-tag">ビル3F</span>
+  </div>
+
+  <div class="reason-box red">
+    <h4>空きが続く主な理由（考察）</h4>
+    <ul>
+      <li><strong>ビル3階という立地</strong>：エレベーターあるとはいえ、毎日子供を連れてビル3階は心理的ハードル。園庭がなく、外遊びは近隣公園に依存</li>
+      <li><strong>口コミに「広告と実態の乖離」の指摘</strong>：伸芽会ブランドへの期待値が高い分、現場とのギャップが不満に繋がりやすい</li>
+      <li><strong>株式会社運営への不安</strong>：保育園選びでは社会福祉法人が好まれる傾向があり、企業運営は敬遠されがち</li>
+      <li><strong>大塚駅エリア</strong>：東池袋・池袋駅を生活圏とする世帯にとっては微妙にエリア外</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3. 南大塚早樹保育園 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">3. 南大塚早樹保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">南大塚3-41-10</div>
+    </div>
+    <span class="badge badge-red">小規模保育</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社日本チャイルドサポート</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2014年12月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">12名（0歳2/1歳5/2歳5）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">JR大塚駅 徒歩3分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">対象年齢</div>
+      <div class="info-value">生後57日〜2歳児クラス</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot empty">5</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">5</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">5</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">5</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">小規模・少人数</span>
+    <span class="feature-tag">手作り給食</span>
+    <span class="feature-tag">管理栄養士常駐</span>
+  </div>
+
+  <div class="reason-box red">
+    <h4>空きが続く主な理由（考察）</h4>
+    <ul>
+      <li><strong>東池袋早樹と同じ「3歳の壁」問題</strong>：定員5名のうち長期間5名空きは、2歳入園の需要がほぼゼロであることを示す</li>
+      <li><strong>口コミ0件</strong>：保育サイトに口コミが一切なく、判断材料なし。同じ法人（日本チャイルドサポート）の東池袋早樹も同様に空きが常態化しており、法人の認知度が低い</li>
+      <li><strong>大塚駅エリアの供給過多</strong>：周辺に認可保育園が密集しており、あえて小規模を選ぶ動機が弱い</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 4. ニチイキッズかみいけぶくろ -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">4. ニチイキッズかみいけぶくろ保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">上池袋2-35-15</div>
+    </div>
+    <span class="badge badge-red">私立認可</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社ニチイ学館</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2019年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">70名（0歳6/1歳10/2歳14/3歳14/4・5歳26）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">北池袋駅 徒歩9分 / 池袋駅 徒歩13分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">口コミ評価</div>
+      <div class="info-value">みんなの保育園 4.0/5.0（2件）</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot empty">7</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">7</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">6</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">6</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">4</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">英語教室</span>
+    <span class="feature-tag">リトミック</span>
+    <span class="feature-tag">人工芝園庭</span>
+    <span class="feature-tag">おむつ定額サービス</span>
+  </div>
+
+  <div class="reason-box red">
+    <h4>空きが続く主な理由（考察）</h4>
+    <ul>
+      <li><strong>立地が最大のネック</strong>：上池袋は池袋駅から北東に離れた住宅街。北池袋駅から9分、池袋駅から13分で、通勤経路から外れる世帯が多い。明治通り沿いで「園前の交通量が多い」との口コミあり</li>
+      <li><strong>2歳クラス定員14名は過大</strong>：70名定員のうち2歳だけで14名。この規模のエリアで2歳クラスの需要に対して供給が大きすぎる</li>
+      <li><strong>空き7名→2名と改善傾向だが</strong>：年度後半で徐々に埋まる傾向は見えるが、年度初の段階で半分が空いていることは深刻</li>
+      <li><strong>ニチイ学館ブランド</strong>：介護事業が本業の大手企業。保育専業ではないことへの不安も考えられる</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===================== 空き傾向 ===================== -->
+<h2 class="section-title orange">空き傾向（最近空きが出始めた）</h2>
+
+<div class="cards">
+
+<!-- 5. クオリスキッズ東池袋 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">5. クオリスキッズ東池袋保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">東池袋4-34-9</div>
+    </div>
+    <span class="badge badge-orange">私立認可</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社クオリス</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2021年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">60名（1歳12/2歳12/3歳12/4・5歳24）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">東池袋駅 / サンシャイン60近接</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">対象年齢</div>
+      <div class="info-value">1歳0ヶ月〜5歳児クラス（0歳なし）</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">開園5年目</span>
+    <span class="feature-tag">0歳児受入なし</span>
+    <span class="feature-tag">サンシャイン近接</span>
+  </div>
+
+  <div class="reason-box orange">
+    <h4>空きの理由（考察）</h4>
+    <ul>
+      <li><strong>2021年開園の新園</strong>：まだ卒園生の実績・口コミが蓄積途中。知名度不足が原因の可能性</li>
+      <li><strong>0歳児受入なし</strong>：0歳入園→持ち上がりの「安全策」が使えないため、1歳で入れなかった家庭の2歳申込みに依存</li>
+      <li><strong>ほぼ満席に近い</strong>：空き1名は誤差の範囲。一時的に退園があった程度と推察</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 6. 東池袋第一保育園 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">6. 東池袋第一保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">東池袋2-60-19</div>
+    </div>
+    <span class="badge badge-orange">私立認可（元区立）</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">HITOWAキッズライフ株式会社</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">民営化</div>
+      <div class="info-value">2023年4月〜（元・豊島区立）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">100名（0歳9/1歳17/2歳19/3歳19/4・5歳36）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">JR池袋駅 徒歩8分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">口コミ評価</div>
+      <div class="info-value">みんなの保育園 4.14/5.0（7件）</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">つながり保育</span>
+    <span class="feature-tag">大規模100名</span>
+    <span class="feature-tag">イベント充実</span>
+    <span class="feature-tag">暗証番号門扉</span>
+  </div>
+
+  <div class="reason-box orange">
+    <h4>空きが出始めた理由（考察）</h4>
+    <ul>
+      <li><strong>2023年に民営化したばかり</strong>：区立→HITOWAキッズライフへ移管。運営体制の変更に不安を感じた既存保護者の転園や、新規申込の様子見が発生した可能性</li>
+      <li><strong>2歳クラス定員19名は大きい</strong>：100名定員で2歳が19名。空き2名は充足率89%で実はかなり高い</li>
+      <li><strong>園庭が狭い</strong>：口コミで「園庭が狭く運動会がやりにくい」「マンションに囲まれている」と複数指摘あり</li>
+      <li><strong>一時的な退園の可能性</strong>：年度途中で満席→2名空きは転居等による退園と推察。構造的問題ではなさそう</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 7. ミアヘルサ保育園ひびき池袋 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">7. ミアヘルサ保育園ひびき池袋</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">南池袋3-10-6</div>
+    </div>
+    <span class="badge badge-orange">私立認可</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">ミアヘルサ株式会社</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2019年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">50名（0歳6/1歳10/2歳11/3歳11/4・5歳12）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">池袋駅 徒歩8分 / 雑司ヶ谷駅 徒歩8分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">口コミ評価</div>
+      <div class="info-value">みんなの保育園 4.56/5.0</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">1</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot empty">2</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">見守る保育</span>
+    <span class="feature-tag">ミッケルアート導入</span>
+    <span class="feature-tag">区ランキング22位/83園</span>
+    <span class="feature-tag">綺麗な施設</span>
+  </div>
+
+  <div class="reason-box orange">
+    <h4>空きが出始めた理由（考察）</h4>
+    <ul>
+      <li><strong>口コミ評価は高い（4.56）</strong>：保育の質自体は評価されている。空きは質の問題ではない</li>
+      <li><strong>池袋駅・雑司ヶ谷駅からともに8分</strong>：どちらの駅からも中途半端な距離。近隣に同援さくら保育園（徒歩圏内）という強力なライバルがある</li>
+      <li><strong>4・5歳クラスの定員が12名と少ない</strong>：幼児期にクラスメイトが少なくなる懸念。長く通わせる先としての魅力が弱い</li>
+      <li><strong>薬局チェーン系企業の保育園</strong>：ミアヘルサは元・日本調剤グループ。保育専業ではないことが敬遠材料に</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===================== 常に満席 ===================== -->
+<h2 class="section-title green">常に満席（人気園）</h2>
+
+<div class="cards">
+
+<!-- 8. まちの保育園東池袋 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">8. まちの保育園 東池袋</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">東池袋2-6-2 ロイヤルアネックス1F</div>
+    </div>
+    <span class="badge badge-green">私立認可・常に満席</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">社会福祉法人毛里田睦会（ナチュラルスマイルジャパン提携）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2017年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">40名（0歳6/1歳8/2歳6/3歳9/4・5歳11）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">東池袋駅エリア</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">認証</div>
+      <div class="info-value">ISO9001:2015取得</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">まちぐるみ保育</span>
+    <span class="feature-tag">ISO9001認証</span>
+    <span class="feature-tag">海外交流（Zoom）</span>
+    <span class="feature-tag">画家によるアート保育</span>
+    <span class="feature-tag">社会福祉法人</span>
+    <span class="feature-tag">少人数40名</span>
+  </div>
+
+  <div class="reason-box green">
+    <h4>人気の理由（考察）</h4>
+    <ul>
+      <li><strong>「まちの保育園」ブランドの圧倒的知名度</strong>：松本理寿輝氏が創設した「まちの保育園」はNHK等メディアで多数取り上げられた保育のトップブランド。小竹向原・六本木・吉祥寺等で展開。東池袋はそのアライアンス園</li>
+      <li><strong>2歳定員わずか6名</strong>：0歳6名→1歳8名→2歳6名で、持ち上がりでほぼ埋まる。外部からの2歳枠はほぼゼロ</li>
+      <li><strong>保育理念が突出</strong>：「まちぐるみの保育」「子どもも大人も地域もつながり合う」という理念に共感する教育意識の高い層が集中</li>
+      <li><strong>ISO9001取得</strong>：品質管理の国際規格を保育園で取得しているのは希少。保育の質を客観的に証明</li>
+      <li><strong>社会福祉法人の安心感</strong>：株式会社ではなく社福運営であることも信頼材料</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 9. 同援さくら保育園 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">9. 同援さくら保育園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">南池袋3-7-8 オリナスふくろうの杜</div>
+    </div>
+    <span class="badge badge-green">私立認可・常に満席・ボーダー42</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">社福 恩賜財団東京都同胞援護会</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2006年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">110名（0歳12/1歳18/2歳20/3歳20/4・5歳40）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜<strong>22:15</strong>（夜間保育対応）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">JR池袋駅 徒歩10分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">区ランキング</div>
+      <div class="info-value">24位/83園（935点）</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">22:15まで延長</span>
+    <span class="feature-tag">休日保育</span>
+    <span class="feature-tag">病後児保育</span>
+    <span class="feature-tag">一時保育</span>
+    <span class="feature-tag">障がい児保育</span>
+    <span class="feature-tag">高齢者施設交流</span>
+    <span class="feature-tag">社会福祉法人</span>
+  </div>
+
+  <div class="reason-box green">
+    <h4>人気の理由（考察）</h4>
+    <ul>
+      <li><strong>22:15まで延長保育</strong>：夜10時過ぎまで預けられる園は豊島区で極めて希少。残業の多い都心勤務世帯にとって唯一無二の選択肢</li>
+      <li><strong>休日保育・病後児保育・一時保育を全て網羅</strong>：豊島区全園の保護者向け就労支援を担うフルスペック園。他園にない圧倒的な利便性</li>
+      <li><strong>恩賜財団という歴史ある社会福祉法人</strong>：戦後の社会福祉を支えてきた公的色の強い法人。信頼度が段違い</li>
+      <li><strong>高齢者施設との世代間交流</strong>：「オリナスふくろうの杜」内で高齢者と日常的に交流。教育的価値が高い</li>
+      <li><strong>大規模110名だから安心</strong>：クラスメイトが多く、社会性が育つ。小学校入学への接続も滑らか</li>
+      <li><strong>ボーダー42は指数満点＋加点2</strong>：両親フルタイム＋兄弟加点等がないと入れない超人気園</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 10. グローバルキッズ雑司が谷園 -->
+<div class="card">
+  <div class="card-header">
+    <div>
+      <div class="card-name">10. グローバルキッズ雑司が谷園</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">雑司が谷3-8-5</div>
+    </div>
+    <span class="badge badge-green">私立認可・常に満席</span>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-label">運営法人</div>
+      <div class="info-value">株式会社グローバルキッズ</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">設立</div>
+      <div class="info-value">2017年4月</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">定員（全体）</div>
+      <div class="info-value">66名（0歳6/1歳12/2歳12/3歳13/4歳13/5歳10）</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">開所時間</div>
+      <div class="info-value">7:15〜19:15</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">最寄り駅</div>
+      <div class="info-value">雑司ヶ谷駅 徒歩5分 / 目白駅 徒歩8分 / 池袋駅 徒歩10分</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">口コミ評価</div>
+      <div class="info-value">4.0/5.0</div>
+    </div>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:4px;">2歳クラス空き推移</div>
+  <div class="vacancy-chart">
+    <div class="vacancy-bar">
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div><span class="vacancy-arrow">→</span>
+      <div class="vacancy-dot full">0</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <span class="feature-tag">リトミック月2回</span>
+    <span class="feature-tag">体操教室月2回</span>
+    <span class="feature-tag">英語教室月1回</span>
+    <span class="feature-tag">食育重視</span>
+    <span class="feature-tag">ガラス張り園舎</span>
+    <span class="feature-tag">3駅利用可</span>
+  </div>
+
+  <div class="reason-box green">
+    <h4>人気の理由（考察）</h4>
+    <ul>
+      <li><strong>3駅利用可能の抜群のアクセス</strong>：雑司ヶ谷5分・目白8分・池袋10分。複数路線から通える立地は最強</li>
+      <li><strong>グローバルキッズの実績</strong>：全国180以上の保育施設を運営する業界大手。ノウハウの蓄積が桁違い</li>
+      <li><strong>充実した教育プログラム</strong>：リトミック・体操・英語を定期実施。「保育だけでなく教育も」という保護者ニーズに応える</li>
+      <li><strong>施設の美しさ</strong>：ガラス張りの明るい園舎、日差しが降り注ぐ中庭。口コミで「清潔感がある」「先生が園児の名前を覚えている」と高評価</li>
+      <li><strong>雑司ヶ谷エリアの住環境</strong>：鬼子母神・法明寺のある閑静な住宅街。子育て世帯に人気のエリア</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===================== 総合分析 ===================== -->
+<div class="conclusion">
+  <h2>総合分析：なぜ空きが出る園と満席園に分かれるのか</h2>
+
+  <p><strong>1. 小規模保育の「3歳の壁」が最大要因</strong><br>
+  東池袋早樹・南大塚早樹の2園は、2歳クラスまでしか在籍できない小規模保育。3歳で必ず転園が必要になるため、保護者は最初から0〜5歳の認可園を選ぶ。特に2歳から入園すると「たった1年で転園」となり、メリットが極めて薄い。空き5名のうち4〜5名が埋まらないのはこの構造的問題による。</p>
+
+  <p><strong>2. 立地とアクセスが決定的</strong><br>
+  満席の3園はいずれも池袋駅から徒歩10分圏内かつ複数駅利用可能。対して空きのあるニチイキッズ（上池袋・北池袋駅9分）やキッズガーデン（大塚駅・ビル3F）は、通勤導線から外れるか物理的にアクセスしづらい。保育園選びにおいて「毎日の送迎動線」は最重要ファクター。</p>
+
+  <p><strong>3. 運営法人の信頼度格差</strong><br>
+  満席園のうち2園（まちの保育園・同援さくら）は社会福祉法人。グローバルキッズも業界最大手。一方、空きのある園は株式会社運営が多く（日本チャイルドサポート、Kids Smile Project、ニチイ学館、クオリス）、保育が本業ではない企業や知名度の低い法人が多い。</p>
+
+  <p><strong>4. 「唯一無二の機能」があるかどうか</strong><br>
+  同援さくら保育園は夜22時まで＋休日保育＋病後児保育という、他園では絶対に代替できない機能を持つ。まちの保育園は「まちぐるみ保育」のブランド。グローバルキッズは教育プログラムの充実度。空きのある園にはこの「ここでしかできない」が不足している。</p>
+
+  <p><strong>5. 2歳クラスの定員設計が需給ミスマッチ</strong><br>
+  ニチイキッズの2歳14名、東池袋第一の2歳19名は、エリアの需要に対してやや過大。少子化とエリア内の園増加（2015〜2018年に小規模だけで13園増）で供給過多傾向。一方、まちの保育園は2歳6名という小さな枠設計で、常に需要＞供給を維持。</p>
+
+  <p style="margin-top:16px; padding-top:12px; border-top:1px solid var(--border);"><strong>保活の観点から</strong>：空きのある園は「入りやすい」というメリットがある。特にクオリスキッズ東池袋（空き1名程度）やミアヘルサひびき池袋（口コミ4.56の高評価）は、保育の質は高いが知名度・立地で損をしているだけで、実は狙い目の園と言える。</p>
+</div>
+
+<p style="color:var(--text-dim); font-size:0.75rem; margin-top:20px; text-align:center;">
+  調査日: 2026年3月19日 / 情報源: 豊島区公式HP、えんさがそっ♪、みんなの保育園情報、保育園まるごとランキング、各園公式サイト
+</p>
+
+</body>
+</html>
